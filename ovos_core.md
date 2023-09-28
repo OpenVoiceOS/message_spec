@@ -3,7 +3,7 @@
 | Message Type                    | Message Data                        | Description                                 | Response Type(s)                      |
 |---------------------------------|------------------------------------|---------------------------------------------|----------------------------------------|
 | ovos.skills.settings_changed     | {"skill_id": string}               | Notifies a change in skill settings.json   | None                                   |
-| ovos.setup.state.get             | {"source": "skills", "destination": "ovos-setup"} | Requests the setup state from the ovos-setup skill | ovos.setup.state|
+| ovos.setup.state.get             |                                    | Requests the setup state from the ovos-setup skill | ovos.setup.state|
 | mycroft.skills.list              | {"<skill_id>": {"active": bool, "id": string}, ...} | Provides a list of loaded skills  | None                           |
 | mycroft.skills.error             | {"internet_loaded": bool, "network_loaded": bool} | Indicates an error in skill loading status | None                    |
 | mycroft.skills.initialized       | None                               | Indicates that skills have been initialized | None                                  |
@@ -104,10 +104,10 @@
 
 | Message Type                    | Message Data                        | Description                                 | Response Type(s)                      |
 |---------------------------------|------------------------------------|---------------------------------------------|----------------------------------------|
-| `'padatious:register_intent'`   | `{'name': str, 'file_name': str, 'samples': List[str], 'lang': str}` | Register an intent with Padatious for intent recognition. | None |
-| `'padatious:register_entity'`   | `{'name': str, 'file_name': str, 'samples': List[str], 'lang': str}` | Register an entity with Padatious for entity recognition. | None |
-| `'detach_intent'`              | `{'intent_name': str}`             | Remove a registered intent from Padatious. | None |
-| `'detach_skill'`               | `{'skill_id': str}`                | Remove all intents registered by a specific skill from Padatious. | None |
-| `'mycroft.skills.initialized'`  | None                               | Triggered when skills are initialized, used to initiate training. | `'mycroft.skills.trained'` (Response message) |
-| `'mycroft.skills.trained'`     | None                               | Indicates that skills have been trained. | None |
+| `padatious:register_intent`   | `{'name': str, 'file_name': str, 'samples': List[str], 'lang': str}` | Register an intent with Padatious for intent recognition. | None |
+| `padatious:register_entity`   | `{'name': str, 'file_name': str, 'samples': List[str], 'lang': str}` | Register an entity with Padatious for entity recognition. | None |
+| `detach_intent`              | `{'intent_name': str}`             | Remove a registered intent from Padatious. | None |
+| `detach_skill`               | `{'skill_id': str}`                | Remove all intents registered by a specific skill from Padatious. | None |
+| `mycroft.skills.initialized`  | None                               | Triggered when skills are initialized, used to initiate training. | `mycroft.skills.trained` (Response message) |
+| `mycroft.skills.trained`     | None                               | Indicates that skills have been trained. | None |
 
