@@ -5,7 +5,7 @@
   * [Listens To](#listens-to)
   * [Emits](#emits)
 - [AudioService](#audioservice)
-  * [Listens to](#listens-to)
+  * [Listens to](#listens-to-1)
   * [Emits](#emits-1)
 
 
