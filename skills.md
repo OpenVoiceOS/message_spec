@@ -1,17 +1,21 @@
 # ovos-workshop message SPEC
 
+- [ovos-workshop message SPEC](#ovos-workshop-message-spec)
 - [OVOSSkill](#ovosskill)
   * [Listens to](#listens-to)
   * [Emits](#emits)
+- [FallbackSkill](#fallbackskill)
+  * [Listens to](#listens-to-1)
+  * [Emits](#emits-1)
 - [OVOSCommonPlaybackSkill](#ovoscommonplaybackskill)
   * [Listens To](#listens-to)
-  * [Emits](#emits-1)
-- [CommonQuerySkill](#commonqueryskill)
-  * [Listens to](#listens-to-1)
   * [Emits](#emits-2)
-- [SkillLoader](#skillloader)
+- [CommonQuerySkill](#commonqueryskill)
   * [Listens to](#listens-to-2)
   * [Emits](#emits-3)
+- [SkillLoader](#skillloader)
+  * [Listens to](#listens-to-3)
+  * [Emits](#emits-4)
 
 
 # OVOSSkill
@@ -63,6 +67,25 @@
 | mycroft.mic.mute            |              | (classic core) Mute the microphone, possibly used to stop recording during speech recognition. | self.send_stop_signal |
 | mycroft.mic.unmute          |              | (classic core) Unmute the microphone.                                                          | self.send_stop_signal |
 | recognizer_loop:record_stop |              | Instruct ovos-listener to stop recording.                                                      | self.send_stop_signal |
+
+
+# FallbackSkill
+
+## Listens to
+| Message Type                       | Message Data                      | Description                                                                                        | Response Type(s)                                                                    | handled by                    |
+|------------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|-------------------------------|
+| `ovos.skills.fallback.ping`        | `{"utterances": [], "lang": str}` | Informs the skills service that the FallbackSkill can handle fallbacks.                            | `ovos.skills.fallback.pong`                                                         | self._handle_fallback_ack     |
+| `ovos.skills.fallback.{skill_id} ` | `{}`                              | Handles a fallback request, calling registered handlers in priority order until one is successful. | `ovos.skills.fallback.{skill_id}.start`, `ovos.skills.fallback.{skill_id}.response` | self._handle_fallback_request |
+
+
+## Emits
+| Message Type                               | Message Data                                                         | Description                                                                                                                                           | In Response to                            |
+|--------------------------------------------|----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
+| `ovos.skills.fallback.register`            | `{"skill_id": str, "priority": int}`                                 | Registers the FallbackSkill with the skills service, specifying its skill ID and priority.                                                            | self._register_system_event_handlers      |
+| `ovos.skills.fallback.pong`                | `{"skill_id": str, "can_handle": bool}`                              | Informs the skills service whether the FallbackSkill can handle fallbacks for a given set of utterances and language.                                 | `ovos.skills.fallback.ping`               |
+| `ovos.skills.fallback.deregister`          | `{"skill_id": str}`                                                  | Deregisters the FallbackSkill with the skills service.                                                                                                | self.default_shutdown           |
+| `ovos.skills.fallback.{skill_id}.start`    | `{}`                                                                 | Indicates the start of the fallback handling process for a specific skill.                                                                            | `ovos.skills.fallback.{skill_id}.request` |
+| `ovos.skills.fallback.{skill_id}.response` | `{"result": bool, "fallback_handler": str}`                          | Indicates the result of the fallback handling process for a specific skill, including whether it was successful and the name of the fallback handler. | `ovos.skills.fallback.{skill_id}.request` |
 
 
 # OVOSCommonPlaybackSkill
