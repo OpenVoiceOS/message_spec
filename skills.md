@@ -54,6 +54,35 @@
 | mycroft.mic.unmute          |              | (classic core) Unmute the microphone.                                                          | self.send_stop_signal |
 | recognizer_loop:record_stop |              | Instruct ovos-listener to stop recording.                                                      | self.send_stop_signal |
 
+# common_play.py
+
+## Listens To
+| Message Type                              | Message Data                          | Description                                                        | Response Type(s)                                                       | handled by                    |
+|-------------------------------------------|---------------------------------------|--------------------------------------------------------------------|------------------------------------------------------------------------|-------------------------------|
+| ovos.common_play.query                    | {"phrase": str, "question_type": str} | Query skill if it can start playback from the given phrase.        | ovos.common_play.skill.search_start, ovos.common_play.skill.search_end | @ocp_search decorator         |
+| ovos.common_play.featured_tracks.play     | {"skill_id": str}                     | Play featured tracks from a skill with the specified skill_id.     | -                                                                      | @ocp_featured_media decorator |
+| ovos.common_play.skills.get               | -                                     | Request information about the skills that support common playback. | ovos.common_play.announce                                              | self.__handle_ocp_skills_get  |
+| ovos.common_play.{self.skill_id}.play     | -                                     | Handle the playback of media.                                      | ovos.common_play.player.state                                          | @ocp_play  decorator          |
+| ovos.common_play.{self.skill_id}.pause    | -                                     | Handle the pause of media playback.                                | -                                                                      | @ocp_pause decorator          |
+| ovos.common_play.{self.skill_id}.resume   | -                                     | Handle the resume of media playback.                               | -                                                                      | @ocp_resume decorator         |
+| ovos.common_play.{self.skill_id}.next     | -                                     | Handle the request to play the next track.                         | -                                                                      | @ocp_next decorator           |
+| ovos.common_play.{self.skill_id}.previous | -                                     | Handle the request to play the previous track.                     | -                                                                      | @ocp_previous decorator       |
+| ovos.common_play.{self.skill_id}.stop     | -                                     | Handle the stop of media playback.                                 | ovos.common_play.player.state                                          | self.stop        |
+| ovos.common_play.search.stop              | -                                     | Stop a media search.                                               | -                                                                      | self.__handle_stop_search     |
+| mycroft.stop                              | -                                     | Stop a media search in response to a global stop     | -                                                                      | self.__handle_stop_search     |
+
+
+## Emits
+| Message Type                            | Message Data                        | Description                                 | In Response to          |
+|-----------------------------------------|------------------------------------|---------------------------------------------|----------------------------------------|
+| ovos.common_play.announce               | {"skill_id": str, "skill_name": str, "thumbnail": str, "media_types": list, "featured_tracks": bool} | Announce skill information to the common playback framework. | ovos.common_play.skills.get         |
+| ovos.common_play.skill.search_start     | {"skill_id": str, "skill_name": str, "thumbnail": str} | Signal the start of a media search initiated by the skill. | ovos.common_play.query               |
+| ovos.common_play.query.response         | {"phrase": str, "skill_id": str, "skill_name": str, "thumbnail": str, "results": list, "searching": bool} | Respond to a media search query with search results. | ovos.common_play.query               |
+| ovos.common_play.skill.search_end       | {"skill_id": str}                  | Signal the end of a media search initiated by the skill. | ovos.common_play.query               |
+| ovos.common_play.player.state           | {"state": str}                     | Signal changes in the media player state (e.g., playing, paused, stopped). | ovos.common_play.{self.skill_id}.play, ovos.common_play.{self.skill_id}.pause, ovos.common_play.{self.skill_id}.resume, ovos.common_play.{self.skill_id}.stop |
+
+
+
 # skill_launcher.py
 
 ## Listens to
