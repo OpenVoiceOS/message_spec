@@ -1,6 +1,5 @@
 # ovos-workshop message SPEC
 
-- [ovos-workshop message SPEC](#ovos-workshop-message-spec)
 - [OVOSSkill](#ovosskill)
   * [Listens to](#listens-to)
   * [Emits](#emits)
@@ -13,9 +12,12 @@
 - [CommonQuerySkill](#commonqueryskill)
   * [Listens to](#listens-to-2)
   * [Emits](#emits-3)
-- [SkillLoader](#skillloader)
+- [IdleDisplaySkill](#idledisplayskill)
   * [Listens to](#listens-to-3)
   * [Emits](#emits-4)
+- [SkillLoader](#skillloader)
+  * [Listens to](#listens-to-4)
+  * [Emits](#emits-5)
 
 
 # OVOSSkill
@@ -129,6 +131,25 @@
 |-------------------------|---------------------------------------------------------------------------------------|------------------------------------------------|----------------|
 | question:query.response | {"phrase": str, "skill_id": str, "answer": str, "callback_data": dict, "conf": float} | Report id the skill can answer the user query. | question:query |
 
+
+# IdleDisplaySkill
+
+## Listens to
+| Message Type                          | Message Data               | Description                                                                    | Response Type(s)       | handled by                          |
+|---------------------------------------|----------------------------|--------------------------------------------------------------------------------|------------------------|-------------------------------------|
+| `mycroft.ready`                       | N/A                        | Shows idle screen when the device is ready for use.                            | `skill.idle.displayed` | self._handle_mycroft_ready          |
+| `homescreen.manager.activate.display` | `{ "homescreen_id": str }` | Display this home screen if requested by the Home Screen Manager.              | `skill.idle.displayed` | self.handle_idle                    |
+| `homescreen.manager.reload.list`      | N/A                        | Reloads this skill's homescreen entry and sends it to the Home Screen Manager. | N/A                    | self._reload_homescreen_entry       |
+| `mycroft.skills.shutdown`             | `{ "id": str }`            | Removes this homescreen from the Home Screen Manager if requested.             | N/A                    | self._remove_homescreen_on_shutdown |
+
+
+## Emits
+| Message Type                     | Message Data                               | Description                                                           | In Response to                        |
+|----------------------------------|--------------------------------------------|-----------------------------------------------------------------------|---------------------------------------|
+| `skill.idle.displayed`           | N/A                                        | Indicates that the idle display is shown.                             | `homescreen.manager.activate.display` |
+| `homescreen.manager.add`         | `{ "class": str, "name": str, "id": str }` | Registers this skill's homescreen entry with the Home Screen Manager. | self._register_system_event_handlers  |
+| `homescreen.manager.remove`      | `{ "class": str, "name": str, "id": str }` | Removes this skill's homescreen entry from the Home Screen Manager.   | `mycroft.skills.shutdown`             |
+| `homescreen.manager.reload.list` | N/A                                        | Requests a reload of this skill's homescreen entry.                   | self._register_system_event_handlers  |
 
 
 # SkillLoader
