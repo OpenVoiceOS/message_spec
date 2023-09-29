@@ -82,6 +82,20 @@
 | ovos.common_play.player.state           | {"state": str}                     | Signal changes in the media player state (e.g., playing, paused, stopped). | ovos.common_play.{self.skill_id}.play, ovos.common_play.{self.skill_id}.pause, ovos.common_play.{self.skill_id}.resume, ovos.common_play.{self.skill_id}.stop |
 
 
+# common_query_skill.py
+
+## Listens to
+| Message Type    | Message Data                           | Description                                                | Response Type(s)        | Handled by                  |
+|-----------------|----------------------------------------|------------------------------------------------------------|-------------------------|-----------------------------|
+| question:query  | {"phrase": str}                        | Handles incoming user queries and attempts to answer them. | question:query.response | self.CQS_match_query_phrase |
+| question:action | {"phrase": str, "callback_data": dict} | Skill selected to answer question callback                 | -                       | self.CQS_action             |
+
+## Emits
+| Message Type            | Message Data                                                                          | Description                                    | In Response to |
+|-------------------------|---------------------------------------------------------------------------------------|------------------------------------------------|----------------|
+| question:query.response | {"phrase": str, "skill_id": str, "answer": str, "callback_data": dict, "conf": float} | Report id the skill can answer the user query. | question:query |
+
+
 
 # skill_launcher.py
 
