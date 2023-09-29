@@ -4,7 +4,7 @@
   * [Listens to](#listens-to)
   * [Emits](#emits)
 - [PHALPlugin](#phalplugin)
-  * [Listens to](#listens-to-2)
+  * [Listens to](#listens-to-1)
 
 # GUIExtension
 
