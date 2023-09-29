@@ -5,8 +5,8 @@
   * [Listens To](#listens-to)
   * [Emits](#emits)
 - [AudioService](#audioservice)
-- [Listens to](#listens-to)
-- [Emits](#emits-1)
+  * [Listens to](#listens-to)
+  * [Emits](#emits-1)
 
 
 # PlaybackService
@@ -36,7 +36,7 @@
 
 # AudioService
 
-# Listens to
+## Listens to
 | Message Type                             | Message Data                     | Description                                               | Response Type(s)                       | handled by                        |
 |------------------------------------------|----------------------------------|-----------------------------------------------------------|----------------------------------------|-----------------------------------|
 | mycroft.audio.service.play               | {'tracks': list, 'repeat': bool} | Starts playback of a tracklist.                           | N/A                                    | self._play                        |
@@ -59,7 +59,7 @@
 | recognizer_loop:record_end               | N/A                              | Restores the volume after recording is done.              | N/A                                    | self._restore_volume_after_record |
 
 
-# Emits
+## Emits
 | Message Type                           | Message Data                   | Description                                       | In Response to                   |
 |----------------------------------------|--------------------------------|---------------------------------------------------|----------------------------------|
 | mycroft.audio.playing_track            | {'track': str}                 | Informs about the track about to start playing.   | self.track_start                 |
