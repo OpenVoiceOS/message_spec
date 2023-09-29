@@ -137,7 +137,7 @@
 ## Listens to
 | Message Type                          | Message Data               | Description                                                                    | Response Type(s)       | handled by                          |
 |---------------------------------------|----------------------------|--------------------------------------------------------------------------------|------------------------|-------------------------------------|
-| `mycroft.ready`                       | N/A                        | Shows idle screen when the device is ready for use.                            | `skill.idle.displayed` | self._handle_mycroft_ready          |
+| `mycroft.ready`                       | N/A                        | Shows idle screen when the device is ready for use.                            | `skill.idle.displayed` | self.handle_idle                    |
 | `homescreen.manager.activate.display` | `{ "homescreen_id": str }` | Display this home screen if requested by the Home Screen Manager.              | `skill.idle.displayed` | self.handle_idle                    |
 | `homescreen.manager.reload.list`      | N/A                        | Reloads this skill's homescreen entry and sends it to the Home Screen Manager. | N/A                    | self._reload_homescreen_entry       |
 | `mycroft.skills.shutdown`             | `{ "id": str }`            | Removes this homescreen from the Home Screen Manager if requested.             | N/A                    | self._remove_homescreen_on_shutdown |
