@@ -1,3 +1,5 @@
+# ovos-workshop message SPEC
+
 - [OVOSSkill](#ovosskill)
   * [Listens to](#listens-to)
   * [Emits](#emits)
@@ -7,7 +9,7 @@
 - [CommonQuerySkill](#commonqueryskill)
   * [Listens to](#listens-to-1)
   * [Emits](#emits-2)
-- [skill_launcher.py](#skill-launcherpy)
+- [SkillLoader](#skillloader)
   * [Listens to](#listens-to-2)
   * [Emits](#emits-3)
 
@@ -106,7 +108,7 @@
 
 
 
-# skill_launcher.py
+# SkillLoader
 
 ## Listens to
 | Message Type                 | Message Data                | Description                                           |
