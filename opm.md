@@ -1,3 +1,10 @@
+# ovos-plugin-manager message SPEC
+
+- [GUIExtension](#guiextension)
+  * [Listens to](#listens-to)
+  * [Emits](#emits)
+- [PHALPlugin](#phalplugin)
+
 # GUIExtension
 
 ## Listens to
