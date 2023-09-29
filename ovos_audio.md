@@ -27,12 +27,13 @@
 
 
 ## Emits
-| Message Type                | Message Data                                                                                          | Description                                                 | In Response To               |
-|-----------------------------|-------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|------------------------------|
-| `opm.tts.query.response`    | {'langs': list, 'plugins': {lang: list}, configs: {plugin_name: {lang: list}}, options: {lang: list}} | Responds to opm.tts.query with TTS plugin data.             | `opm.tts.query`              |
-| `opm.g2p.query.response`    | {'langs': list, 'plugins': {lang: list}, configs: {plugin_name: {lang: list}}, options: {lang: list}} | Responds to opm.g2p.query with G2P plugin data.             | `opm.g2p.query`              |
-| `opm.audio.query.response`  | {'plugins': list, configs: {backend_name: dict}, options: {lang: list}}                               | Responds to opm.audio.query with audio service plugin data. | `opm.audio.query`            |
-| `mycroft.audio.is_speaking` | {'speaking': bool}                                                                                    | Reports whether Mycroft is currently speaking.              | `mycroft.audio.speak.status` |
+| Message Type                  | Message Data                                                                                          | Description                                                 | In Response To               |
+|-------------------------------|-------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|------------------------------|
+| `opm.tts.query.response`      | {'langs': list, 'plugins': {lang: list}, configs: {plugin_name: {lang: list}}, options: {lang: list}} | Responds to opm.tts.query with TTS plugin data.             | `opm.tts.query`              |
+| `opm.g2p.query.response`      | {'langs': list, 'plugins': {lang: list}, configs: {plugin_name: {lang: list}}, options: {lang: list}} | Responds to opm.g2p.query with G2P plugin data.             | `opm.g2p.query`              |
+| `opm.audio.query.response`    | {'plugins': list, configs: {backend_name: dict}, options: {lang: list}}                               | Responds to opm.audio.query with audio service plugin data. | `opm.audio.query`            |
+| `mycroft.audio.is_speaking`   | {'speaking': bool}                                                                                    | Reports whether Mycroft is currently speaking.              | `mycroft.audio.speak.status` |
+| `ovos.languages.tts.response` | {'langs': list}                                                                                       | Handles a request for supported TTS languages.              | `ovos.languages.tts`         |
 
 # AudioService
 
