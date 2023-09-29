@@ -77,7 +77,7 @@
 | Message Type                       | Message Data                      | Description                                                                                        | Response Type(s)                                                                    | handled by                    |
 |------------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|-------------------------------|
 | `ovos.skills.fallback.ping`        | `{"utterances": [], "lang": str}` | Informs the skills service that the FallbackSkill can handle fallbacks.                            | `ovos.skills.fallback.pong`                                                         | self._handle_fallback_ack     |
-| `ovos.skills.fallback.{skill_id} ` | `{}`                              | Handles a fallback request, calling registered handlers in priority order until one is successful. | `ovos.skills.fallback.{skill_id}.start`, `ovos.skills.fallback.{skill_id}.response` | self._handle_fallback_request |
+| `ovos.skills.fallback.{skill_id} ` | `{}`                              | Handles a fallback request, calling registered handlers in priority order until one is successful. | `ovos.skills.fallback.{skill_id}.start`, `ovos.skills.fallback.{skill_id}.response` | @fallback_handler decorator / self.register_fallback |
 
 
 ## Emits
