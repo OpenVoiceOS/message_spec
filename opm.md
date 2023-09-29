@@ -21,7 +21,7 @@
 | 'recognizer_loop:sleep'              | None         | On naptime animation                                                                 | None                  | `on_sleep`                 |
 | 'mycroft.awoken'                     | None         | On wakeup animation                                                                  | None                  | `on_awake`                 |
 | 'speak'                              | None         | On speak messages, intended for enclosures                                           | None                  | `on_speak`                 |
-| 'enclosure.notify.no_internet'       | None         | None                                                                                 | None                  | `on_no_internet`           |
+| 'enclosure.notify.no_internet'       | None         |                                                                                      | None                  | `on_no_internet`           |
 | 'enclosure.reset'                    | None         | The enclosure should restore itself to a started state.                              | None                  | `on_reset`                 |
 | 'enclosure.system.reset'             | None         | The enclosure hardware should reset any CPUs, etc.                                   | None                  | `on_system_reset`          |
 | 'enclosure.system.mute'              | None         | Mute (turn off) the system speaker.                                                  | None                  | `on_system_mute`           |
@@ -36,7 +36,7 @@
 | 'enclosure.eyes.color'               | None         | Change the eye color to the given RGB color                                          | None                  | `on_eyes_color`            |
 | 'enclosure.eyes.level'               | None         | Set the brightness of the eyes in the display.                                       | None                  | `on_eyes_brightness`       |
 | 'enclosure.eyes.volume'              | None         | Indicate the volume using the eyes                                                   | None                  | `on_eyes_volume`           |
-| 'enclosure.eyes.spin'                | None         | None                                                                                 | None                  | `on_eyes_spin`             |
+| 'enclosure.eyes.spin'                | None         |                                                                                      | None                  | `on_eyes_spin`             |
 | 'enclosure.eyes.timedspin'           | None         | Make the eyes 'roll' for the given time                                              | None                  | `on_eyes_timed_spin`       |
 | 'enclosure.eyes.reset'               | None         | Restore the eyes to their default (ready) state.                                     | None                  | `on_eyes_reset`            |
 | 'enclosure.mouth.events.activate'    | None         | Enable movement of the mouth with speech                                             | None                  | `_activate_mouth_events`   |
