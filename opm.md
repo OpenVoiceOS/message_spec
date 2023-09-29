@@ -1,0 +1,52 @@
+# GUIExtension
+
+## Listens to
+| Message Type                | Message Data                    | Description                                             | Response Type(s)    |
+|-----------------------------|--------------------------------|---------------------------------------------------------|----------------------|
+| mycroft.gui.screen.close    | {"skill_id": str}              | Handles the event to close the GUI screen in a skill.   | gui.clear.namespace  |
+
+## Emits
+| Message Type                | Message Data                    | Description                                             | In Response to        |
+|-----------------------------|--------------------------------|---------------------------------------------------------|------------------------|
+| gui.clear.namespace         | {"__from": str}                | Clears a skill's namespace in the GUI.                  | mycroft.gui.screen.close |
+
+# PHALPlugin
+
+| Message Type                         | Message Data | Description                                                                          | Emitted Response Type | Handled by                 |
+|--------------------------------------|--------------|--------------------------------------------------------------------------------------|-----------------------|----------------------------|
+| 'recognizer_loop:record_begin'       | None         | Listening started                                                                    | None                  | `on_record_begin`          |
+| 'recognizer_loop:record_end'         | None         | Listening ended                                                                      | None                  | `on_record_end`            |
+| 'recognizer_loop:audio_output_start' | None         | Speaking started                                                                     | None                  | `on_audio_output_start`    |
+| 'recognizer_loop:audio_output_end'   | None         | Speaking started                                                                     | None                  | `on_audio_output_end`      |
+| 'recognizer_loop:sleep'              | None         | On naptime animation                                                                 | None                  | `on_sleep`                 |
+| 'mycroft.awoken'                     | None         | On wakeup animation                                                                  | None                  | `on_awake`                 |
+| 'speak'                              | None         | On speak messages, intended for enclosures                                           | None                  | `on_speak`                 |
+| 'enclosure.notify.no_internet'       | None         | None                                                                                 | None                  | `on_no_internet`           |
+| 'enclosure.reset'                    | None         | The enclosure should restore itself to a started state.                              | None                  | `on_reset`                 |
+| 'enclosure.system.reset'             | None         | The enclosure hardware should reset any CPUs, etc.                                   | None                  | `on_system_reset`          |
+| 'enclosure.system.mute'              | None         | Mute (turn off) the system speaker.                                                  | None                  | `on_system_mute`           |
+| 'enclosure.system.unmute'            | None         | Unmute (turn on) the system speaker.                                                 | None                  | `on_system_unmute`         |
+| 'enclosure.system.blink'             | None         | The 'eyes' should blink the given number of times.                                   | None                  | `on_system_blink`          |
+| 'enclosure.eyes.on'                  | None         | Illuminate or show the eyes.                                                         | None                  | `on_eyes_on`               |
+| 'enclosure.eyes.off'                 | None         | Turn off or hide the eyes.                                                           | None                  | `on_eyes_off`              |
+| 'enclosure.eyes.fill'                | None         | Fill the eyes                                                                        | None                  | `on_eyes_fill`             |
+| 'enclosure.eyes.blink'               | None         | Make the eyes blink                                                                  | None                  | `on_eyes_blink`            |
+| 'enclosure.eyes.narrow'              | None         | Make the eyes look narrow, like a squint                                             | None                  | `on_eyes_narrow`           |
+| 'enclosure.eyes.look'                | None         | Make the eyes look to the given side                                                 | None                  | `on_eyes_look`             |
+| 'enclosure.eyes.color'               | None         | Change the eye color to the given RGB color                                          | None                  | `on_eyes_color`            |
+| 'enclosure.eyes.level'               | None         | Set the brightness of the eyes in the display.                                       | None                  | `on_eyes_brightness`       |
+| 'enclosure.eyes.volume'              | None         | Indicate the volume using the eyes                                                   | None                  | `on_eyes_volume`           |
+| 'enclosure.eyes.spin'                | None         | None                                                                                 | None                  | `on_eyes_spin`             |
+| 'enclosure.eyes.timedspin'           | None         | Make the eyes 'roll' for the given time                                              | None                  | `on_eyes_timed_spin`       |
+| 'enclosure.eyes.reset'               | None         | Restore the eyes to their default (ready) state.                                     | None                  | `on_eyes_reset`            |
+| 'enclosure.mouth.events.activate'    | None         | Enable movement of the mouth with speech                                             | None                  | `_activate_mouth_events`   |
+| 'enclosure.mouth.events.deactivate'  | None         | Disable movement of the mouth with speech                                            | None                  | `_deactivate_mouth_events` |
+| 'enclosure.mouth.talk'               | None         | Show a generic 'talking' animation for non-synched speech                            | None                  | `_on_mouth_talk`           |
+| 'enclosure.mouth.think'              | None         | Show a 'thinking' image or animation                                                 | None                  | `_on_mouth_think`          |
+| 'enclosure.mouth.listen'             | None         | Show a 'thinking' image or animation                                                 | None                  | `_on_mouth_listen`         |
+| 'enclosure.mouth.smile'              | None         | Show a 'smile' image or animation                                                    | None                  | `_on_mouth_smile`          |
+| 'enclosure.mouth.viseme'             | None         | Display a viseme mouth shape for synched speech                                      | None                  | `_on_mouth_viseme`         |
+| 'enclosure.mouth.viseme_list'        | None         | Mouth visemes as a list in a single message                                          | None                  | `_on_mouth_viseme_list`    |
+| 'enclosure.mouth.text'               | None         | Display text (scrolling as needed)                                                   | None                  | `_on_mouth_text`           |
+| 'enclosure.mouth.display'            | None         | Display images on faceplate. Currently supports images up to 16x8, or half the face. | None                  | `_on_mouth_display`        |
+| 'enclosure.weather.display'          | None         | Show a the temperature and a weather icon                                            | None                  | `on_weather_display`       |
