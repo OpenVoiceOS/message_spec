@@ -4,6 +4,7 @@
   * [Listens to](#listens-to)
   * [Emits](#emits)
 - [PHALPlugin](#phalplugin)
+  * [Listens to](#listens-to-2)
 
 # GUIExtension
 
@@ -19,6 +20,7 @@
 
 # PHALPlugin
 
+## Listens to
 | Message Type                         | Message Data                                           | Description                                                                          |  Handled by                |
 |--------------------------------------|--------------------------------------------------------|--------------------------------------------------------------------------------------|----------------------------|
 | 'recognizer_loop:record_begin'       | None                                                   | Listening started                                                                    | `on_record_begin`          |
