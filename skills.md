@@ -1,4 +1,18 @@
-# base.py
+- [OVOSSkill](#ovosskill)
+  * [Listens to](#listens-to)
+  * [Emits](#emits)
+- [OVOSCommonPlaybackSkill](#ovoscommonplaybackskill)
+  * [Listens To](#listens-to)
+  * [Emits](#emits-1)
+- [CommonQuerySkill](#commonqueryskill)
+  * [Listens to](#listens-to-1)
+  * [Emits](#emits-2)
+- [skill_launcher.py](#skill-launcherpy)
+  * [Listens to](#listens-to-2)
+  * [Emits](#emits-3)
+
+
+# OVOSSkill
 
 ## Listens to
 | Message Type                       | Message Data                                       | Effect                                                                        | Emits response                      | handled by                       |
@@ -40,12 +54,6 @@
 | speak                               | {"utterance": utterance, "expect_response": expect_response, "meta": meta, "lang": self.lang} | Initiates speech synthesis to speak the provided utterance.                   | self.speak                        |
 | detach_skill                        | {"skill_id": self.skill_id}                                                                   | Tell IntentService to remove all intents from this skill                      | self.default_shutdown             |
 | {self.skill_id}.public_api.response | {'{method_name}': {'help': str, 'type': str, 'func': str}}                                    | Reports skill api data                                                        | {self.skill_id}.public_api        |
-
-# ovos.py
-
-## Emits
-| Message Type                | Message Data | Description                                                                                    | sent by               |
-|-----------------------------|--------------|------------------------------------------------------------------------------------------------|-----------------------|
 | mycroft.audio.queue         | {"uri": str} | Queue an audio file for playback.                                                              | self.play_audio       |
 | mycroft.audio.play_sound    | {"uri": str} | Play an audio file instantly.                                                                  | self.play_audio       |
 | mycroft.stop                |              | Stop everything skills are doing                                                               | self.send_stop_signal |
@@ -54,7 +62,8 @@
 | mycroft.mic.unmute          |              | (classic core) Unmute the microphone.                                                          | self.send_stop_signal |
 | recognizer_loop:record_stop |              | Instruct ovos-listener to stop recording.                                                      | self.send_stop_signal |
 
-# common_play.py
+
+# OVOSCommonPlaybackSkill
 
 ## Listens To
 | Message Type                              | Message Data                          | Description                                                        | Response Type(s)                                                       | handled by                    |
@@ -82,7 +91,7 @@
 | ovos.common_play.player.state           | {"state": str}                     | Signal changes in the media player state (e.g., playing, paused, stopped). | ovos.common_play.{self.skill_id}.play, ovos.common_play.{self.skill_id}.pause, ovos.common_play.{self.skill_id}.resume, ovos.common_play.{self.skill_id}.stop |
 
 
-# common_query_skill.py
+# CommonQuerySkill
 
 ## Listens to
 | Message Type    | Message Data                           | Description                                                | Response Type(s)        | Handled by                  |
