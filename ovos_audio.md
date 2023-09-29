@@ -17,7 +17,7 @@
 | `opm.tts.query`              | N/A                                                           | Responds with TTS plugin data.                      | `opm.tts.query.response`      | self.handle_opm_tts_query     |
 | `opm.g2p.query`              | N/A                                                           | Responds with G2P plugin data.                      | `opm.g2p.query.response`      | self.handle_opm_g2p_query     |
 | `opm.audio.query`            | N/A                                                           | Responds with audio service plugin data.            | `opm.audio.query.response`    | self.handle_opm_audio_query   |
-| `speak`                      | {'utterance': str, 'expect_response': bool}                   | reports is_speaking status                          | `mycroft.audio.is_speaking`   | self.handle_speak             |
+| `speak`                      | {'utterance': str, 'expect_response': bool}                   | generates and queues TTS audio for playback         |                               | self.handle_speak             |
 | `mycroft.stop`               | N/A                                                           | Handles global stop and shuts down speech.          | `mycroft.stop.handled`        | self.handle_stop              |
 | `mycroft.audio.speech.stop`  | N/A                                                           | stops speech.                                       | N/A                           | self.handle_stop              |
 | `mycroft.audio.speak.status` | N/A                                                           | reports if Mycroft is speaking.                     | `mycroft.audio.is_speaking`   | self.handle_speak_status      |
