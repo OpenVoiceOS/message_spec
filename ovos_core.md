@@ -16,6 +16,10 @@
 | mycroft.ready                    | None                               | Signals that Mycroft is ready               | None                                  |
 | mycroft.skills.trained           | None                               | Indicates that skills have been trained     | None                                  |
 | ovos.setup.finished              | None                               | Indicates the completion of the setup process | None                                |
+| skillmanager.activate            | {"skill_id": string}               | Activates a skill, if it is available       | skillmanager.activate.response        |
+| skillmanager.deactivate          | {"skill_id": string}               | Deactivates a skill, if it is active        | skillmanager.deactivate.response      |
+| skillmanager.keep                | {"skill_id": string}               | Deactivates all skills but the provided     | None directly                         |
+| skillmanager.list                | None                               | Returns a list of all loaded skills         | mycroft.skills.list                   |
 
 # skill_installer.py
 
