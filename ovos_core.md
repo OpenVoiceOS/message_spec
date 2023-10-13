@@ -1,25 +1,25 @@
 # skill_manager.py
 
-| Message Type                    | Message Data                        | Description                                 | Response Type(s)                      |
-|---------------------------------|------------------------------------|---------------------------------------------|----------------------------------------|
-| ovos.skills.settings_changed     | {"skill_id": string}               | Notifies a change in skill settings.json   | None                                   |
-| ovos.setup.state.get             |                                    | Requests the setup state from the ovos-setup skill | ovos.setup.state|
-| mycroft.skills.list              | {"<skill_id>": {"active": bool, "id": string}, ...} | Provides a list of loaded skills  | None                           |
-| mycroft.skills.error             | {"internet_loaded": bool, "network_loaded": bool} | Indicates an error in skill loading status | None                    |
-| mycroft.skills.initialized       | None                               | Indicates that skills have been initialized | None                                  |
-| mycroft.internet.connected       | None                               | Indicates that the internet is connected    | None                                  |
-| mycroft.network.connected        | None                               | Indicates that the network is connected     | None                                  |
-| mycroft.gui.available            | {"permanent": bool}                | Indicates that the GUI is available         | None                                  |
-| mycroft.internet.disconnected    | None                               | Indicates that the internet is disconnected | None                                  |
-| mycroft.network.disconnected     | None                               | Indicates that the network is disconnected  | None                                  |
-| mycroft.gui.unavailable          | None                               | Indicates that the GUI is unavailable       | None                                  |
-| mycroft.ready                    | None                               | Signals that Mycroft is ready               | None                                  |
-| mycroft.skills.trained           | None                               | Indicates that skills have been trained     | None                                  |
-| ovos.setup.finished              | None                               | Indicates the completion of the setup process | None                                |
-| skillmanager.activate            | {"skill_id": string}               | Activates a skill, if it is available       | skillmanager.activate.response        |
-| skillmanager.deactivate          | {"skill_id": string}               | Deactivates a skill, if it is active        | skillmanager.deactivate.response      |
-| skillmanager.keep                | {"skill_id": string}               | Deactivates all skills but the provided     | None directly                         |
-| skillmanager.list                | None                               | Returns a list of all loaded skills         | mycroft.skills.list                   |
+| Message Type                    | Message Data                        | Description                                 | Response Type(s)                        |
+|---------------------------------|------------------------------------|----------------------------------------------|------------------------------------------|
+| ovos.skills.settings_changed     | {"skill_id": string}               | Notifies a change in skill settings.json    | None                                     |
+| ovos.setup.state.get             |                                    | Requests the setup state from the ovos-setup skill | ovos.setup.state                 |
+| mycroft.skills.list              | {"<skill_id>": {"active": bool, "id": string}, ...} | Provides a list of loaded skills  | None                             |
+| mycroft.skills.error             | {"internet_loaded": bool, "network_loaded": bool} | Indicates an error in skill loading status | None                      |
+| mycroft.skills.initialized       | None                               | Indicates that skills have been initialized   | None                                  |
+| mycroft.internet.connected       | None                               | Indicates that the internet is connected      | None                                  |
+| mycroft.network.connected        | None                               | Indicates that the network is connected       | None                                  |
+| mycroft.gui.available            | {"permanent": bool}                | Indicates that the GUI is available           | None                                  |
+| mycroft.internet.disconnected    | None                               | Indicates that the internet is disconnected   | None                                  |
+| mycroft.network.disconnected     | None                               | Indicates that the network is disconnected    | None                                  |
+| mycroft.gui.unavailable          | None                               | Indicates that the GUI is unavailable         | None                                  |
+| mycroft.ready                    | None                               | Signals that Mycroft is ready                 | None                                  |
+| mycroft.skills.trained           | None                               | Indicates that skills have been trained       | None                                  |
+| ovos.setup.finished              | None                               | Indicates the completion of the setup process | None                                  |
+| skillmanager.activate            | {"skill_id": string}               | Loads a skill, if it is available             | skillmanager.activate.response        |
+| skillmanager.deactivate          | {"skill_id": string}               | Unloads a skill, if it is loaded              | skillmanager.deactivate.response      |
+| skillmanager.keep                | {"skill_id": string}               | Unloads all skills but the provided           | None directly                         |
+| skillmanager.list                | None                               | Returns a list of all loaded skills           | mycroft.skills.list                   |
 
 # skill_installer.py
 
