@@ -1,0 +1,9 @@
+site_name: OVOS User Documentation
+site_url: https://openvoiceos.github.io/community-docs
+nav:
+    - Messages:
+        - OPM: opm.md
+        - Audio: ovos_audio.md
+        - Workshop : skills.md
+
+theme: readthedocs
