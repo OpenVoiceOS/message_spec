@@ -5,5 +5,6 @@ nav:
         - OPM: opm.md
         - Audio: ovos_audio.md
         - Workshop : skills.md
+        - Homescreen: ovos_homescreen.md
 
 theme: readthedocs
