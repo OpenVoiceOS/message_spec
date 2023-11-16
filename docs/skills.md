@@ -1,4 +1,4 @@
-# ovos-workshop message SPEC
+# ovos-workshop
 
 - [OVOSSkill](#ovosskill)
 - [FallbackSkill](#fallbackskill)
@@ -15,7 +15,7 @@
 |---------------------------------------|------------------------------------------------|-------------------------------------------------------------------------------|-------------------------------------|----------------------------------|
 | `mycroft.stop`                        |                                                | The skill stops everything it is doing                                        | `mycroft.stop.handled`              | self.stop                        |
 | `self.skill_id.converse.ping`         |                                                | Informs ConverseService if the skill supports `converse`.                     | `skill.converse.pong`               | self._handle_converse_ack        |
-| `self.skill_id.converse.request`      | 'utterances': list<br>'lang': str              | Handles user input with the `converse` method if skill is active              | `skill.converse.response`           | self.converse                    |
+| `self.skill_id.converse.request`      | 'utterances': List<br>'lang': str              | Handles user input with the `converse` method if skill is active              | `skill.converse.response`           | self.converse                    |
 | `self.skill_id.activate`              |                                                | Callback when the skill is considered active by the intent service.           |                                     | self.handle_activate             |
 | `self.skill_id.deactivate`            |                                                | Callback when the skill is no longer considered active by the intent service. |                                     | self.handle_deactivate           |
 | `intent.service.skills.deactivated`   | 'skill_id': str                                | Intent service deactivated a skill.                                           | `self.skill_id.deactivate`          | self._handle_skill_deactivated   |
@@ -24,7 +24,7 @@
 | `mycroft.skill.disable_intent`        | 'intent_name': str                             | Disables a registered intent (intent_name contains munged skill_id)           |                                     | self.handle_disable_intent       |
 | `mycroft.skill.set_cross_context`     | 'context': str<br>'word': str<br>'origin': str | Sets a skill specific context (with munged skill_id)                          |                                     | self.handle_set_cross_context    |
 | `mycroft.skill.remove_cross_context`  | 'context': str                                 | removes skill specific context (with munged skill_id)                         |                                     | self.handle_remove_cross_context |
-| `mycroft.skills.settings.changed`     | 'skill_id': dict                               | Update settings if a remote settings change applies to this skill.            |                                     | self.handle_settings_change      |
+| `mycroft.skills.settings.changed`     | 'skill_id': Dict                               | Update settings if a remote settings change applies to this skill.            |                                     | self.handle_settings_change      |
 | `self.skill_id.public_api`            |                                                | Responds with the skill's public API.                                         | `self.skill_id.public_api.response` | self._send_public_api            |
 | `self.skill_id.idle`                  |                                                | callback to trigger homescreen provided by this skill                         |                                     | @resting_handler decorator       |
 | `mycroft.mark2.collect_idle`          |                                                | responds to ovos-gui letting it know skill provides a homescreen              | `mycroft.mark2.register_idle`       | self._handle_collect_resting     |
@@ -42,13 +42,13 @@
 | `intent.service.skills.deactivate`    | 'skill_id': str                                                                  | Marks the skill as inactive and removes it from the active skills list.                                         | self._deactivate                    |
 | `skill.converse.pong`                 | 'skill_id': str<br>'can_handle': bool                                            | Informs the skills service whether the skill can handle `converse`.                                             | `skill.converse.ping`               |
 | `skill.converse.response`             | 'skill_id': str<br>'result': bool                                                | Responds to a `skill.converse.request` with the result of `converse`.                                           | `skill.converse.request`            |
-| `skill.converse.get_response.enable`  | "skill_id": self.skill_id                                                        | Enables getting a response from the user during a conversation.                                                 | self.get_response                   |
-| `skill.converse.get_response.disable` | "skill_id": self.skill_id                                                        | Disables getting a response from the user during a conversation.                                                | self.get_response                   |
+| `skill.converse.get_response.enable`  | "skill_id": str                                                                  | Enables getting a response from the user during a conversation.                                                 | self.get_response                   |
+| `skill.converse.get_response.disable` | "skill_id": str                                                                  | Disables getting a response from the user during a conversation.                                                | self.get_response                   |
 | `mycroft.mic.listen`                  |                                                                                  | Triggers listening for user input.                                                                              | self.speak + self.get_response      |
-| `mycroft.skill.set_cross_context`     | 'context': str<br>'word': str<br>'origin': self.skill_id                         | Emits a message to set cross-context data.                                                                      | self.set_cross_skill_context        |
+| `mycroft.skill.set_cross_context`     | 'context': str<br>'word': str<br>'origin': str                                   | Emits a message to set cross-context data.                                                                      | self.set_cross_skill_context        |
 | `mycroft.skill.remove_cross_context`  | 'context': str`                                                                  | Emits a message to remove cross-context data.                                                                   | self.remove_cross_skill_context     |
-| `speak`                               | "utterance": str<br>"expect_response": bool<br>"meta": dict<br>"lang": self.lang | Initiates speech synthesis to speak the provided utterance.                                                     | self.speak                          |
-| `detach_skill`                        | "skill_id": self.skill_id                                                        | Tell IntentService to remove all intents from this skill                                                        | self.default_shutdown               |
+| `speak`                               | "utterance": str<br>"expect_response": bool<br>"meta": Dict<br>"lang": self.lang | Initiates speech synthesis to speak the provided utterance.                                                     | self.speak                          |
+| `detach_skill`                        | "skill_id": str                                                                  | Tell IntentService to remove all intents from this skill                                                        | self.default_shutdown               |
 | `{self.skill_id}.public_api.response` | '{method_name}': {'help': str, 'type': str, 'func': str}                         | Reports skill api data                                                                                          | `self.skill_id.public_api`          |
 | `mycroft.audio.queue`                 | "uri": str                                                                       | Queue an audio file for playback.                                                                               | self.play_audio                     |
 | `mycroft.audio.play_sound`            | "uri": str                                                                       | Play an audio file instantly.                                                                                   | self.play_audio                     |
@@ -57,16 +57,16 @@
 | `recognizer_loop:record_stop`         |                                                                                  | Instruct ovos-listener to stop recording.                                                                       | self.send_stop_signal               |
 | `mycroft.mic.mute`                    |                                                                                  | DEPRECATED: (classic core only) Mute the microphone, possibly used to stop recording during speech recognition. | self.send_stop_signal               |
 | `mycroft.mic.unmute`                  |                                                                                  | DEPRECATED: (classic core only) Unmute the microphone.                                                          | self.send_stop_signal               |
-| `mycroft.mark2.register_idle`         | "name": self.resting_name<br>"id": self.skill_id                                 | DEPRECATED: Registers a resting screen for the skill.                                                           | `mycroft.mark2.collect_idle`        |
+| `mycroft.mark2.register_idle`         | "name": self.resting_name<br>"id": str                                           | DEPRECATED: Registers a resting screen for the skill.                                                           | `mycroft.mark2.collect_idle`        |
 
 ## FallbackSkill
 
 ### Listens to
 
-| Message Type                     | Message Data                     | Description                                                                                        | Response Type(s)                                                                | handled by                                           |
-|----------------------------------|----------------------------------|----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|------------------------------------------------------|
-| `ovos.skills.fallback.ping`      | "utterances": []<br> "lang": str | Informs the skills service that the FallbackSkill can handle fallbacks.                            | `ovos.skills.fallback.pong`                                                     | self._handle_fallback_ack                            |
-| `ovos.skills.fallback.skill_id ` |                                  | Handles a fallback request, calling registered handlers in priority order until one is successful. | `ovos.skills.fallback.skill_id.start`, `ovos.skills.fallback.skill_id.response` | @fallback_handler decorator / self.register_fallback |
+| Message Type                     | Message Data                       | Description                                                                                        | Response Type(s)                                                                | handled by                                           |
+|----------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|------------------------------------------------------|
+| `ovos.skills.fallback.ping`      | "utterances": List<br> "lang": str | Informs the skills service that the FallbackSkill can handle fallbacks.                            | `ovos.skills.fallback.pong`                                                     | self._handle_fallback_ack                            |
+| `ovos.skills.fallback.skill_id ` |                                    | Handles a fallback request, calling registered handlers in priority order until one is successful. | `ovos.skills.fallback.skill_id.start`, `ovos.skills.fallback.skill_id.response` | @fallback_handler decorator / self.register_fallback |
 
 ### Emits
 
@@ -82,29 +82,29 @@
 
 ### Listens To
 
-| Message Type                              | Message Data                          | Description                                                        | Response Type(s)                                                           | handled by                    |
-|-------------------------------------------|---------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------|-------------------------------|
-| `ovos.common_play.query`                  | "phrase": str<br>"question_type": str | Query skill if it can start playback from the given phrase.        | `ovos.common_play.skill.search_start`, `ovos.common_play.skill.search_end` | @ocp_search decorator         |
-| `ovos.common_play.featured_tracks.play`   | "skill_id": str                       | Play featured tracks from a skill with the specified skill_id.     |                                                                            | @ocp_featured_media decorator |
-| `ovos.common_play.skills.get`             |                                       | Request information about the skills that support common playback. | `ovos.common_play.announce`                                                | self.__handle_ocp_skills_get  |
-| `ovos.common_play.self.skill_id.play`     |                                       | Handle the playback of media.                                      | `ovos.common_play.player.state`                                            | @ocp_play  decorator          |
-| `ovos.common_play.self.skill_id.pause`    |                                       | Handle the pause of media playback.                                | `ovos.common_play.player.state`                                            | @ocp_pause decorator          |
-| `ovos.common_play.self.skill_id.resume`   |                                       | Handle the resume of media playback.                               | `ovos.common_play.player.state`                                            | @ocp_resume decorator         |
-| `ovos.common_play.self.skill_id.next`     |                                       | Handle the request to play the next track.                         |                                                                            | @ocp_next decorator           |
-| `ovos.common_play.self.skill_id.previous` |                                       | Handle the request to play the previous track.                     |                                                                            | @ocp_previous decorator       |
-| `ovos.common_play.self.skill_id.stop`     |                                       | Handle the stop of media playback.                                 | `ovos.common_play.player.state`                                            | self.stop                     |
-| `ovos.common_play.search.stop`            |                                       | Stop a media search.                                               |                                                                            | self.__handle_stop_search     |
-| `mycroft.stop`                            |                                       | Stop a media search in response to a global stop                   |                                                                            | self.__handle_stop_search     |
+| Message Type                                | Message Data                          | Description                                                        | Response Type(s)                                                           | handled by                    |
+|---------------------------------------------|---------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------|-------------------------------|
+| `ovos.common_play.query`                    | "phrase": str<br>"question_type": str | Query skill if it can start playback from the given phrase.        | `ovos.common_play.skill.search_start`, `ovos.common_play.skill.search_end` | @ocp_search decorator         |
+| `ovos.common_play.featured_tracks.play`     | "skill_id": str                       | Play featured tracks from a skill with the specified skill_id.     |                                                                            | @ocp_featured_media decorator |
+| `ovos.common_play.skills.get`               |                                       | Request information about the skills that support common playback. | `ovos.common_play.announce`                                                | self.__handle_ocp_skills_get  |
+| `ovos.common_play.{self.skill_id}.play`     |                                       | Handle the playback of media.                                      | `ovos.common_play.player.state`                                            | @ocp_play  decorator          |
+| `ovos.common_play.{self.skill_id}.pause`    |                                       | Handle the pause of media playback.                                | `ovos.common_play.player.state`                                            | @ocp_pause decorator          |
+| `ovos.common_play.{self.skill_id}.resume`   |                                       | Handle the resume of media playback.                               | `ovos.common_play.player.state`                                            | @ocp_resume decorator         |
+| `ovos.common_play.{self.skill_id}.next`     |                                       | Handle the request to play the next track.                         |                                                                            | @ocp_next decorator           |
+| `ovos.common_play.{self.skill_id}.previous` |                                       | Handle the request to play the previous track.                     |                                                                            | @ocp_previous decorator       |
+| `ovos.common_play.{self.skill_id}.stop`     |                                       | Handle the stop of media playback.                                 | `ovos.common_play.player.state`                                            | self.stop                     |
+| `ovos.common_play.search.stop`              |                                       | Stop a media search.                                               |                                                                            | self.__handle_stop_search     |
+| `mycroft.stop`                              |                                       | Stop a media search in response to a global stop                   |                                                                            | self.__handle_stop_search     |
 
 ### Emits
 
-| Message Type                          | Message Data                                                                                                        | Description                                                                | In Response to                                                                                                                                                |
-|---------------------------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ovos.common_play.announce`           | "skill_id": str<br>"skill_name": str<br>"thumbnail": str<br> "media_types": list<br> "featured_tracks": bool        | Announce skill information to the common playback framework.               | `ovos.common_play.skills.get`                                                                                                                                 |
-| `ovos.common_play.skill.search_start` | "skill_id": str<br> "skill_name": str<br>"thumbnail": str                                                           | Signal the start of a media search initiated by the skill.                 | `ovos.common_play.query`                                                                                                                                      |
-| `ovos.common_play.query.response`     | "phrase": str<br>"skill_id": str<br>"skill_name": str<br>"thumbnail": str<br> "results": list<br> "searching": bool | Respond to a media search query with search results.                       | `ovos.common_play.query`                                                                                                                                      |
-| `ovos.common_play.skill.search_end`   | "skill_id": str                                                                                                     | Signal the end of a media search initiated by the skill.                   | `ovos.common_play.query`                                                                                                                                      |
-| `ovos.common_play.player.state`       | "state": str                                                                                                        | Signal changes in the media player state (e.g., playing, paused, stopped). | `ovos.common_play.self.skill_id.play`, `ovos.common_play.self.skill_id.pause`, `ovos.common_play.self.skill_id.resume`, `ovos.common_play.self.skill_id.stop` |
+| Message Type                          | Message Data                                                                                                        | Description                                                                | In Response to                                                                                                                                                              |
+|---------------------------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ovos.common_play.announce`           | "skill_id": str<br>"skill_name": str<br>"thumbnail": str<br> "media_types": List<br> "featured_tracks": bool        | Announce skill information to the common playback framework.               | `ovos.common_play.skills.get`                                                                                                                                               |
+| `ovos.common_play.skill.search_start` | "skill_id": str<br> "skill_name": str<br>"thumbnail": str                                                           | Signal the start of a media search initiated by the skill.                 | `ovos.common_play.query`                                                                                                                                                    |
+| `ovos.common_play.query.response`     | "phrase": str<br>"skill_id": str<br>"skill_name": str<br>"thumbnail": str<br> "results": List<br> "searching": bool | Respond to a media search query with search results.                       | `ovos.common_play.query`                                                                                                                                                    |
+| `ovos.common_play.skill.search_end`   | "skill_id": str                                                                                                     | Signal the end of a media search initiated by the skill.                   | `ovos.common_play.query`                                                                                                                                                    |
+| `ovos.common_play.player.state`       | "state": str                                                                                                        | Signal changes in the media player state (e.g., playing, paused, stopped). | `ovos.common_play.{self.skill_id}.play`<br>`ovos.common_play.{self.skill_id}.pause`<br>`ovos.common_play.{self.skill_id}.resume`<br>`ovos.common_play.{self.skill_id}.stop` |
 
 ## CommonQuerySkill
 
@@ -113,13 +113,13 @@
 | Message Type      | Message Data                           | Description                                                | Response Type(s)          | Handled by                  |
 |-------------------|----------------------------------------|------------------------------------------------------------|---------------------------|-----------------------------|
 | `question:query`  | "phrase": str                          | Handles incoming user queries and attempts to answer them. | `question:query.response` | self.CQS_match_query_phrase |
-| `question:action` | "phrase": str<br>"callback_data": dict | Skill selected to answer question callback                 |                           | self.CQS_action             |
+| `question:action` | "phrase": str<br>"callback_data": Dict | Skill selected to answer question callback                 |                           | self.CQS_action             |
 
 ### Emits
 
 | Message Type              | Message Data                                                                                   | Description                                    | In Response to   |
 |---------------------------|------------------------------------------------------------------------------------------------|------------------------------------------------|------------------|
-| `question:query.response` | "phrase": str<br> "skill_id": str<br>"answer": str<br> "callback_data": dict<br> "conf": float | Report id the skill can answer the user query. | `question:query` |
+| `question:query.response` | "phrase": str<br> "skill_id": str<br>"answer": str<br> "callback_data": Dict<br> "conf": float | Report id the skill can answer the user query. | `question:query` |
 
 ## IdleDisplaySkill
 
@@ -145,8 +145,8 @@
 
 ### Listens to
 
-| Message Type    | Message Data | Description                             |
-|-----------------|--------------|-----------------------------------------|
+| Message Type    | Message Data | Description                          |
+|-----------------|--------------|--------------------------------------|
 | `mycroft.ready` |              | Event indicating that OVOS is ready. |
 
 ### Emits
