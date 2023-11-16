@@ -1,15 +1,11 @@
-# ovos-audio message SPEC
+# ovos-audio 
 
 - [PlaybackService](#playbackservice)
-    * [Listens To](#listens-to)
-    * [Emits](#emits)
 - [AudioService](#audioservice)
-    * [Listens to](#listens-to-1)
-    * [Emits](#emits-1)
 
-# PlaybackService
+## PlaybackService
 
-## Listens To
+### Listens To
 
 | Message Type                 | Message Data                                                | Description                                         | Response Type(s)              | handled by                    |
 |------------------------------|-------------------------------------------------------------|-----------------------------------------------------|-------------------------------|-------------------------------|
@@ -24,7 +20,7 @@
 | `mycroft.audio.play_sound`   | 'uri': str                                                  | Plays a sound file immediately (may play over TTS). |                               | self.handle_instant_play      |
 | `ovos.languages.tts`         |                                                             | Handles a request for supported TTS languages.      | `ovos.languages.tts.response` | self.handle_get_languages_tts |
 
-## Emits
+### Emits
 
 | Message Type                  | Message Data                                                                                         | Description                                                 | In Response To               |
 |-------------------------------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|------------------------------|
@@ -34,9 +30,9 @@
 | `mycroft.audio.is_speaking`   | 'speaking': bool                                                                                     | Reports whether Mycroft is currently speaking.              | `mycroft.audio.speak.status` |
 | `ovos.languages.tts.response` | 'langs': List                                                                                        | Handles a request for supported TTS languages.              | `ovos.languages.tts`         |
 
-# AudioService
+## AudioService
 
-## Listens to
+### Listens to
 
 | Message Type                               | Message Data                   | Description                                               | Response Type(s)                         | handled by                        |
 |--------------------------------------------|--------------------------------|-----------------------------------------------------------|------------------------------------------|-----------------------------------|
@@ -59,7 +55,7 @@
 | `recognizer_loop:audio_output_end`         |                                | Triggered when audio output ends and restores the volume. |                                          | self._restore_volume              |
 | `recognizer_loop:record_end`               |                                | Restores the volume after recording is done.              |                                          | self._restore_volume_after_record |
 
-## Emits
+### Emits
 
 | Message Type                             | Message Data                 | Description                                       | In Response to                     |
 |------------------------------------------|------------------------------|---------------------------------------------------|------------------------------------|

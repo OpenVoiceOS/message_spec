@@ -1,19 +1,15 @@
-# ovos-homescreen message SPEC
+# ovos-homescreen 
 
-- [HomeScreen](#homescreen)
-    * [Listens To](#listens-to)
-    * [Emits](#emits)
+## HomeScreen
 
-# HomeScreen
-
-## Listens To
+### Listens To
 
 | Message Type                                  | Message Data         | Description                                                         | Response Type(s)                                       | handled by |
 |-----------------------------------------------|----------------------|---------------------------------------------------------------------|--------------------------------------------------------|------------|
 | `ovos.homescreen.main_view.current_index.get` |                      | Responds with the index of the current page selected in the display | `ovos.homescreen.main_view.current_index.get.response` | idle.qml   |
 | `ovos.homescreen.main_view.current_index.set` | 'current_index': int | Sets the index of the current page  in the display                  | `ovos.homescreen.main_view.current_index.get.response` | idle.qml   |
 
-## Emits
+### Emits
 
 | Message Type                                           | Message Data         | Description                                                                             | In Response To                                         |
 |--------------------------------------------------------|----------------------|-----------------------------------------------------------------------------------------|--------------------------------------------------------|

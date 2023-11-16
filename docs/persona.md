@@ -1,4 +1,6 @@
-# Persona
+# ovos-persona
+
+## Persona
 
 NOTE: Persona is under development and did not yet have a stable release, messages below might change at any time
 without warning

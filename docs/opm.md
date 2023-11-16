@@ -1,4 +1,4 @@
-# ovos-plugin-manager message SPEC
+# ovos-plugin-manager
 
 - [GUIExtension](#guiextension)
 - [PHALPlugin](#phalplugin)
@@ -11,7 +11,7 @@
 |----------------------------|-----------------|-------------------------------------------------------|-----------------------|------------------------------|
 | `mycroft.gui.screen.close` | "skill_id": str | Handles the event to close the GUI screen in a skill. | `gui.clear.namespace` | self.handle_remove_namespace |
 
-## #Emits
+### #Emits
 
 | Message Type          | Message Data  | Description                            | In Response to             |
 |-----------------------|---------------|----------------------------------------|----------------------------|

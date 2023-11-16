@@ -1,27 +1,15 @@
 # ovos-workshop message SPEC
 
 - [OVOSSkill](#ovosskill)
-    * [Listens to](#listens-to)
-    * [Emits](#emits)
 - [FallbackSkill](#fallbackskill)
-    * [Listens to](#listens-to-1)
-    * [Emits](#emits-1)
 - [OVOSCommonPlaybackSkill](#ovoscommonplaybackskill)
-    * [Listens To](#listens-to)
-    * [Emits](#emits-2)
 - [CommonQuerySkill](#commonqueryskill)
-    * [Listens to](#listens-to-2)
-    * [Emits](#emits-3)
 - [IdleDisplaySkill](#idledisplayskill)
-    * [Listens to](#listens-to-3)
-    * [Emits](#emits-4)
 - [SkillLoader](#skillloader)
-    * [Listens to](#listens-to-4)
-    * [Emits](#emits-5)
 
-# OVOSSkill
+## OVOSSkill
 
-## Listens to
+### Listens to
 
 | Message Type                          | Message Data                                 | Description                                                                   | Emits response                      | handled by                       |
 |---------------------------------------|----------------------------------------------|-------------------------------------------------------------------------------|-------------------------------------|----------------------------------|
@@ -43,7 +31,7 @@
 | `self.skill_id.converse.get_response` | `'utterances': list, 'lang': str`            | communicates user response (`get_response`) to the skill                      |                                     | self.get_response                |
 | `mycroft.skills.abort_question`       |                                              | Force self.get_response to return None immediately                            |                                     | self.get_response                |
 
-## Emits
+### Emits
 
 | Message Type                          | Message Data                                                                                | Effect                                                                                                          | In Response to / sent by            |
 |---------------------------------------|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-------------------------------------|
@@ -71,16 +59,16 @@
 | `mycroft.mic.unmute`                  |                                                                                             | DEPRECATED: (classic core only) Unmute the microphone.                                                          | self.send_stop_signal               |
 | `mycroft.mark2.register_idle`         | "name": self.resting_name, "id": self.skill_id                                              | DEPRECATED: Registers a resting screen for the skill.                                                           | `mycroft.mark2.collect_idle`        |
 
-# FallbackSkill
+## FallbackSkill
 
-## Listens to
+### Listens to
 
 | Message Type                     | Message Data                  | Description                                                                                        | Response Type(s)                                                                | handled by                                           |
 |----------------------------------|-------------------------------|----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|------------------------------------------------------|
 | `ovos.skills.fallback.ping`      | "utterances": [], "lang": str | Informs the skills service that the FallbackSkill can handle fallbacks.                            | `ovos.skills.fallback.pong`                                                     | self._handle_fallback_ack                            |
 | `ovos.skills.fallback.skill_id ` |                               | Handles a fallback request, calling registered handlers in priority order until one is successful. | `ovos.skills.fallback.skill_id.start`, `ovos.skills.fallback.skill_id.response` | @fallback_handler decorator / self.register_fallback |
 
-## Emits
+### Emits
 
 | Message Type                             | Message Data                            | Description                                                                                                                                           | In Response to                          |
 |------------------------------------------|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
@@ -90,9 +78,9 @@
 | `ovos.skills.fallback.skill_id.start`    |                                         | Indicates the start of the fallback handling process for a specific skill.                                                                            | `ovos.skills.fallback.skill_id.request` |
 | `ovos.skills.fallback.skill_id.response` | "result": bool, "fallback_handler": str | Indicates the result of the fallback handling process for a specific skill, including whether it was successful and the name of the fallback handler. | `ovos.skills.fallback.skill_id.request` |
 
-# OVOSCommonPlaybackSkill
+## OVOSCommonPlaybackSkill
 
-## Listens To
+### Listens To
 
 | Message Type                              | Message Data                        | Description                                                        | Response Type(s)                                                           | handled by                    |
 |-------------------------------------------|-------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------|-------------------------------|
@@ -108,7 +96,7 @@
 | `ovos.common_play.search.stop`            |                                     | Stop a media search.                                               |                                                                            | self.__handle_stop_search     |
 | `mycroft.stop`                            |                                     | Stop a media search in response to a global stop                   |                                                                            | self.__handle_stop_search     |
 
-## Emits
+### Emits
 
 | Message Type                          | Message Data                                                                                            | Description                                                                | In Response to                                                                                                                                                |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -118,24 +106,24 @@
 | `ovos.common_play.skill.search_end`   | "skill_id": str                                                                                         | Signal the end of a media search initiated by the skill.                   | `ovos.common_play.query`                                                                                                                                      |
 | `ovos.common_play.player.state`       | "state": str                                                                                            | Signal changes in the media player state (e.g., playing, paused, stopped). | `ovos.common_play.self.skill_id.play`, `ovos.common_play.self.skill_id.pause`, `ovos.common_play.self.skill_id.resume`, `ovos.common_play.self.skill_id.stop` |
 
-# CommonQuerySkill
+## CommonQuerySkill
 
-## Listens to
+### Listens to
 
 | Message Type      | Message Data                         | Description                                                | Response Type(s)          | Handled by                  |
 |-------------------|--------------------------------------|------------------------------------------------------------|---------------------------|-----------------------------|
 | `question:query`  | "phrase": str                        | Handles incoming user queries and attempts to answer them. | `question:query.response` | self.CQS_match_query_phrase |
 | `question:action` | "phrase": str, "callback_data": dict | Skill selected to answer question callback                 |                           | self.CQS_action             |
 
-## Emits
+### Emits
 
 | Message Type              | Message Data                                                                        | Description                                    | In Response to   |
 |---------------------------|-------------------------------------------------------------------------------------|------------------------------------------------|------------------|
 | `question:query.response` | "phrase": str, "skill_id": str, "answer": str, "callback_data": dict, "conf": float | Report id the skill can answer the user query. | `question:query` |
 
-# IdleDisplaySkill
+## IdleDisplaySkill
 
-## Listens to
+### Listens to
 
 | Message Type                          | Message Data         | Description                                                                    | Response Type(s)       | handled by                          |
 |---------------------------------------|----------------------|--------------------------------------------------------------------------------|------------------------|-------------------------------------|
@@ -144,7 +132,7 @@
 | `homescreen.manager.reload.list`      |                      | Reloads this skill's homescreen entry and sends it to the Home Screen Manager. |                        | self._reload_homescreen_entry       |
 | `mycroft.skills.shutdown`             | "id": str            | Removes this homescreen from the Home Screen Manager if requested.             |                        | self._remove_homescreen_on_shutdown |
 
-## Emits
+### Emits
 
 | Message Type                     | Message Data                         | Description                                                           | In Response to                        |
 |----------------------------------|--------------------------------------|-----------------------------------------------------------------------|---------------------------------------|
@@ -153,15 +141,15 @@
 | `homescreen.manager.remove`      | "class": str, "name": str, "id": str | Removes this skill's homescreen entry from the Home Screen Manager.   | `mycroft.skills.shutdown`             |
 | `homescreen.manager.reload.list` |                                      | Requests a reload of this skill's homescreen entry.                   | self._register_system_event_handlers  |
 
-# SkillLoader
+## SkillLoader
 
-## Listens to
+### Listens to
 
 | Message Type    | Message Data | Description                             |
 |-----------------|--------------|-----------------------------------------|
 | `mycroft.ready` |              | Event indicating that Mycroft is ready. |
 
-## Emits
+### Emits
 
 | Message Type                     | Message Data                        | Description                                          |
 |----------------------------------|-------------------------------------|------------------------------------------------------|
