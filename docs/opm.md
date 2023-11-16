@@ -1,28 +1,25 @@
 # ovos-plugin-manager message SPEC
 
 - [GUIExtension](#guiextension)
-    * [Listens to](#listens-to)
-    * [Emits](#emits)
 - [PHALPlugin](#phalplugin)
-    * [Listens to](#listens-to-1)
 
-# GUIExtension
+## GUIExtension
 
-## Listens to
+### Listens to
 
 | Message Type               | Message Data      | Description                                           | Response Type(s)      | Handled by                   |
 |----------------------------|-------------------|-------------------------------------------------------|-----------------------|------------------------------|
 | `mycroft.gui.screen.close` | {"skill_id": str} | Handles the event to close the GUI screen in a skill. | `gui.clear.namespace` | self.handle_remove_namespace |
 
-## Emits
+## #Emits
 
 | Message Type          | Message Data    | Description                            | In Response to             |
 |-----------------------|-----------------|----------------------------------------|----------------------------|
-| `gui.clear.namespace` | {"__from": str} | Clears a skill`s namespace in the GUI. | `mycroft.gui.screen.close` |
+| `gui.clear.namespace` | {"__from": str} | Clears a skill's namespace in the GUI. | `mycroft.gui.screen.close` |
 
-# PHALPlugin
+## PHALPlugin
 
-## Listens to
+### Listens to
 
 | Message Type                         | Message Data                                           | Description                                                                          | Handled by                 |
 |--------------------------------------|--------------------------------------------------------|--------------------------------------------------------------------------------------|----------------------------|
