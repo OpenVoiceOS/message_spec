@@ -7,5 +7,6 @@ nav:
         - Workshop : skills.md
         - GUI: gui.md
         - Homescreen: ovos_homescreen.md
+        - Persona: persona.md
 
 theme: readthedocs
