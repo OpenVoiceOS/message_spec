@@ -4,6 +4,7 @@ nav:
     - Messages:
         - OPM: opm.md
         - Audio: ovos_audio.md
+        - Listener: dinkum.md
         - Workshop : skills.md
         - GUI: gui.md
         - Homescreen: ovos_homescreen.md
