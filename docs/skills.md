@@ -33,7 +33,7 @@
 
 ### Emits
 
-| Message Type                          | Message Data                                                                     | Effect                                                                                                          | In Response to / sent by            |
+| Message Type                          | Message Data                                                                     |Description                                                                                                          | In Response to / sent by            |
 |---------------------------------------|----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|-------------------------------------|
 | `self.skill_id.activate`              |                                                                                  | Emits a message to activate the skill.                                                                          | `intent.service.skills.activated`   |
 | `self.skill_id.deactivate`            |                                                                                  | Emits a message to deactivate the skill.                                                                        | `intent.service.skills.deactivated` |

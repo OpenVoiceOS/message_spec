@@ -1,7 +1,8 @@
 site_name: OVOS User Documentation
 site_url: https://openvoiceos.github.io/community-docs
 nav:
-    - Core:
+    - Frameworks:
+        - Core: ovos_core.md
         - Audio: ovos_audio.md
         - Listener: dinkum.md
         - Workshop : skills.md
