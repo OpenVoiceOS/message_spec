@@ -5,7 +5,7 @@
 NOTE: Persona is under development and did not yet have a stable release, messages below might change at any time
 without warning
 
-## Listens to
+### Listens to
 
 | Message Type              | Message Data                  | Description                                                          | Emits response              | handled by |
 |---------------------------|-------------------------------|----------------------------------------------------------------------|-----------------------------|------------|
@@ -15,7 +15,7 @@ without warning
 | `ovos.persona.disable`    |                               | Deactivates the currently active persona.                            |                             |            |
 | `ovos.persona.ask`        | "utterance": str              | Sends a user's input utterance to the active persona for a response. | `ovos.persona.ask.response` |            |
 
-## Emits
+### Emits
 
 | Message Type                | Message Data                    | Description                                                                | In Response to / sent by |
 |-----------------------------|---------------------------------|----------------------------------------------------------------------------|--------------------------|
