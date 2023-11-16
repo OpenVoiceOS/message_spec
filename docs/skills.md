@@ -147,7 +147,7 @@
 
 | Message Type    | Message Data | Description                             |
 |-----------------|--------------|-----------------------------------------|
-| `mycroft.ready` |              | Event indicating that Mycroft is ready. |
+| `mycroft.ready` |              | Event indicating that OVOS is ready. |
 
 ### Emits
 

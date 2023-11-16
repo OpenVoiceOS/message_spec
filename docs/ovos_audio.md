@@ -15,7 +15,7 @@
 | `speak`                      | 'utterance': str<br>'expect_response': bool                        | generates and queues TTS audio for playback         |                               | self.handle_speak             |
 | `mycroft.stop`               |                                                                    | Handles global stop and shuts down speech.          | `mycroft.stop.handled`        | self.handle_stop              |
 | `mycroft.audio.speech.stop`  |                                                                    | stops speech.                                       |                               | self.handle_stop              |
-| `mycroft.audio.speak.status` |                                                                    | reports if Mycroft is speaking.                     | `mycroft.audio.is_speaking`   | self.handle_speak_status      |
+| `mycroft.audio.speak.status` |                                                                    | reports if OVOS is speaking.                     | `mycroft.audio.is_speaking`   | self.handle_speak_status      |
 | `mycroft.audio.queue`        | 'uri': str<br>'listen': bool<br> 'viseme': str<br>'audio_ext': str | Queues a sound file to play in the speech thread.   |                               | self.handle_queue_audio       |
 | `mycroft.audio.play_sound`   | 'uri': str                                                         | Plays a sound file immediately (may play over TTS). |                               | self.handle_instant_play      |
 | `ovos.languages.tts`         |                                                                    | Handles a request for supported TTS languages.      | `ovos.languages.tts.response` | self.handle_get_languages_tts |
@@ -27,7 +27,7 @@
 | `opm.tts.query.response`      | 'langs': List<br> 'plugins': {lang: List}<br> configs: {plugin_name: {lang: List}}<br> options: {lang: List}} | Responds to opm.tts.query with TTS plugin data.             | `opm.tts.query`              |
 | `opm.g2p.query.response`      | 'langs': List<br>'plugins': {lang: List}<br> configs: {plugin_name: {lang: List}}<br> options: {lang: List}}  | Responds to opm.g2p.query with G2P plugin data.             | `opm.g2p.query`              |
 | `opm.audio.query.response`    | 'plugins': List<br>configs: {backend_name: Dict}<br>options: {lang: List}}                                    | Responds to opm.audio.query with audio service plugin data. | `opm.audio.query`            |
-| `mycroft.audio.is_speaking`   | 'speaking': bool                                                                                              | Reports whether Mycroft is currently speaking.              | `mycroft.audio.speak.status` |
+| `mycroft.audio.is_speaking`   | 'speaking': bool                                                                                              | Reports whether OVOS is currently speaking.              | `mycroft.audio.speak.status` |
 | `ovos.languages.tts.response` | 'langs': List                                                                                                 | Handles a request for supported TTS languages.              | `ovos.languages.tts`         |
 
 ## AudioService

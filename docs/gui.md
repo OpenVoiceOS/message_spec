@@ -17,7 +17,7 @@
 | `homescreen.manager.set_active`     | "id": str                  | Change the configured homescreen.             |                                          |
 | `homescreen.manager.disable_active` |                            | Disable the active homescreen.                |                                          |
 | `homescreen.manager.show_active`    |                            | Show the active homescreen.                   |                                          |
-| `mycroft.ready`                     |                            | Signal that Mycroft is ready.                 | `homescreen.manager.show_active`         |
+| `mycroft.ready`                     |                            | Signal that OVOS is ready.                 | `homescreen.manager.show_active`         |
 | `mycroft.mark2.register_idle`       |                            | DEPRECATED: Register an old-style homescreen. |                                          |
 
 ### Emits
