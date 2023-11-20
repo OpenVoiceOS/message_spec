@@ -17,6 +17,7 @@ nav:
         - PHAL IP Geolocation: phal_ipgeo.md
         - PHAL OAuth: PHAL_oauth.md
         - PHAL Wallpaper Manager: phal_wallpaper.md
+        - PHAL Mark1 Faceplate: phal_mk1.md
     - Skills:
         - Homescreen: ovos_homescreen.md
 
