@@ -16,6 +16,7 @@
 
 ## Emits
 
-| Message Type               | Message Data                        | Description                               | Handled by |
-|----------------------------|-------------------------------------|-------------------------------------------|------------|
-| `mycroft.audio.play_sound` | 'uri': 'snd/blop-mark-diangelo.wav' | Plays a sound indicating a volume change. | set_volume |
+| Message Type                  | Message Data                        | Description                               | Emitted by / In response to |
+|-------------------------------|-------------------------------------|-------------------------------------------|-----------------------------|
+| `mycroft.audio.play_sound`    | 'uri': 'snd/blop-mark-diangelo.wav' | Plays a sound indicating a volume change. | set_volume                  |
+| `mycroft.volume.get.response` | 'percent': float <br> 'muted': bool | Reports current volume                    | `mycroft.volume.get`        |

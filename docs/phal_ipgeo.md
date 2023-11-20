@@ -9,7 +9,7 @@
 
 ## Emits
 
-| Message Type                 | Message Data                   | Description                                                                                   | Triggered by        |
+| Message Type                 | Message Data                   | Description                                                                                   | Emitted by          |
 |------------------------------|--------------------------------|-----------------------------------------------------------------------------------------------|---------------------|
 | `configuration.updated`      |                                | Signals that the configuration has been updated, typically after a successful IP geolocation. | on_reset            |
 | `ovos.ipgeo.update.response` | "error": str, "location": dict | IP geolocation data                                                                           | `ovos.ipgeo.update` |
