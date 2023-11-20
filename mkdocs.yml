@@ -18,6 +18,7 @@ nav:
         - PHAL OAuth: PHAL_oauth.md
         - PHAL Wallpaper Manager: phal_wallpaper.md
         - PHAL Mark1 Faceplate: phal_mk1.md
+        - PHAL Home Assistant: phal_ha.md
     - Skills:
         - Homescreen: ovos_homescreen.md
 
