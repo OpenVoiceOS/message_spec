@@ -21,7 +21,7 @@
 | Message Type                    | Message Data    | Description                                                 | Trigger Message Type            | Emitted by                   |
 |---------------------------------|-----------------|-------------------------------------------------------------|---------------------------------|------------------------------|
 | `system.ntp.sync.complete`      |                 | Indicates completion of NTP synchronization                 | `system.ntp.sync`               | handle_ntp_sync_request      |
-| `system.ssh.status.complete`    | "enabled": bool | Indicates SSH service status                                | `system.ssh.status`             | handle_ssh_status            |
+| `system.ssh.status.response`    | "enabled": bool | Indicates SSH service status                                | `system.ssh.status`             | handle_ssh_status            |
 | `system.factory.reset.ping`     |                 | Scan for extra factory reset plugins                        | `system.factory.reset.register` | handle_reset_register        |
 | `system.factory.reset.start`    |                 | Indicates the start of the factory reset process            | `system.factory.reset`          | handle_factory_reset_request |
 | `system.factory.reset.phal`     | "skill_id": str | Triggers extra hardware specific factory reset PHAL plugins | `system.factory.reset`          | handle_factory_reset_request |
