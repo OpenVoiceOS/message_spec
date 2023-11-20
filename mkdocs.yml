@@ -10,6 +10,7 @@ nav:
         - Persona: persona.md
     - Plugins:
         - OPM: opm.md
+        - PHAL System: ovos_PHAL_plugin_system.md
     - Skills:
         - Homescreen: ovos_homescreen.md
 
