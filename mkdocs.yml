@@ -15,6 +15,7 @@ nav:
         - PHAL Connectivity: phal_connectivity.md
         - PHAL Network Manager: PHAL_nm.md
         - PHAL IP Geolocation: phal_ipgeo.md
+        - PHAL OAuth: PHAL_oauth.md
         - PHAL Wallpaper Manager: phal_wallpaper.md
     - Skills:
         - Homescreen: ovos_homescreen.md
