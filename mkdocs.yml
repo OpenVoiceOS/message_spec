@@ -12,6 +12,7 @@ nav:
         - OPM: opm.md
         - PHAL System: ovos_PHAL_plugin_system.md
         - PHAL ALSA: PHAL_alsa.md
+        - PHAL Connectivity: phal_connectivity.md
         - PHAL IP Geolocation: phal_ipgeo.md
     - Skills:
         - Homescreen: ovos_homescreen.md
