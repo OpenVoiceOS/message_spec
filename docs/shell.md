@@ -1,7 +1,5 @@
 # OVOS Shell Companion
 
-Sure, let's generate the markdown tables for the OpenVoiceOS messagebus messages from the provided code.
-
 # Listens to
 
 | Message Type                                            | Message Data                                 | Description                                       | Emitted Response Type | Handled By                          |
