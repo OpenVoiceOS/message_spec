@@ -8,6 +8,7 @@ nav:
         - Workshop : skills.md
         - GUI: gui.md
         - Persona: persona.md
+        - Utils: utils.md
     - Plugins:
         - OPM: opm.md
         - PHAL System: ovos_PHAL_plugin_system.md
