@@ -21,6 +21,7 @@ nav:
         - PHAL Wifi Setup: ovos_PHAL_plugin_wifi_setup.md
         - WIFI GUI: phal_wifi_gui.md
         - WIFI Balena: phal_balena.md
+        - Audio GGWave: ggwave.md
     - Skills:
         - Homescreen: ovos_homescreen.md
 
