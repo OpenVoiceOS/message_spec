@@ -12,7 +12,7 @@
 | `smartspeaker.extension.extend.about`                   | "display_list": List                         | Extends the about page data.                      |                       | `extend_about_page_data_from_event` |
 
 GUI events, sent via the [gui protocol](https://github.com/OpenVoiceOS/ovos-gui/blob/dev/protocol.md) and
-appear in the bus with skill_id prepended, i.e. 'ovos_gui_plugin_shell_companion.{msg_type}'
+appear in the bus with skill_id prepended, i.e. `ovos_gui_plugin_shell_companion.{msg_type}`
 
 In the GUI websocket these events look like this
 
