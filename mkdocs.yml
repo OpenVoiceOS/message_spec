@@ -22,6 +22,8 @@ nav:
         - WIFI GUI: phal_wifi_gui.md
         - WIFI Balena: phal_balena.md
         - Audio GGWave: ggwave.md
+    - GUI Extensions:
+        - GUI Bigscreen: gui_bigscreen.md
     - Skills:
         - Homescreen: ovos_homescreen.md
 
