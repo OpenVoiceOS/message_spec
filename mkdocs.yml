@@ -23,6 +23,7 @@ nav:
         - WIFI Balena: phal_balena.md
         - Audio GGWave: ggwave.md
     - GUI Extensions:
+        - OVOS Shell: shell.md
         - Plasma Bigscreen: gui_bigscreen.md
         - Mobile: gui_mobile.md
     - Skills:
