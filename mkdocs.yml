@@ -19,6 +19,14 @@ nav:
         - PHAL Wallpaper Manager: phal_wallpaper.md
         - PHAL Mark1 Faceplate: phal_mk1.md
         - PHAL Home Assistant: phal_ha.md
+        - PHAL Wifi Setup: ovos_PHAL_plugin_wifi_setup.md
+        - WIFI GUI: phal_wifi_gui.md
+        - WIFI Balena: phal_balena.md
+        - Audio GGWave: ggwave.md
+    - GUI Extensions:
+        - OVOS Shell: shell.md
+        - Plasma Bigscreen: gui_bigscreen.md
+        - Mobile: gui_mobile.md
     - Skills:
         - Homescreen: ovos_homescreen.md
 
