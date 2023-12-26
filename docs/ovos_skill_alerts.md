@@ -12,12 +12,12 @@
 | `ovos.gui.show.active.alarms` | | Display pending alarms per GUI | | self._on_display_gui |
 
 Notification system
-| Message Type                                  | Message Data         | Description                                                         | Response Type(s)                                       | handled by |  Miscellanious |
+| Message Type                                  | Message Data         | Description                                                         | Response Type(s)                                       | handled by |  Miscellaneous |
 |-----------------------------------------------|----------------------|---------------------------------------------------------------------|--------------------------------------------------------|------------|---------------|
 | `ovos.alerts.dismiss_notification` | 'alert': Alert (serialized) | dismiss an alert notification from the system | | self._gui_dismiss_notification | also removes the pending/missed alert |
 
 ### Emits
 
-| Message Type                                           | Message Data         | Description                                                                             | In Response To                                         | Miscellanious |
+| Message Type                                           | Message Data         | Description                                                                             | In Response To                                         | Miscellaneous |
 |--------------------------------------------------------|----------------------|-----------------------------------------------------------------------------------------|--------------------------------------------------------|---------------|
 | `ovos.alerts.get_alerts.response` | 'alert_id': dict   | Responds with uuid keyed alert dictionaries. | `ovos.alerts.get_alerts`  | on error: {"error": ..} |
