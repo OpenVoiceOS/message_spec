@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/gui/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>GUI - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "GUI";
+        var mkdocs_page_input_path = "gui.md";
+        var mkdocs_page_url = "/community-docs/gui/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_audio/">Audio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dinkum/">Listener</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../skills/">Workshop</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">GUI</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#homescreen-manager">Homescreen Manager</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to">Listens To</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extensions-manager">Extensions Manager</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_1">Listens To</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_1">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#namespace-manager">Namespace Manager</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_2">Listens To</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_2">Emits</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ha/">PHAL Home Assistant</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_wifi_setup/">PHAL Wifi Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ggwave/">Audio GGWave</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../shell/">OVOS Shell</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Frameworks</li>
+      <li class="breadcrumb-item active">GUI</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ovos-gui">ovos-gui</h1>
+<ul>
+<li><a href="#homescreen-manager">Homescreen Manager</a></li>
+<li><a href="#extensions-manager">Extensions Manager</a></li>
+<li><a href="#namespace-manager">Namespace Manager</a></li>
+</ul>
+<h2 id="homescreen-manager">Homescreen Manager</h2>
+<h3 id="listens-to">Listens To</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>homescreen.manager.add</code></td>
+<td>"id": str<br> "class": str</td>
+<td>Add a homescreen to the manager.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.remove</code></td>
+<td>"id": str</td>
+<td>Remove a homescreen from the manager.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.list</code></td>
+<td></td>
+<td>Request a list of loaded homescreens.</td>
+<td><code>homescreen.manager.list.response</code></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.get_active</code></td>
+<td></td>
+<td>Request the active homescreen.</td>
+<td><code>homescreen.manager.get_active.response</code></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.set_active</code></td>
+<td>"id": str</td>
+<td>Change the configured homescreen.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.disable_active</code></td>
+<td></td>
+<td>Disable the active homescreen.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.show_active</code></td>
+<td></td>
+<td>Show the active homescreen.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.ready</code></td>
+<td></td>
+<td>Signal that OVOS is ready.</td>
+<td><code>homescreen.manager.show_active</code></td>
+</tr>
+<tr>
+<td><code>mycroft.mark2.register_idle</code></td>
+<td></td>
+<td>DEPRECATED: Register an old-style homescreen.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>homescreen.manager.reload.list</code></td>
+<td></td>
+<td>Emit a request for homescreens to register.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.activate.display</code></td>
+<td>"homescreen_id": str</td>
+<td>Activate and display a homescreen.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>{active_homescreen_id}.idle</code></td>
+<td></td>
+<td>DEPRECATED: Activate an old-style homescreen.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.mark2.collect_idle</code></td>
+<td></td>
+<td>DEPRECATED: Trigger collection of older resting screens.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.get_active.response</code></td>
+<td>"homescreen": str</td>
+<td>report the currently active homescreen</td>
+<td><code>homescreen.manager.get_active</code></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.show_active</code></td>
+<td></td>
+<td>Show the active homescreen.</td>
+<td><code>mycroft.ready</code></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.list.response</code></td>
+<td>"homescreens": List[str]</td>
+<td>report list of loaded homescreens.</td>
+<td><code>homescreen.manager.list</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="extensions-manager">Extensions Manager</h2>
+<h3 id="listens-to_1">Listens To</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.gui.connected</code></td>
+<td></td>
+<td>A GUI client app connected</td>
+<td><code>mycroft.gui.available</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_1">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>extension.manager.activated</code></td>
+<td>"id": str</td>
+<td>Reports the active GUI extension</td>
+<td>during initial loading</td>
+</tr>
+<tr>
+<td><code>mycroft.gui.available</code></td>
+<td>"permanent": bool</td>
+<td>signal GUI available to trigger resource file upload</td>
+<td>during initial loading / <code>mycroft.gui.connected</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="namespace-manager">Namespace Manager</h2>
+<h3 id="listens-to_2">Listens To</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gui.clear.namespace</code></td>
+<td></td>
+<td>remove a namespace.</td>
+<td></td>
+<td>self.handle_clear_namespace</td>
+</tr>
+<tr>
+<td><code>gui.event.send</code></td>
+<td></td>
+<td>send a message to the GUI message bus.</td>
+<td></td>
+<td>self.handle_send_event</td>
+</tr>
+<tr>
+<td><code>gui.page.delete</code></td>
+<td></td>
+<td>remove one or more pages from a namespace.</td>
+<td></td>
+<td>self.handle_delete_page</td>
+</tr>
+<tr>
+<td><code>gui.page.show</code></td>
+<td></td>
+<td>show one or more pages on the screen.</td>
+<td></td>
+<td>self.handle_show_page</td>
+</tr>
+<tr>
+<td><code>gui.page.upload</code></td>
+<td></td>
+<td>makes pages accessible via HTTP server, may be mounted to a volume in container setups</td>
+<td><code>homescreen.manager.show_active</code></td>
+<td>self.handle_receive_gui_pages</td>
+</tr>
+<tr>
+<td><code>gui.volunteer_page_upload</code></td>
+<td></td>
+<td>skill or plugin advertising that it has GUI pages available to upload</td>
+<td></td>
+<td>self.handle_gui_pages_available</td>
+</tr>
+<tr>
+<td><code>gui.status.request</code></td>
+<td></td>
+<td>check if there are connected GUI client apps</td>
+<td></td>
+<td>self.handle_status_request</td>
+</tr>
+<tr>
+<td><code>gui.value.set</code></td>
+<td></td>
+<td>set the value of namespace data attributes.</td>
+<td></td>
+<td>self.handle_set_value</td>
+</tr>
+<tr>
+<td><code>gui.page_interaction</code></td>
+<td>"skill_id": str</td>
+<td>a page has been interacted with.</td>
+<td></td>
+<td>self.handle_page_interaction</td>
+</tr>
+<tr>
+<td><code>gui.page_gained_focus</code></td>
+<td>"skill_id": str</td>
+<td>GUI app indicating a page has gained focus</td>
+<td></td>
+<td>self.handle_page_gained_focus</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.trained</code></td>
+<td></td>
+<td>Once all skills loaded, trigger a page upload</td>
+<td></td>
+<td>self.handle_ready</td>
+</tr>
+<tr>
+<td><code>mycroft.gui.connected</code></td>
+<td>"gui_id": str<br> "framework": str</td>
+<td>DEPRECATED: old gui clients connected to wrong bus</td>
+<td></td>
+<td>self.handle_client_connected</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_2">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>homescreen.manager.show_active</code></td>
+<td></td>
+<td>Configured home screen skill just uploaded pages, show it</td>
+<td><code>gui.page.upload</code></td>
+</tr>
+<tr>
+<td><code>gui.request_page_upload</code></td>
+<td></td>
+<td>request pages for each connected GUI framework.</td>
+<td><code>gui.volunteer_page_upload</code>  / <code>mycroft.gui.connected</code></td>
+</tr>
+<tr>
+<td><code>gui.status.request.response</code></td>
+<td>"connected": bool</td>
+<td>report if any GUI app is connected</td>
+<td><code>gui.status.request</code></td>
+</tr>
+<tr>
+<td><code>gui.namespace.displayed</code></td>
+<td></td>
+<td>Message to notify core of changes.</td>
+<td>self._emit_namespace_displayed_event</td>
+</tr>
+<tr>
+<td><code>mycroft.gui.port</code></td>
+<td>"port": int<br> "gui_id": str</td>
+<td>DEPRECATED: tell old gui clients what port the real gui websocket is</td>
+<td><code>mycroft.gui.connected</code></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../skills/" class="btn btn-neutral float-left" title="Workshop"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../persona/" class="btn btn-neutral float-right" title="Persona">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../skills/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../persona/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

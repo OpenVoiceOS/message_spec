@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/phal_ha/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>PHAL Home Assistant - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "PHAL Home Assistant";
+        var mkdocs_page_input_path = "phal_ha.md";
+        var mkdocs_page_url = "/community-docs/phal_ha/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_audio/">Audio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dinkum/">Listener</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../skills/">Workshop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui/">GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">PHAL Home Assistant</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_wifi_setup/">PHAL Wifi Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ggwave/">Audio GGWave</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../shell/">OVOS Shell</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Plugins</li>
+      <li class="breadcrumb-item active">PHAL Home Assistant</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="phal-home-assistant">PHAL Home Assistant</h1>
+<p>NOTE: this plugin is a placeholder, it will be deprecated / refactored once the CommonIOT framework is developed</p>
+<h1 id="listens-to">Listens to</h1>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted Response Type</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.get.devices</code></td>
+<td></td>
+<td>Requests the list of devices from Home Assistant.</td>
+<td><code>ovos.phal.plugin.homeassistant.get.devices.response</code></td>
+<td>handle_get_devices</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.get.device</code></td>
+<td>'device_id': str</td>
+<td>Requests information about a specific device.</td>
+<td><code>ovos.phal.plugin.homeassistant.get.device.response</code></td>
+<td>handle_get_device</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.device.turn_on</code></td>
+<td>'device_id': str</td>
+<td>Sends a command to turn on a specific device.</td>
+<td><code>ovos.phal.plugin.homeassistant.device.turn_on.response</code></td>
+<td>handle_turn_on</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.device.turn_off</code></td>
+<td>'device_id': str</td>
+<td>Sends a command to turn off a specific device.</td>
+<td><code>ovos.phal.plugin.homeassistant.device.turn_off.response</code></td>
+<td>handle_turn_off</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.get.device.display.model</code></td>
+<td>'device_id': str</td>
+<td>Requests the display model of a specific device.</td>
+<td><code>ovos.phal.plugin.homeassistant.get.device.display.model.response</code></td>
+<td>handle_get_device_display_model</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.get.device.display.list.model</code></td>
+<td></td>
+<td>Requests a list of display models for all devices.</td>
+<td><code>ovos.phal.plugin.homeassistant.get.device.display.list.model.response</code></td>
+<td>handle_get_device_display_list_model</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.call.supported.function</code></td>
+<td>'device_id': str<br>'function_name': str<br>'function_args': dict</td>
+<td>Calls a supported function on a device.</td>
+<td><code>ovos.phal.plugin.homeassistant.call.supported.function.response</code></td>
+<td>handle_call_supported_function</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.start.oauth.flow</code></td>
+<td>'instance': str</td>
+<td>Initiates the OAuth flow for a specific Home Assistant instance.</td>
+<td><code>oauth.get.app.host.info</code><br><code>oauth.generate.qr.request</code><br><code>oauth.token.response</code></td>
+<td>handle_start_oauth_flow</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.assist.intent</code></td>
+<td>'command': str</td>
+<td>Passes an assist message to Home Assistant's Assist API.</td>
+<td><code>ovos.phal.plugin.homeassistant.assist.intent.response</code></td>
+<td>handle_assist_message</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.get.light.brightness</code></td>
+<td>'device_id': str</td>
+<td>Requests the brightness level of a light device.</td>
+<td><code>ovos.phal.plugin.homeassistant.get.light.brightness.response</code></td>
+<td>handle_get_light_brightness</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.set.light.brightness</code></td>
+<td>'device_id': str<br>'brightness': int</td>
+<td>Sets the brightness level of a light device.</td>
+<td><code>ovos.phal.plugin.homeassistant.set.light.brightness.response</code></td>
+<td>handle_set_light_brightness</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.increase.light.brightness</code></td>
+<td>'device_id': str</td>
+<td>Increases the brightness of a light device.</td>
+<td><code>ovos.phal.plugin.homeassistant.increase.light.brightness.response</code></td>
+<td>handle_increase_light_brightness</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.decrease.light.brightness</code></td>
+<td>'device_id': str</td>
+<td>Decreases the brightness of a light device.</td>
+<td><code>ovos.phal.plugin.homeassistant.decrease.light.brightness.response</code></td>
+<td>handle_decrease_light_brightness</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.get.light.color</code></td>
+<td>'device_id': str</td>
+<td>Requests the color of a light device.</td>
+<td><code>ovos.phal.plugin.homeassistant.get.light.color.response</code></td>
+<td>handle_get_light_color</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.set.light.color</code></td>
+<td>'device_id': str<br>'color': str</td>
+<td>Sets the color of a light device.</td>
+<td><code>ovos.phal.plugin.homeassistant.set.light.color.response</code></td>
+<td>handle_set_light_color</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.check_connected</code></td>
+<td>'connected': bool</td>
+<td>Is the PHAL plugin is currently connected to Home Assistant?</td>
+<td><code>ovos.phal.plugin.homeasssistant.check_connected.response</code></td>
+<td>handle_check_connected</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.integration.query_media</code></td>
+<td>'phrase': str</td>
+<td>Queries the media player for the requested media.</td>
+<td><code>ovos.phal.plugin.homeassistant.integration.query_media.result</code></td>
+<td>handle_query_media</td>
+</tr>
+<tr>
+<td><code>ovos-PHAL-plugin-homeassistant.home</code></td>
+<td></td>
+<td>Handles the show dashboard message.</td>
+<td>N/A</td>
+<td>handle_show_dashboard</td>
+</tr>
+<tr>
+<td><code>ovos-PHAL-plugin-homeassistant.close</code></td>
+<td></td>
+<td>Closes the Home Assistant dashboard in the GUI.</td>
+<td>N/A</td>
+<td>handle_close_dashboard</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.show.device.dashboard</code></td>
+<td>'device_type': str</td>
+<td>Shows the dashboard for a specific device.</td>
+<td><code>ovos.phal.plugin.homeassistant.change.dashboard</code> (GUI bus)</td>
+<td>handle_show_device_dashboard</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.show.area.dashboard</code></td>
+<td>'area': str</td>
+<td>Shows the dashboard for a specific area.</td>
+<td><code>ovos.phal.plugin.homeassistant.change.dashboard</code> (GUI bus)</td>
+<td>handle_show_area_dashboard</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.update.device.dashboard</code></td>
+<td>'device_type': str</td>
+<td>Updates the dashboard for a specific device.</td>
+<td><code>ovos.phal.plugin.homeassistant.update.device.dashboard</code></td>
+<td>handle_update_device_dashboard</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.update.area.dashboard</code></td>
+<td>'area_type': str</td>
+<td>Updates the dashboard for a specific area.</td>
+<td>N/A</td>
+<td>handle_update_area_dashboard</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.set.group.display.settings</code></td>
+<td>'use_group_display': bool</td>
+<td>Sets the group display settings.</td>
+<td>N/A</td>
+<td>handle_set_group_display_settings</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.setup.instance</code></td>
+<td>'url': str<br>'api_key': str<br>'assist_only': bool</td>
+<td>Sets up a new Home Assistant instance.</td>
+<td><code>ovos-PHAL-plugin-homeassistant.home</code></td>
+<td>setup_configuration</td>
+</tr>
+<tr>
+<td><code>configuration.updated</code></td>
+<td>See <code>ovos.phal.plugin.homeassistant.setup.instance</code></td>
+<td>Responds to changes to configuration by re-initializing HA</td>
+<td>See <code>ovos.phal.plugin.homeassistant.setup.instance</code></td>
+<td>init_configuration</td>
+</tr>
+<tr>
+<td><code>configuration.patch</code></td>
+<td>See <code>ovos.phal.plugin.homeassistant.setup.instance</code></td>
+<td>Responds to changes to configuration by re-initializing HA</td>
+<td>See <code>ovos.phal.plugin.homeassistant.setup.instance</code></td>
+<td>init_configuration</td>
+</tr>
+</tbody>
+</table>
+<h1 id="emits">Emits</h1>
+<p>Emits all of the messages that it listens to, plus the following:</p>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.ready</code></td>
+<td></td>
+<td>Signals that the Home Assistant plugin is ready.</td>
+<td><code>ovos.phal.plugin.homeassistant.setup.instance</code></td>
+<td>init_configuration</td>
+</tr>
+<tr>
+<td><code>ovos.phal.plugin.homeassistant.device.updated</code></td>
+<td>'device_id': str</td>
+<td>Signals that a device has been updated, requesting a new display model.</td>
+<td><code>ovos.phal.plugin.homeassistant.device.state.updated</code></td>
+<td>device_updated</td>
+</tr>
+<tr>
+<td><code>oauth.get.app.host.info</code></td>
+<td></td>
+<td>Requests host information for OAuth registration.</td>
+<td><code>oauth.get.app.host.info.response</code></td>
+<td>request_host_info_from_oauth</td>
+</tr>
+<tr>
+<td><code>oauth.generate.qr.request</code></td>
+<td>'app_id': str<br>'skill_id': str</td>
+<td>Requests QR code for OAuth registration.</td>
+<td><code>oauth.generate.qr.response</code></td>
+<td>start_oauth_flow</td>
+</tr>
+<tr>
+<td><code>oauth.token.response.munged_id</code></td>
+<td>'access_token': str</td>
+<td>Receives the OAuth token response.</td>
+<td></td>
+<td>handle_token_oauth_response</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../phal_mk1/" class="btn btn-neutral float-left" title="PHAL Mark1 Faceplate"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ovos_PHAL_plugin_wifi_setup/" class="btn btn-neutral float-right" title="PHAL Wifi Setup">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../phal_mk1/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ovos_PHAL_plugin_wifi_setup/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

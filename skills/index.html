@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/skills/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Workshop - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Workshop";
+        var mkdocs_page_input_path = "skills.md";
+        var mkdocs_page_url = "/community-docs/skills/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_audio/">Audio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dinkum/">Listener</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Workshop</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ovosskill">OVOSSkill</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fallbackskill">FallbackSkill</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_1">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_1">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ovoscommonplaybackskill">OVOSCommonPlaybackSkill</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_2">Listens To</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_2">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#commonqueryskill">CommonQuerySkill</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_3">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_3">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#idledisplayskill">IdleDisplaySkill</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_4">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_4">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#skillloader">SkillLoader</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_5">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_5">Emits</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui/">GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ha/">PHAL Home Assistant</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_wifi_setup/">PHAL Wifi Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ggwave/">Audio GGWave</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../shell/">OVOS Shell</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Frameworks</li>
+      <li class="breadcrumb-item active">Workshop</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ovos-workshop">ovos-workshop</h1>
+<ul>
+<li><a href="#ovosskill">OVOSSkill</a></li>
+<li><a href="#fallbackskill">FallbackSkill</a></li>
+<li><a href="#ovoscommonplaybackskill">OVOSCommonPlaybackSkill</a></li>
+<li><a href="#commonqueryskill">CommonQuerySkill</a></li>
+<li><a href="#idledisplayskill">IdleDisplaySkill</a></li>
+<li><a href="#skillloader">SkillLoader</a></li>
+</ul>
+<h2 id="ovosskill">OVOSSkill</h2>
+<h3 id="listens-to">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emits response</th>
+<th>handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.stop</code></td>
+<td></td>
+<td>The skill stops everything it is doing</td>
+<td><code>mycroft.stop.handled</code></td>
+<td>self.stop</td>
+</tr>
+<tr>
+<td><code>{self.skill_id}.converse.ping</code></td>
+<td></td>
+<td>Informs ConverseService if the skill supports <code>converse</code>.</td>
+<td><code>skill.converse.pong</code></td>
+<td>self._handle_converse_ack</td>
+</tr>
+<tr>
+<td><code>{self.skill_id}.converse.request</code></td>
+<td>'utterances': List<br>'lang': str</td>
+<td>Handles user input with the <code>converse</code> method if skill is active</td>
+<td><code>skill.converse.response</code></td>
+<td>self.converse</td>
+</tr>
+<tr>
+<td><code>{self.skill_id}.activate</code></td>
+<td></td>
+<td>Callback when the skill is considered active by the intent service.</td>
+<td></td>
+<td>self.handle_activate</td>
+</tr>
+<tr>
+<td><code>{self.skill_id}.deactivate</code></td>
+<td></td>
+<td>Callback when the skill is no longer considered active by the intent service.</td>
+<td></td>
+<td>self.handle_deactivate</td>
+</tr>
+<tr>
+<td><code>intent.service.skills.deactivated</code></td>
+<td>'skill_id': str</td>
+<td>Intent service deactivated a skill.</td>
+<td><code>{self.skill_id}.deactivate</code></td>
+<td>self._handle_skill_deactivated</td>
+</tr>
+<tr>
+<td><code>intent.service.skills.activated</code></td>
+<td>'skill_id': str</td>
+<td>Intent service activated a skill.</td>
+<td><code>{self.skill_id}.activate</code></td>
+<td>self._handle_skill_activated</td>
+</tr>
+<tr>
+<td><code>mycroft.skill.enable_intent</code></td>
+<td>'intent_name': str</td>
+<td>Re-registers a disabled intent (intent_name contains munged skill_id)</td>
+<td></td>
+<td>self.handle_enable_intent</td>
+</tr>
+<tr>
+<td><code>mycroft.skill.disable_intent</code></td>
+<td>'intent_name': str</td>
+<td>Disables a registered intent (intent_name contains munged skill_id)</td>
+<td></td>
+<td>self.handle_disable_intent</td>
+</tr>
+<tr>
+<td><code>mycroft.skill.set_cross_context</code></td>
+<td>'context': str<br>'word': str<br>'origin': str</td>
+<td>Sets a skill specific context (with munged skill_id)</td>
+<td></td>
+<td>self.handle_set_cross_context</td>
+</tr>
+<tr>
+<td><code>mycroft.skill.remove_cross_context</code></td>
+<td>'context': str</td>
+<td>removes skill specific context (with munged skill_id)</td>
+<td></td>
+<td>self.handle_remove_cross_context</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.settings.changed</code></td>
+<td>'skill_id': Dict</td>
+<td>Update settings if a remote settings change applies to this skill.</td>
+<td></td>
+<td>self.handle_settings_change</td>
+</tr>
+<tr>
+<td><code>{self.skill_id}.public_api</code></td>
+<td></td>
+<td>Responds with the skill's public API.</td>
+<td><code>{self.skill_id}.public_api.response</code></td>
+<td>self._send_public_api</td>
+</tr>
+<tr>
+<td><code>{self.skill_id}.converse.get_response</code></td>
+<td>'utterances': List<br>'lang': str</td>
+<td>communicates user response (<code>get_response</code>) to the skill</td>
+<td></td>
+<td>self.get_response</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.abort_question</code></td>
+<td></td>
+<td>Force self.get_response to return None immediately</td>
+<td></td>
+<td>self.get_response</td>
+</tr>
+<tr>
+<td><code>mycroft.mark2.collect_idle</code></td>
+<td></td>
+<td>DEPRECATED: responds to ovos-gui letting it know skill provides a homescreen</td>
+<td><code>mycroft.mark2.register_idle</code></td>
+<td>self._handle_collect_resting</td>
+</tr>
+<tr>
+<td><code>{self.skill_id}.idle</code></td>
+<td></td>
+<td>DEPRECATED: callback to trigger homescreen provided by this skill</td>
+<td></td>
+<td>@resting_handler decorator</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to / sent by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{self.skill_id}.activate</code></td>
+<td></td>
+<td>Emits a message to activate the skill.</td>
+<td><code>intent.service.skills.activated</code></td>
+</tr>
+<tr>
+<td><code>{self.skill_id}.deactivate</code></td>
+<td></td>
+<td>Emits a message to deactivate the skill.</td>
+<td><code>intent.service.skills.deactivated</code></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.activate</code></td>
+<td>'skill_id': str</td>
+<td>Marks the skill as active and pushes it to the top of the active skills list.</td>
+<td>self._activate</td>
+</tr>
+<tr>
+<td><code>intent.service.skills.deactivate</code></td>
+<td>'skill_id': str</td>
+<td>Marks the skill as inactive and removes it from the active skills list.</td>
+<td>self._deactivate</td>
+</tr>
+<tr>
+<td><code>skill.converse.pong</code></td>
+<td>'skill_id': str<br>'can_handle': bool</td>
+<td>Informs the skills service whether the skill can handle <code>converse</code>.</td>
+<td><code>skill.converse.ping</code></td>
+</tr>
+<tr>
+<td><code>skill.converse.response</code></td>
+<td>'skill_id': str<br>'result': bool</td>
+<td>Responds to a <code>skill.converse.request</code> with the result of <code>converse</code>.</td>
+<td><code>skill.converse.request</code></td>
+</tr>
+<tr>
+<td><code>skill.converse.get_response.enable</code></td>
+<td>"skill_id": str</td>
+<td>Enables getting a response from the user during a conversation.</td>
+<td>self.get_response</td>
+</tr>
+<tr>
+<td><code>skill.converse.get_response.disable</code></td>
+<td>"skill_id": str</td>
+<td>Disables getting a response from the user during a conversation.</td>
+<td>self.get_response</td>
+</tr>
+<tr>
+<td><code>mycroft.mic.listen</code></td>
+<td></td>
+<td>Triggers listening for user input.</td>
+<td>self.speak + self.get_response</td>
+</tr>
+<tr>
+<td><code>mycroft.skill.set_cross_context</code></td>
+<td>'context': str<br>'word': str<br>'origin': str</td>
+<td>Emits a message to set cross-context data.</td>
+<td>self.set_cross_skill_context</td>
+</tr>
+<tr>
+<td><code>mycroft.skill.remove_cross_context</code></td>
+<td>'context': str`</td>
+<td>Emits a message to remove cross-context data.</td>
+<td>self.remove_cross_skill_context</td>
+</tr>
+<tr>
+<td><code>speak</code></td>
+<td>"utterance": str<br>"expect_response": bool<br>"meta": Dict<br>"lang": self.lang</td>
+<td>Initiates speech synthesis to speak the provided utterance.</td>
+<td>self.speak</td>
+</tr>
+<tr>
+<td><code>detach_skill</code></td>
+<td>"skill_id": str</td>
+<td>Tell IntentService to remove all intents from this skill</td>
+<td>self.default_shutdown</td>
+</tr>
+<tr>
+<td><code>{self.skill_id}.public_api.response</code></td>
+<td>'{method_name}': {'help': str, 'type': str, 'func': str}</td>
+<td>Reports skill api data</td>
+<td><code>{self.skill_id}.public_api</code></td>
+</tr>
+<tr>
+<td><code>mycroft.audio.queue</code></td>
+<td>"uri": str</td>
+<td>Queue an audio file for playback.</td>
+<td>self.play_audio</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.play_sound</code></td>
+<td>"uri": str  <br>"instant": bool</td>
+<td>Play an audio file</td>
+<td>self.play_audio</td>
+</tr>
+<tr>
+<td><code>mycroft.stop</code></td>
+<td></td>
+<td>Stop everything skills are doing</td>
+<td>self.send_stop_signal</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.speech.stop</code></td>
+<td></td>
+<td>Stop the speech synthesis process.</td>
+<td>self.send_stop_signal</td>
+</tr>
+<tr>
+<td><code>recognizer_loop:record_stop</code></td>
+<td></td>
+<td>Instruct ovos-listener to stop recording.</td>
+<td>self.send_stop_signal</td>
+</tr>
+<tr>
+<td><code>mycroft.mic.mute</code></td>
+<td></td>
+<td>DEPRECATED: (classic core only) Mute the microphone, possibly used to stop recording during speech recognition.</td>
+<td>self.send_stop_signal</td>
+</tr>
+<tr>
+<td><code>mycroft.mic.unmute</code></td>
+<td></td>
+<td>DEPRECATED: (classic core only) Unmute the microphone.</td>
+<td>self.send_stop_signal</td>
+</tr>
+<tr>
+<td><code>mycroft.mark2.register_idle</code></td>
+<td>"name": self.resting_name<br>"id": str</td>
+<td>DEPRECATED: Registers a resting screen for the skill.</td>
+<td><code>mycroft.mark2.collect_idle</code></td>
+</tr>
+<tr>
+<td><code>active_skill_request</code></td>
+<td>'skill_id': str</td>
+<td>DEPRECATED: (classic core only) same as intent.service.skills.activate</td>
+<td>self._activate</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fallbackskill">FallbackSkill</h2>
+<h3 id="listens-to_1">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+<th>handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.skills.fallback.ping</code></td>
+<td>"utterances": List<br> "lang": str</td>
+<td>Informs the skills service that the FallbackSkill can handle fallbacks.</td>
+<td><code>ovos.skills.fallback.pong</code></td>
+<td>self._handle_fallback_ack</td>
+</tr>
+<tr>
+<td><code>ovos.skills.fallback.skill_id</code></td>
+<td></td>
+<td>Handles a fallback request, calling registered handlers in priority order until one is successful.</td>
+<td><code>ovos.skills.fallback.skill_id.start</code>, <code>ovos.skills.fallback.skill_id.response</code></td>
+<td>@fallback_handler decorator / self.register_fallback</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_1">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.skills.fallback.register</code></td>
+<td>"skill_id": str<br>"priority": int</td>
+<td>Registers the FallbackSkill with the skills service, specifying its skill ID and priority.</td>
+<td>self._register_system_event_handlers</td>
+</tr>
+<tr>
+<td><code>ovos.skills.fallback.pong</code></td>
+<td>"skill_id": str<br>"can_handle": bool</td>
+<td>Informs the skills service whether the FallbackSkill can handle fallbacks for a given set of utterances and language.</td>
+<td><code>ovos.skills.fallback.ping</code></td>
+</tr>
+<tr>
+<td><code>ovos.skills.fallback.deregister</code></td>
+<td>"skill_id": str`</td>
+<td>Deregisters the FallbackSkill with the skills service.</td>
+<td>self.default_shutdown</td>
+</tr>
+<tr>
+<td><code>ovos.skills.fallback.skill_id.start</code></td>
+<td></td>
+<td>Indicates the start of the fallback handling process for a specific skill.</td>
+<td><code>ovos.skills.fallback.skill_id.request</code></td>
+</tr>
+<tr>
+<td><code>ovos.skills.fallback.skill_id.response</code></td>
+<td>"result": bool<br> "fallback_handler": str</td>
+<td>Indicates the result of the fallback handling process for a specific skill, including whether it was successful and the name of the fallback handler.</td>
+<td><code>ovos.skills.fallback.skill_id.request</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ovoscommonplaybackskill">OVOSCommonPlaybackSkill</h2>
+<h3 id="listens-to_2">Listens To</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+<th>handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.common_play.query</code></td>
+<td>"phrase": str<br>"question_type": str</td>
+<td>Query skill if it can start playback from the given phrase.</td>
+<td><code>ovos.common_play.skill.search_start</code>, <code>ovos.common_play.skill.search_end</code></td>
+<td>@ocp_search decorator</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.featured_tracks.play</code></td>
+<td>"skill_id": str</td>
+<td>Play featured tracks from a skill with the specified skill_id.</td>
+<td></td>
+<td>@ocp_featured_media decorator</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.skills.get</code></td>
+<td></td>
+<td>Request information about the skills that support common playback.</td>
+<td><code>ovos.common_play.announce</code></td>
+<td>self.__handle_ocp_skills_get</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.{self.skill_id}.play</code></td>
+<td></td>
+<td>Handle the playback of media.</td>
+<td><code>ovos.common_play.player.state</code></td>
+<td>@ocp_play  decorator</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.{self.skill_id}.pause</code></td>
+<td></td>
+<td>Handle the pause of media playback.</td>
+<td><code>ovos.common_play.player.state</code></td>
+<td>@ocp_pause decorator</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.{self.skill_id}.resume</code></td>
+<td></td>
+<td>Handle the resume of media playback.</td>
+<td><code>ovos.common_play.player.state</code></td>
+<td>@ocp_resume decorator</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.{self.skill_id}.next</code></td>
+<td></td>
+<td>Handle the request to play the next track.</td>
+<td></td>
+<td>@ocp_next decorator</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.{self.skill_id}.previous</code></td>
+<td></td>
+<td>Handle the request to play the previous track.</td>
+<td></td>
+<td>@ocp_previous decorator</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.{self.skill_id}.stop</code></td>
+<td></td>
+<td>Handle the stop of media playback.</td>
+<td><code>ovos.common_play.player.state</code></td>
+<td>self.stop</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.search.stop</code></td>
+<td></td>
+<td>Stop a media search.</td>
+<td></td>
+<td>self.__handle_stop_search</td>
+</tr>
+<tr>
+<td><code>mycroft.stop</code></td>
+<td></td>
+<td>Stop a media search in response to a global stop</td>
+<td></td>
+<td>self.__handle_stop_search</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_2">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.common_play.announce</code></td>
+<td>"skill_id": str<br>"skill_name": str<br>"thumbnail": str<br> "media_types": List<br> "featured_tracks": bool</td>
+<td>Announce skill information to the common playback framework.</td>
+<td><code>ovos.common_play.skills.get</code></td>
+</tr>
+<tr>
+<td><code>ovos.common_play.skill.search_start</code></td>
+<td>"skill_id": str<br> "skill_name": str<br>"thumbnail": str</td>
+<td>Signal the start of a media search initiated by the skill.</td>
+<td><code>ovos.common_play.query</code></td>
+</tr>
+<tr>
+<td><code>ovos.common_play.query.response</code></td>
+<td>"phrase": str<br>"skill_id": str<br>"skill_name": str<br>"thumbnail": str<br> "results": List<br> "searching": bool</td>
+<td>Respond to a media search query with search results.</td>
+<td><code>ovos.common_play.query</code></td>
+</tr>
+<tr>
+<td><code>ovos.common_play.skill.search_end</code></td>
+<td>"skill_id": str</td>
+<td>Signal the end of a media search initiated by the skill.</td>
+<td><code>ovos.common_play.query</code></td>
+</tr>
+<tr>
+<td><code>ovos.common_play.player.state</code></td>
+<td>"state": str</td>
+<td>Signal changes in the media player state (e.g., playing, paused, stopped).</td>
+<td><code>ovos.common_play.{self.skill_id}.play</code><br><code>ovos.common_play.{self.skill_id}.pause</code><br><code>ovos.common_play.{self.skill_id}.resume</code><br><code>ovos.common_play.{self.skill_id}.stop</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="commonqueryskill">CommonQuerySkill</h2>
+<h3 id="listens-to_3">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>question:query</code></td>
+<td>"phrase": str</td>
+<td>Handles incoming user queries and attempts to answer them.</td>
+<td><code>question:query.response</code></td>
+<td>self.CQS_match_query_phrase</td>
+</tr>
+<tr>
+<td><code>question:action</code></td>
+<td>"phrase": str<br>"callback_data": Dict</td>
+<td>Skill selected to answer question callback</td>
+<td></td>
+<td>self.CQS_action</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_3">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>question:query.response</code></td>
+<td>"phrase": str<br> "skill_id": str<br>"answer": str<br> "callback_data": Dict<br> "conf": float</td>
+<td>Report id the skill can answer the user query.</td>
+<td><code>question:query</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="idledisplayskill">IdleDisplaySkill</h2>
+<h3 id="listens-to_4">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+<th>handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.ready</code></td>
+<td></td>
+<td>Shows idle screen when the device is ready for use.</td>
+<td><code>skill.idle.displayed</code></td>
+<td>self.handle_idle</td>
+</tr>
+<tr>
+<td><code>homescreen.manager.activate.display</code></td>
+<td>"homescreen_id": str</td>
+<td>Display this home screen if requested by the Home Screen Manager.</td>
+<td><code>skill.idle.displayed</code></td>
+<td>self.handle_idle</td>
+</tr>
+<tr>
+<td><code>homescreen.manager.reload.list</code></td>
+<td></td>
+<td>Reloads this skill's homescreen entry and sends it to the Home Screen Manager.</td>
+<td></td>
+<td>self._reload_homescreen_entry</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.shutdown</code></td>
+<td>"id": str</td>
+<td>Removes this homescreen from the Home Screen Manager if requested.</td>
+<td></td>
+<td>self._remove_homescreen_on_shutdown</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_4">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skill.idle.displayed</code></td>
+<td></td>
+<td>Indicates that the idle display is shown.</td>
+<td><code>homescreen.manager.activate.display</code></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.add</code></td>
+<td>"class": str<br>"name": str<br>"id": str</td>
+<td>Registers this skill's homescreen entry with the Home Screen Manager.</td>
+<td>self._register_system_event_handlers</td>
+</tr>
+<tr>
+<td><code>homescreen.manager.remove</code></td>
+<td>"class": str<br>"name": str<br>"id": str</td>
+<td>Removes this skill's homescreen entry from the Home Screen Manager.</td>
+<td><code>mycroft.skills.shutdown</code></td>
+</tr>
+<tr>
+<td><code>homescreen.manager.reload.list</code></td>
+<td></td>
+<td>Requests a reload of this skill's homescreen entry.</td>
+<td>self._register_system_event_handlers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="skillloader">SkillLoader</h2>
+<h3 id="listens-to_5">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.ready</code></td>
+<td></td>
+<td>Event indicating that OVOS is ready.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_5">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.skills.is_ready</code></td>
+<td>"status": bool</td>
+<td>Checks if the skills service is ready.</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.loaded</code></td>
+<td>"path": str<br> "id": str<br> "name": str</td>
+<td>Indicates that a skill has been successfully loaded.</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.loading_failure</code></td>
+<td>"path": str<br> "id": str</td>
+<td>Indicates that a skill failed to load.</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.shutdown</code></td>
+<td>"path": str<br> "id": str</td>
+<td>Notifies that a skill is being shutdown.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dinkum/" class="btn btn-neutral float-left" title="Listener"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../gui/" class="btn btn-neutral float-right" title="GUI">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dinkum/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../gui/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

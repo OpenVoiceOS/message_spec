@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/shell/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>OVOS Shell - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "OVOS Shell";
+        var mkdocs_page_input_path = "shell.md";
+        var mkdocs_page_url = "/community-docs/shell/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_audio/">Audio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dinkum/">Listener</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../skills/">Workshop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui/">GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ha/">PHAL Home Assistant</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_wifi_setup/">PHAL Wifi Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ggwave/">Audio GGWave</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">OVOS Shell</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">GUI Extensions</li>
+      <li class="breadcrumb-item active">OVOS Shell</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ovos-shell-companion">OVOS Shell Companion</h1>
+<h1 id="listens-to">Listens to</h1>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted Response Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.gui.screen.close</code></td>
+<td></td>
+<td>Clears the namespace of the specified skill.</td>
+<td></td>
+<td><code>handle_remove_namespace</code></td>
+</tr>
+<tr>
+<td><code>system.display.homescreen</code></td>
+<td></td>
+<td>Handles the event to display the homescreen.</td>
+<td></td>
+<td><code>handle_system_display_homescreen</code></td>
+</tr>
+<tr>
+<td><code>mycroft.device.settings</code></td>
+<td></td>
+<td>Displays the device settings page.</td>
+<td></td>
+<td><code>handle_device_settings</code></td>
+</tr>
+<tr>
+<td><code>ovos.phal.configuration.provider.get.response</code></td>
+<td>"settingsMetaData": Dict<br>"groupName": str</td>
+<td>Displays advanced configuration for a group.</td>
+<td></td>
+<td><code>display_advanced_config_for_group</code></td>
+</tr>
+<tr>
+<td><code>ovos.phal.configuration.provider.list.groups.response</code></td>
+<td>"groups": List</td>
+<td>Displays a list of advanced configuration groups.</td>
+<td></td>
+<td><code>display_advanced_config_groups</code></td>
+</tr>
+<tr>
+<td><code>smartspeaker.extension.extend.about</code></td>
+<td>"display_list": List</td>
+<td>Extends the about page data.</td>
+<td></td>
+<td><code>extend_about_page_data_from_event</code></td>
+</tr>
+</tbody>
+</table>
+<p>GUI events, sent via the <a href="https://github.com/OpenVoiceOS/ovos-gui/blob/dev/protocol.md">gui protocol</a> and
+appear in the bus with skill_id prepended, i.e. <code>ovos_gui_plugin_shell_companion.{msg_type}</code></p>
+<p>In the GUI websocket these events look like this</p>
+<pre><code class="language-javascript">{
+    &quot;type&quot;: &quot;mycroft.events.triggered&quot;,
+    &quot;namespace&quot;: &quot;ovos_gui_plugin_shell_companion&quot;,
+    &quot;event_name&quot;: MSG_TYPE,
+    &quot;data&quot;: {}
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>GUI Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted Response Type (in regular websocket)</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.device.settings.homescreen</code></td>
+<td></td>
+<td>Displays homescreen settings page.</td>
+<td></td>
+<td>handle_device_homescreen_settings</td>
+</tr>
+<tr>
+<td><code>mycroft.device.settings.ssh</code></td>
+<td></td>
+<td>Displays SSH settings page.</td>
+<td></td>
+<td>handle_device_ssh_settings</td>
+</tr>
+<tr>
+<td><code>mycroft.device.settings.developer</code></td>
+<td></td>
+<td>Displays developer settings page.</td>
+<td></td>
+<td>handle_device_developer_settings</td>
+</tr>
+<tr>
+<td><code>mycroft.device.show.idle</code></td>
+<td></td>
+<td>Shows the homescreen.</td>
+<td></td>
+<td>handle_show_homescreen</td>
+</tr>
+<tr>
+<td><code>mycroft.device.settings.customize</code></td>
+<td></td>
+<td>Displays customize settings page.</td>
+<td></td>
+<td>handle_device_customize_settings</td>
+</tr>
+<tr>
+<td><code>mycroft.device.settings.create.theme</code></td>
+<td></td>
+<td>Displays create theme settings page.</td>
+<td></td>
+<td>handle_device_create_theme</td>
+</tr>
+<tr>
+<td><code>mycroft.device.settings.about.page</code></td>
+<td></td>
+<td>Displays about page settings.</td>
+<td></td>
+<td>handle_device_about_page</td>
+</tr>
+<tr>
+<td><code>mycroft.device.settings.display</code></td>
+<td></td>
+<td>Displays display settings page.</td>
+<td></td>
+<td>handle_device_display_settings</td>
+</tr>
+<tr>
+<td><code>mycroft.device.settings.factory</code></td>
+<td></td>
+<td>Displays factory settings page.</td>
+<td></td>
+<td>handle_device_display_factory</td>
+</tr>
+<tr>
+<td><code>speaker.extension.display.set.wallpaper.rotation</code></td>
+<td>"wallpaper_rotation": bool</td>
+<td>Handles setting wallpaper rotation configuration.</td>
+<td><code>speaker.extension.display.wallpaper.rotation.changed</code></td>
+<td>handle_display_wallpaper_rotation_config_set</td>
+</tr>
+<tr>
+<td><code>speaker.extension.display.set.auto.dim</code></td>
+<td>"auto_dim": bool</td>
+<td>Handles setting auto dim configuration.</td>
+<td><code>speaker.extension.display.auto.dim.changed</code></td>
+<td>handle_display_auto_dim_config_set</td>
+</tr>
+<tr>
+<td><code>speaker.extension.display.set.auto.nightmode</code></td>
+<td>"auto_nightmode": bool</td>
+<td>Handles setting auto night mode configuration.</td>
+<td><code>speaker.extension.display.auto.nightmode.changed</code></td>
+<td>handle_display_auto_nightmode_config_set</td>
+</tr>
+</tbody>
+</table>
+<h1 id="emits">Emits</h1>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gui.clear.namespace</code></td>
+<td>"__from": str</td>
+<td>Clears the namespace of the specified skill.</td>
+<td><code>mycroft.gui.screen.close</code></td>
+<td>handle_remove_namespace</td>
+</tr>
+<tr>
+<td><code>speaker.extension.display.wallpaper.rotation.changed</code></td>
+<td></td>
+<td>Notifies that the wallpaper rotation configuration has changed.</td>
+<td><code>{namespace}.speaker.extension.display.set.wallpaper.rotation</code></td>
+<td>handle_display_wallpaper_rotation_config_set</td>
+</tr>
+<tr>
+<td><code>speaker.extension.display.auto.dim.changed</code></td>
+<td></td>
+<td>Notifies that the auto dim configuration has changed.</td>
+<td><code>{namespace}.speaker.extension.display.set.auto.dim</code></td>
+<td>handle_display_auto_dim_config_set</td>
+</tr>
+<tr>
+<td><code>speaker.extension.display.auto.nightmode.changed</code></td>
+<td></td>
+<td>Notifies that the auto night mode configuration has changed.</td>
+<td><code>{namespace}.speaker.extension.display.set.auto.nightmode</code></td>
+<td>handle_display_auto_nightmode_config_set</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ggwave/" class="btn btn-neutral float-left" title="Audio GGWave"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../gui_bigscreen/" class="btn btn-neutral float-right" title="Plasma Bigscreen">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ggwave/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../gui_bigscreen/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

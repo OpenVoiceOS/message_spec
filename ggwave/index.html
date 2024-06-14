@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/ggwave/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Audio GGWave - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Audio GGWave";
+        var mkdocs_page_input_path = "ggwave.md";
+        var mkdocs_page_url = "/community-docs/ggwave/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_audio/">Audio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dinkum/">Listener</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../skills/">Workshop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui/">GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ha/">PHAL Home Assistant</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_wifi_setup/">PHAL Wifi Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Audio GGWave</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#listens-to">Listens to</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#emits">Emits</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../shell/">OVOS Shell</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Plugins</li>
+      <li class="breadcrumb-item active">Audio GGWave</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ovos-ggwave">OVOS GGWave</h1>
+<p>GGWave is a audio transformer plugin, it consumes the microphone feed</p>
+<h2 id="listens-to">Listens to</h2>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted Response Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.ggwave.enable</code></td>
+<td></td>
+<td>Enable GGWave functionality.</td>
+<td><code>ovos.ggwave.enabled</code></td>
+<td>handle_enable function</td>
+</tr>
+<tr>
+<td><code>ovos.ggwave.disable</code></td>
+<td></td>
+<td>Disable GGWave functionality.</td>
+<td><code>ovos.ggwave.disabled</code></td>
+<td>handle_disable function</td>
+</tr>
+</tbody>
+</table>
+<h2 id="emits">Emits</h2>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.ggwave.enabled</code></td>
+<td></td>
+<td>Notification that GGWave has been enabled.</td>
+<td><code>ovos.ggwave.enable</code></td>
+<td>handle_enable</td>
+</tr>
+<tr>
+<td><code>ovos.ggwave.disabled</code></td>
+<td></td>
+<td>Notification that GGWave has been disabled.</td>
+<td><code>ovos.ggwave.disable</code></td>
+<td>handle_disable</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.play_sound</code></td>
+<td>"uri": str</td>
+<td>Play an acknowledgment / error sound.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ovos.skills.install</code></td>
+<td>"url": str</td>
+<td>Install a skill from the specified URL.</td>
+<td></td>
+<td>handle_skill</td>
+</tr>
+<tr>
+<td><code>ovos.pip.install</code></td>
+<td>"packages":List[str]</td>
+<td>Install a pip package.</td>
+<td></td>
+<td>handle_pip</td>
+</tr>
+<tr>
+<td><code>ovos.pip.uninstall</code></td>
+<td>"packages": List[str]</td>
+<td>Uninstall a pip package.</td>
+<td></td>
+<td>handle_remove_pip</td>
+</tr>
+<tr>
+<td><code>recognizer_loop:utterance</code></td>
+<td>"utterances": List[str]</td>
+<td>Emit an utterance to the recognizer loop.</td>
+<td></td>
+<td>handle_utt</td>
+</tr>
+<tr>
+<td><code>speak</code></td>
+<td>"utterance": str</td>
+<td>Speak the specified text.</td>
+<td></td>
+<td>handle_speak</td>
+</tr>
+<tr>
+<td><code>ovos.phal.nm.connect.open.network</code></td>
+<td>"connection_name": str</td>
+<td>Connect to an open WiFi network.</td>
+<td></td>
+<td>handle_wifi_pswd</td>
+</tr>
+<tr>
+<td><code>ovos.phal.nm.connect</code></td>
+<td>"connection_name": str<br>"password": str</td>
+<td>Connect to a password-protected WiFi network.</td>
+<td></td>
+<td>handle_wifi_pswd</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../phal_balena/" class="btn btn-neutral float-left" title="WIFI Balena"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../shell/" class="btn btn-neutral float-right" title="OVOS Shell">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../phal_balena/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../shell/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
