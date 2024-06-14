@@ -61,10 +61,10 @@
 
 ### Listens to
 
-| Message Type                                     | Message Data                                                                      | Description                                                                | Response Type(s)                             |
-|--------------------------------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------|----------------------------------------------|
-| `recognizer_loop:utterance`                      | utterances: list<br> lang: str                                                    | Handle a natural language question from the user                           |                                              |
-| `register_vocab`                                 | entity_value: str<br>entity_type: str<br>regex: str<br>alias_of: str<br>lang: str | Register vocabulary for the Adapt intent service                           |                                              |
+| Message Type                                     | Message Data                                                                      | Description     | Response Type(s)                             |
+|--------------------------------------------------|-----------------------------------------------------------------------------------|-----------------|----------------------------------------------|
+| `recognizer_loop:utterance`                      | utterances: list<br> lang: str                                                    | Handle a natural language question from the user  |`ovos.utterance.cancelled`, `ovos.utterance.handled`      |         
+| `register_vocab`                                 | entity_value: str<br>entity_type: str<br>regex: str<br>alias_of: str<br>lang: str | Register vocabulary for the Adapt intent service       |                                              |
 | `register_intent`                                | intent_type: str                                                                  | Register an intent for the Adapt intent service                            |                                              |
 | `detach_intent`                                  | intent_name: str                                                                  | Remove a registered intent from the intent service                         |                                              |
 | `detach_skill`                                   | skill_id: str                                                                     | Remove all intents registered for a specific skill from the intent service |                                              |
@@ -87,6 +87,8 @@ Selected intents have their own messages that can not be listed here
 | Message Type                                 | Message Data     | Description                                                          | In Response to / sent by                         |
 |----------------------------------------------|------------------|----------------------------------------------------------------------|--------------------------------------------------|
 | each intent has it's own message_type        |                  | Trigger selected intent                                              | `recognizer_loop:utterance`                      |
+| `ovos.utterance.cancelled`                   |                  | user said "nevermind" to cancel the utterance, via [ovos-utterance-plugin-cancel](https://github.com/OpenVoiceOS/ovos-utterance-plugin-cancel)          | `recognizer_loop:utterance`                      |
+| `ovos.utterance.handled`                     |                  | Finished handling a natural language question from the user          | `recognizer_loop:utterance`                      |
 | `mycroft.audio.play_sound`                   | "uri": str       | Play error sound                                                     | self.send_complete_intent_failure                |
 | `complete_intent_failure`                    |                  | signal we failed to handle an utterance                              | self.send_complete_intent_failure                |
 | `intent.service.intent.reply`                | "intent": dict   | DEPRECATED: get intent that would match, excluding converse/fallback | `intent.service.intent.get`                      |
