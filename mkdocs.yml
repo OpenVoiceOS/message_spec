@@ -28,6 +28,7 @@ nav:
         - Plasma Bigscreen: gui_bigscreen.md
         - Mobile: gui_mobile.md
     - Skills:
-        - Homescreen: ovos_homescreen.md
+        - Homescreen: ovos_skill_homescreen.md
+        - Alerts: ovos_skill_alerts.md
 
 theme: readthedocs
