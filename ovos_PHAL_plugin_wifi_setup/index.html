@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/ovos_PHAL_plugin_wifi_setup/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>PHAL Wifi Setup - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "PHAL Wifi Setup";
+        var mkdocs_page_input_path = "ovos_PHAL_plugin_wifi_setup.md";
+        var mkdocs_page_url = "/community-docs/ovos_PHAL_plugin_wifi_setup/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_audio/">Audio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dinkum/">Listener</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../skills/">Workshop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui/">GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ha/">PHAL Home Assistant</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">PHAL Wifi Setup</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#listens-to">Listens to</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#emits">Emits</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ggwave/">Audio GGWave</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../shell/">OVOS Shell</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Plugins</li>
+      <li class="breadcrumb-item active">PHAL Wifi Setup</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="phal-wifi-setup">PHAL Wifi Setup</h1>
+<p>The WIFI setup plugin is responsible from managing the wifi setup process, additional plugins are required to provide specific wifi implementations, this plugin just coordinates the co-existence of multiple wifi setup methods</p>
+<h2 id="listens-to">Listens to</h2>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted Response Type</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.phal.wifi.plugin.register.client</code></td>
+<td>'client': str<br>'type': str<br>'display_text': str<br>'has_gui': bool<br>'requires_input': bool</td>
+<td>Register a wifi setup client with the plugin</td>
+<td><code>ovos.phal.wifi.plugin.client.registered</code></td>
+<td>handle_register_client</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.deregister.client</code></td>
+<td>'client': str</td>
+<td>Deregister a wifi setup client from the plugin</td>
+<td><code>ovos.phal.wifi.plugin.client.deregistered</code></td>
+<td>handle_deregister_client</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.get.registered.clients</code></td>
+<td></td>
+<td>Get the list of registered clients</td>
+<td><code>ovos.phal.wifi.plugin.registered.clients</code></td>
+<td>handle_get_registered_clients</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.set.active.client</code></td>
+<td>'client': str<br>'id': str</td>
+<td>Activate a wifi setup client</td>
+<td><code>ovos.phal.wifi.plugin.activate.{clientID}</code></td>
+<td>handle_set_active_client</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.remove.active.client</code></td>
+<td></td>
+<td>Deactivate a wifi setup client</td>
+<td><code>ovos.phal.wifi.plugin.deactivate.{clientID}</code></td>
+<td>handle_remove_active_client</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.client.setup.failure</code></td>
+<td></td>
+<td>Informs the plugin that the wifi setup failed</td>
+<td></td>
+<td>handle_client_setup_failure</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.client.select</code></td>
+<td>'client': str<br>'id': str</td>
+<td>Informs the plugin about the user selected setup mechanism</td>
+<td></td>
+<td>handle_client_select</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.skip.setup</code></td>
+<td></td>
+<td>Informs the plugin that user wants to do setup later</td>
+<td><code>ovos.phal.wifi.plugin.fully_offline</code></td>
+<td>handle_skip_setup</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.fully_offline</code></td>
+<td></td>
+<td>Notify that the user has selected fully offline operation</td>
+<td><code>ovos.phal.wifi.plugin.fully_offline</code></td>
+<td>handle_fully_offline</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.client.select.page.removed</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td>handle_setup_page_removed</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.user.activated</code></td>
+<td></td>
+<td>Inform the plugin that the user has activated a wifi setup client</td>
+<td></td>
+<td>handle_user_activated</td>
+</tr>
+<tr>
+<td><code>mycroft.internet.connected</code></td>
+<td></td>
+<td>Inform the plugin that the internet is connected</td>
+<td></td>
+<td>handle_internet_connected</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.status</code></td>
+<td></td>
+<td>Report status of wifi setup plugin</td>
+<td><code>ovos.phal.wifi.plugin.status,response</code><br><code>ovos.phal.wifi.plugin.alive</code></td>
+<td>handle_ready_check</td>
+</tr>
+<tr>
+<td><code>mycroft.internet.is_ready</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td>handle_ready_check</td>
+</tr>
+</tbody>
+</table>
+<h2 id="emits">Emits</h2>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Emitted by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.phal.wifi.plugin.alive</code></td>
+<td></td>
+<td>Inform the wifi clients that the plugin is alive on startup</td>
+<td><code>ovos.phal.wifi.plugin.status</code></td>
+<td>on load<br>handle_status_request</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.client.registration.failure</code></td>
+<td>"error": "str"</td>
+<td>Registration failed</td>
+<td></td>
+<td>handle_register_client</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.client.registered</code></td>
+<td>"client": str<br>"type": str<br>"display_text": str<br>"has_gui": bool<br>"requires_input": bool<br>"id": str</td>
+<td>Registration successful</td>
+<td></td>
+<td>handle_register_client</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.client.deregistered</code></td>
+<td>"client": str</td>
+<td>Deregistration successful</td>
+<td></td>
+<td>handle_deregister_client</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.registered.clients</code></td>
+<td>"clients": list</td>
+<td>Report registered wifi setup clients</td>
+<td><code>ovos.phal.wifi.plugin.get.registered.clients</code></td>
+<td>handle_get_registered_clients</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.activate.{clientID}</code></td>
+<td></td>
+<td>Inform the client that the activation was successful</td>
+<td></td>
+<td>handle_set_active_client</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.deactivate.{clientID}</code></td>
+<td></td>
+<td>Inform the client that the deactivation was successful</td>
+<td><code>mycroft.internet.connected</code></td>
+<td>handle_remove_active_client</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.fully_offline</code></td>
+<td></td>
+<td>Notify that the user has selected fully offline operation</td>
+<td></td>
+<td>handle_fully_offline</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.status.response</code></td>
+<td>"watchdog_active": bool<br>"in_setup": bool</td>
+<td>Notify setup and watchdog status</td>
+<td><code>ovos.phal.wifi.plugin.status</code></td>
+<td>handle_status_request</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.setup.launched</code></td>
+<td></td>
+<td>Inform about the start of wifi setup process</td>
+<td></td>
+<td>launch_networking_setup</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.setup.failed</code></td>
+<td>"error": "str"</td>
+<td>Inform the interested parties that the plugin itself failed</td>
+<td></td>
+<td>launch_networking_setup</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.setup.completed</code></td>
+<td></td>
+<td>Inform about the end of wifi setup. typically on internet connection</td>
+<td></td>
+<td>handle_internet_connected</td>
+</tr>
+<tr>
+<td><code>ovos.shell.status.ok</code></td>
+<td></td>
+<td>Make sure the GUI spinner is dismissed</td>
+<td></td>
+<td>handle_internet_connected</td>
+</tr>
+<tr>
+<td><code>mycroft.internet.is_ready.response</code></td>
+<td>"status": bool</td>
+<td>Report to ovos-core if internet setup has finished</td>
+<td><code>mycroft.internet.is_ready</code></td>
+<td>handle_ready_check</td>
+</tr>
+<tr>
+<td><code>ovos.phal.wifi.plugin.stop.setup.event</code></td>
+<td></td>
+<td>Abort ongoing wifi setup, typically during shutdown</td>
+<td></td>
+<td>stop_setup</td>
+</tr>
+<tr>
+<td><code>enclosure.notify.no_internet</code></td>
+<td></td>
+<td>Signal other PHAL plugins there is no internet available</td>
+<td></td>
+<td>_watchdog</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../phal_ha/" class="btn btn-neutral float-left" title="PHAL Home Assistant"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../phal_wifi_gui/" class="btn btn-neutral float-right" title="WIFI GUI">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../phal_ha/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../phal_wifi_gui/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

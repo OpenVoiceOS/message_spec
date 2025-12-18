@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/ovos_core/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Core - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Core";
+        var mkdocs_page_input_path = "ovos_core.md";
+        var mkdocs_page_url = "/community-docs/ovos_core/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Core</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#skillmanager">SkillManager</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#skillsstore">SkillsStore</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_1">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_1">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#intentservice">IntentService</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_2">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_2">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#commonqaservice">CommonQAService</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_3">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_3">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#converseservice">ConverseService</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_4">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_4">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fallbackservice">FallbackService</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_5">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_5">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#padaciososervice">PadaciosoService</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_6">Listens to</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#padatiousservice">PadatiousService</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_7">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_6">Emits</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_audio/">Audio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dinkum/">Listener</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../skills/">Workshop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui/">GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ha/">PHAL Home Assistant</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_wifi_setup/">PHAL Wifi Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ggwave/">Audio GGWave</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../shell/">OVOS Shell</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Frameworks</li>
+      <li class="breadcrumb-item active">Core</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ovos-core">ovos-core</h1>
+<h2 id="skillmanager">SkillManager</h2>
+<h3 id="listens-to">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.setup.state.get</code></td>
+<td></td>
+<td>Requests the setup state from the ovos-setup skill</td>
+<td><code>ovos.setup.state</code></td>
+</tr>
+<tr>
+<td><code>mycroft.internet.connected</code></td>
+<td></td>
+<td>Indicates that the internet is connected</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.network.connected</code></td>
+<td></td>
+<td>Indicates that the network is connected</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.gui.available</code></td>
+<td>"permanent": bool</td>
+<td>Indicates that the GUI is available</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.internet.disconnected</code></td>
+<td></td>
+<td>Indicates that the internet is disconnected</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.network.disconnected</code></td>
+<td></td>
+<td>Indicates that the network is disconnected</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.gui.unavailable</code></td>
+<td></td>
+<td>Indicates that the GUI is unavailable</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.skills.trained</code></td>
+<td></td>
+<td>Indicates that skill intents have been trained</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ovos.setup.finished</code></td>
+<td></td>
+<td>Indicates the completion of the setup process</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillmanager.activate</code></td>
+<td>"skill_id": str</td>
+<td>Loads a skill, if it is available</td>
+<td><code>skillmanager.activate.response</code></td>
+</tr>
+<tr>
+<td><code>skillmanager.deactivate</code></td>
+<td>"skill_id": str</td>
+<td>Unloads a skill, if it is loaded</td>
+<td><code>skillmanager.deactivate.response</code></td>
+</tr>
+<tr>
+<td><code>skillmanager.keep</code></td>
+<td>"skill_id": str</td>
+<td>Unloads all skills but the provided</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skillmanager.list</code></td>
+<td></td>
+<td>Returns a list of all loaded skills</td>
+<td><code>mycroft.skills.list</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to / sent by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.skills.settings_changed</code></td>
+<td>"skill_id": str</td>
+<td>Notifies a change in skill settings.json</td>
+<td>self._handle_settings_file_change</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.list</code></td>
+<td>List["<skill_id>": "active": bool, "id": string]</td>
+<td>Provides a list of loaded skills</td>
+<td><code>skillmanager.list</code></td>
+</tr>
+<tr>
+<td><code>mycroft.skills.error</code></td>
+<td>"internet_loaded": bool<br>"network_loaded": bool</td>
+<td>Indicates an error waiting for internet skills to load at startup</td>
+<td>self.run</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.initialized</code></td>
+<td></td>
+<td>Indicates that skills have been initialized</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.internet.connected</code></td>
+<td></td>
+<td>when ovos-phal-plugin-connectivity-events missing perform direct network checks</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.network.connected</code></td>
+<td></td>
+<td>when ovos-phal-plugin-connectivity-events missing perform direct network checks</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.ready</code></td>
+<td></td>
+<td>Signals that Mycroft is ready</td>
+<td>self.handle_check_device_readiness</td>
+</tr>
+</tbody>
+</table>
+<h2 id="skillsstore">SkillsStore</h2>
+<h3 id="listens-to_1">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.skills.install</code></td>
+<td>"url": str</td>
+<td>Installs a skill from a GitHub URL.</td>
+<td><code>ovos.skills.install.complete, ovos.skills.install.failed</code></td>
+</tr>
+<tr>
+<td><code>ovos.skills.uninstall</code></td>
+<td></td>
+<td>Uninstalls a skill.</td>
+<td><code>ovos.skills.uninstall.failed</code></td>
+</tr>
+<tr>
+<td><code>ovos.pip.install</code></td>
+<td>"packages": list</td>
+<td>Installs Python packages using pip.</td>
+<td><code>ovos.pip.install.complete, ovos.pip.install.failed</code></td>
+</tr>
+<tr>
+<td><code>ovos.pip.uninstall</code></td>
+<td>"packages": list</td>
+<td>Uninstalls Python packages using pip.</td>
+<td><code>ovos.pip.uninstall.complete, ovos.pip.uninstall.failed</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_1">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to / sent by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.audio.play_sound</code></td>
+<td>"uri": str</td>
+<td>play sounds via ovos-audio</td>
+<td>self.play_error_sound<br>self.play_success_sound</td>
+</tr>
+<tr>
+<td><code>ovos.skills.install.failed</code></td>
+<td>"error": str</td>
+<td>signal that installation failed</td>
+<td>self.handle_install_skill</td>
+</tr>
+<tr>
+<td><code>ovos.skills.install.complete</code></td>
+<td></td>
+<td>signal that installation was successful</td>
+<td>self.handle_install_skill</td>
+</tr>
+<tr>
+<td><code>ovos.skills.uninstall.failed</code></td>
+<td>"error": str</td>
+<td>signal that skill uninstallation failed</td>
+<td>self.handle_uninstall_skill</td>
+</tr>
+<tr>
+<td><code>ovos.skills.uninstall.complete</code></td>
+<td></td>
+<td>signal that skill uninstallation was successful</td>
+<td>self.handle_uninstall_skill</td>
+</tr>
+<tr>
+<td><code>ovos.skills.pip.install.failed</code></td>
+<td>"error": str</td>
+<td>signal that pypi installation failed</td>
+<td>self.handle_install_python</td>
+</tr>
+<tr>
+<td><code>ovos.skills.pip.install.complete</code></td>
+<td></td>
+<td>signal that pypi installation was successful</td>
+<td>self.handle_install_python</td>
+</tr>
+<tr>
+<td><code>ovos.skills.pip.uninstall.failed</code></td>
+<td>"error": str</td>
+<td>signal that pypi uninstallation failed</td>
+<td>self.handle_uninstall_python</td>
+</tr>
+<tr>
+<td><code>ovos.skills.pip.uninstall.complete</code></td>
+<td></td>
+<td>signal that pypi uninstallation was successful</td>
+<td>self.handle_uninstall_python</td>
+</tr>
+</tbody>
+</table>
+<h2 id="intentservice">IntentService</h2>
+<h3 id="listens-to_2">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recognizer_loop:utterance</code></td>
+<td>utterances: list<br> lang: str</td>
+<td>Handle a natural language question from the user</td>
+<td><code>ovos.utterance.cancelled</code>, <code>ovos.utterance.handled</code></td>
+</tr>
+<tr>
+<td><code>register_vocab</code></td>
+<td>entity_value: str<br>entity_type: str<br>regex: str<br>alias_of: str<br>lang: str</td>
+<td>Register vocabulary for the Adapt intent service</td>
+<td></td>
+</tr>
+<tr>
+<td><code>register_intent</code></td>
+<td>intent_type: str</td>
+<td>Register an intent for the Adapt intent service</td>
+<td></td>
+</tr>
+<tr>
+<td><code>detach_intent</code></td>
+<td>intent_name: str</td>
+<td>Remove a registered intent from the intent service</td>
+<td></td>
+</tr>
+<tr>
+<td><code>detach_skill</code></td>
+<td>skill_id: str</td>
+<td>Remove all intents registered for a specific skill from the intent service</td>
+<td></td>
+</tr>
+<tr>
+<td><code>add_context</code></td>
+<td>context: str<br> word: str<br>origin: str</td>
+<td>Add context to the session context manager</td>
+<td></td>
+</tr>
+<tr>
+<td><code>remove_context</code></td>
+<td>context: str</td>
+<td>Remove specific context from the session context manager</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clear_context</code></td>
+<td></td>
+<td>Clear all keywords from the session context manager</td>
+<td></td>
+</tr>
+<tr>
+<td><code>intent.service.intent.get</code></td>
+<td>utterance: str</td>
+<td>DEPRECATED: Get intent information for a given utterance</td>
+<td><code>intent.service.intent.reply</code></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.get</code></td>
+<td></td>
+<td>DEPRECATED: Get a list of registered skills</td>
+<td><code>intent.service.skills.reply</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.get</code></td>
+<td>utterance: str</td>
+<td>DEPRECATED: Get Adapt intent information for a given utterance</td>
+<td><code>intent.service.adapt.reply</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.manifest.get</code></td>
+<td></td>
+<td>DEPRECATED: Get the manifest of registered Adapt intents</td>
+<td><code>intent.service.adapt.manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.vocab.manifest.get</code></td>
+<td></td>
+<td>DEPRECATED: Get the manifest of registered Adapt vocabulary</td>
+<td><code>intent.service.adapt.vocab.manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.get</code></td>
+<td>utterance: str<br> norm_utt: str</td>
+<td>DEPRECATED: Get Padatious intent information for a given utterance</td>
+<td><code>intent.service.padatious.reply</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.manifest.get</code></td>
+<td></td>
+<td>DEPRECATED: Get the manifest of registered Padatious intents</td>
+<td><code>intent.service.padatious.manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.entities.manifest.get</code></td>
+<td></td>
+<td>DEPRECATED: Get the manifest of registered Padatious entities</td>
+<td><code>intent.service.padatious.entities.manifest</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_2">Emits</h3>
+<p>Selected intents have their own messages that can not be listed here</p>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to / sent by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>each intent has it's own message_type</td>
+<td></td>
+<td>Trigger selected intent</td>
+<td><code>recognizer_loop:utterance</code></td>
+</tr>
+<tr>
+<td><code>ovos.utterance.cancelled</code></td>
+<td></td>
+<td>user said "nevermind" to cancel the utterance, via <a href="https://github.com/OpenVoiceOS/ovos-utterance-plugin-cancel">ovos-utterance-plugin-cancel</a></td>
+<td><code>recognizer_loop:utterance</code></td>
+</tr>
+<tr>
+<td><code>ovos.utterance.handled</code></td>
+<td></td>
+<td>Finished handling a natural language question from the user</td>
+<td><code>recognizer_loop:utterance</code></td>
+</tr>
+<tr>
+<td><code>mycroft.audio.play_sound</code></td>
+<td>"uri": str</td>
+<td>Play error sound</td>
+<td>self.send_complete_intent_failure</td>
+</tr>
+<tr>
+<td><code>complete_intent_failure</code></td>
+<td></td>
+<td>signal we failed to handle an utterance</td>
+<td>self.send_complete_intent_failure</td>
+</tr>
+<tr>
+<td><code>intent.service.intent.reply</code></td>
+<td>"intent": dict</td>
+<td>DEPRECATED: get intent that would match, excluding converse/fallback</td>
+<td><code>intent.service.intent.get</code></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.reply</code></td>
+<td>"skills": list</td>
+<td>DEPRECATED: send list of skills with registered intents</td>
+<td><code>intent.service.skills.get</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.reply</code></td>
+<td>"intent": dict</td>
+<td>DEPRECATED: get intent that would match with adapt</td>
+<td><code>intent.service.adapt.get</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.manifest</code></td>
+<td>"intents": list</td>
+<td>DEPRECATED: get list of registered adapt intents</td>
+<td><code>intent.service.adapt.manifest.get</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.vocab.manifest</code></td>
+<td>"vocab": list</td>
+<td>DEPRECATED: get list of registered adapt keywords</td>
+<td><code>intent.service.adapt.vocab.manifest.get</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.reply</code></td>
+<td>"intent": dict</td>
+<td>DEPRECATED: get intent that would match with padatious</td>
+<td><code>intent.service.padatious.get</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.manifest</code></td>
+<td>"intents": list</td>
+<td>DEPRECATED: get list of registered padatious intents</td>
+<td><code>intent.service.padatious.manifest.get</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.entities.manifest</code></td>
+<td>"entities": list</td>
+<td>DEPRECATED: get list of registered padatious entities</td>
+<td><code>intent.service.padatious.entities.manifest.get</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="commonqaservice">CommonQAService</h2>
+<h3 id="listens-to_3">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>common_query.question</code></td>
+<td>'utterance': str</td>
+<td>Handles common query questions and initiates searches.</td>
+<td><code>question:query</code></td>
+</tr>
+<tr>
+<td><code>question:query.response</code></td>
+<td>'phrase': str<br> 'skill_id': str<br>'searching': bool<br>'answer': str<br>'conf': float<br>'callback_data': dict</td>
+<td>Provides a response to a common query with search information and the answer.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_3">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>sent by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>question:query</code></td>
+<td>'phrase': str</td>
+<td>Initiates a common query for a specific phrase.</td>
+<td>self.handle_question</td>
+</tr>
+<tr>
+<td><code>question:action</code></td>
+<td>'phrase': str<br>'skill_id': str<br>'callback_data': dict</td>
+<td>Trigger skill callback after answer was selected</td>
+<td>self._query_timeout</td>
+</tr>
+<tr>
+<td><code>question:query.timeout</code></td>
+<td>'phrase': str<br>'skill_id': str</td>
+<td>Tell common_qa skills to stop searching</td>
+<td>self.handle_query_response</td>
+</tr>
+<tr>
+<td><code>speak</code></td>
+<td>'utterance': str</td>
+<td>DEPRECATED: speak is now done by the selected skill</td>
+<td>self._query_timeout</td>
+</tr>
+</tbody>
+</table>
+<h2 id="converseservice">ConverseService</h2>
+<h3 id="listens-to_4">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.speech.recognition.unknown</code></td>
+<td></td>
+<td>Reset converse when speech recognition is unknown.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.deactivate</code></td>
+<td>"skill_id": str</td>
+<td>Deactivate a skill.</td>
+<td><code>intent.service.skills.deactivated</code></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.activate</code></td>
+<td>"skill_id": str</td>
+<td>Activate a skill.</td>
+<td><code>intent.service.skills.activated</code></td>
+</tr>
+<tr>
+<td><code>intent.service.active_skills.get</code></td>
+<td></td>
+<td>Request a list of active skills.</td>
+<td><code>intent.service.active_skills.reply</code></td>
+</tr>
+<tr>
+<td><code>skill.converse.get_response.enable</code></td>
+<td>"skill_id": str</td>
+<td>Enable get_response mode for skill_id</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skill.converse.get_response.disable</code></td>
+<td>"skill_id": str</td>
+<td>Disable get_response mode for skill_id</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skill.converse.pong</code></td>
+<td>"skill_id": str<br>"can_handle": bool</td>
+<td>Acknowledge skill's ability to handle conversation.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skill.converse.response</code></td>
+<td>"result": bool, "error": str</td>
+<td>Response from a skill about handling a conversation.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active_skill_request</code></td>
+<td>"skill_id": str</td>
+<td>DEPRECATED: Activate a skill (backward compatibility).</td>
+<td><code>intent.service.skills.activated</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_4">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to / sent by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skill.converse.ping</code></td>
+<td></td>
+<td>Ping all skills to check if they want to converse.</td>
+<td><code>skill.converse.pong</code></td>
+</tr>
+<tr>
+<td><code>skill.converse.request</code></td>
+<td>"skill_id": str<br> "utterances": list<br> "lang": str</td>
+<td>Request a skill to handle a conversation.</td>
+<td><code>skill.converse.response</code></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.deactivated</code></td>
+<td>"skill_id": str</td>
+<td>Notification that a skill has been deactivated.</td>
+<td><code>intent.service.skills.deactivate</code></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.activated</code></td>
+<td>"skill_id": str</td>
+<td>Notification that a skill has been activated.</td>
+<td><code>intent.service.skills.activate</code></td>
+</tr>
+<tr>
+<td><code>intent.service.active_skills.reply</code></td>
+<td>"skills": list</td>
+<td>Reply to a request for a list of active skills.</td>
+<td><code>intent.service.active_skills.get</code></td>
+</tr>
+<tr>
+<td><code>{skill_id}.converse.get_response</code></td>
+<td>"utterances": list<br> "lang": str</td>
+<td>send get_response answer for skill_id to handle</td>
+<td>self.converse</td>
+</tr>
+<tr>
+<td><code>{skill_id}.converse.request</code></td>
+<td>"utterances": list<br> "lang": str</td>
+<td>send utterance for skill_id to converse</td>
+<td>self.converse</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fallbackservice">FallbackService</h2>
+<h3 id="listens-to_5">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.skills.fallback.register</code></td>
+<td>"skill_id": str<br> "priority": int</td>
+<td>Registers a skill for fallback handling with an optional priority level.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ovos.skills.fallback.deregister</code></td>
+<td>"skill_id": str</td>
+<td>Deregisters a skill from fallback handling.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ovos.skills.fallback.{skill_id}.response</code></td>
+<td>"result": bool<br> "error": str</td>
+<td>Indicates the result of the specific skill's fallback handling attempt and any potential errors.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ovos.skills.fallback.pong</code></td>
+<td>"skill_id": str<br> "can_handle": bool</td>
+<td>Acknowledges a skill's willingness to handle fallback and whether it can handle it.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_5">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Sent by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.skills.fallback.ping</code></td>
+<td>"skill_id": str</td>
+<td>Requests skills to acknowledge their willingness to handle fallback for a specific skill.</td>
+<td>self._collect_fallback_skills</td>
+</tr>
+<tr>
+<td><code>ovos.skills.fallback.{skill_id}.request</code></td>
+<td>"skill_id": str<br> "utterance": str<br> "lang": str</td>
+<td>Requests a specific skill to attempt fallback handling for the given utterances and language.</td>
+<td>self.attempt_fallback</td>
+</tr>
+<tr>
+<td><code>mycroft.skills.fallback</code></td>
+<td>"utterance": str<br> "lang": str<br> "fallback_range": tuple</td>
+<td>DEPRECATED fallback handling by a legacy fallback skill singleton class.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="padaciososervice">PadaciosoService</h2>
+<h3 id="listens-to_6">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>padatious:register_intent</code></td>
+<td>'name': str<br>'file_name': str<br> 'samples': List[str]<br>'lang': str</td>
+<td>Register a new intent with Padacioso.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>padatious:register_entity</code></td>
+<td>'name': str<br>'file_name': str<br> 'samples': List[str]<br>'lang': str</td>
+<td>Register a new entity with Padacioso.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>detach_intent</code></td>
+<td>'intent_name': str</td>
+<td>Detach a specific intent from Padacioso.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>detach_skill</code></td>
+<td>'skill_id': str</td>
+<td>Detach all intents associated with a skill from Padacioso.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="padatiousservice">PadatiousService</h2>
+<h3 id="listens-to_7">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>padatious:register_intent</code></td>
+<td>'name': str<br> 'file_name': str<br> 'samples': List[str]<br> 'lang': str</td>
+<td>Register an intent with Padatious for intent recognition.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>padatious:register_entity</code></td>
+<td>'name': str<br>'file_name': str<br> 'samples': List[str]<br>'lang': str</td>
+<td>Register an entity with Padatious for entity recognition.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>detach_intent</code></td>
+<td>'intent_name': str</td>
+<td>Remove a registered intent from Padatious.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>detach_skill</code></td>
+<td>'skill_id': str</td>
+<td>Remove all intents registered by a specific skill from Padatious.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.skills.initialized</code></td>
+<td></td>
+<td>Triggered when skills are initialized, used to initiate training.</td>
+<td><code>mycroft.skills.trained</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_6">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to / sent by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.skills.trained</code></td>
+<td></td>
+<td>Indicates that intents classifiers have been trained.</td>
+<td><code>mycroft.skills.initialized</code></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ovos_audio/" class="btn btn-neutral float-right" title="Audio">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="../ovos_audio/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

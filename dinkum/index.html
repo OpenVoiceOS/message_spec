@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/dinkum/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Listener - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Listener";
+        var mkdocs_page_input_path = "dinkum.md";
+        var mkdocs_page_url = "/community-docs/dinkum/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_audio/">Audio</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Listener</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ovosdinkumvoiceservice">OVOSDinkumVoiceService</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits">Emits</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../skills/">Workshop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui/">GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ha/">PHAL Home Assistant</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_wifi_setup/">PHAL Wifi Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ggwave/">Audio GGWave</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../shell/">OVOS Shell</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Frameworks</li>
+      <li class="breadcrumb-item active">Listener</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ovos-dinkum-listener">ovos-dinkum-listener</h1>
+<h2 id="ovosdinkumvoiceservice">OVOSDinkumVoiceService</h2>
+<h3 id="listens-to">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.mic.mute</code></td>
+<td></td>
+<td>Produces empty audio stream</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.mic.unmute</code></td>
+<td></td>
+<td>Uses real audio stream</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.mic.listen</code></td>
+<td></td>
+<td>Wakes up OVOS and starts recording voice command</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:audio_output_start</code></td>
+<td></td>
+<td>Audio output started</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:audio_output_end</code></td>
+<td></td>
+<td>Audio output ended</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.stop</code></td>
+<td></td>
+<td>Handler for OVOS.stop, i.e. button press</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:sleep</code></td>
+<td></td>
+<td>Put the voice loop to sleep</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:wake_up</code></td>
+<td></td>
+<td>Wake up the voice loop</td>
+<td><code>mycroft.awoken</code></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:record_stop</code></td>
+<td></td>
+<td>Stop current recording session</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:state.set</code></td>
+<td>"state": str<br> "mode": str</td>
+<td>Set listening state and mode</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:state.get</code></td>
+<td></td>
+<td>Query listening state</td>
+<td><code>recognizer_loop:state</code></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.activated</code></td>
+<td></td>
+<td>When a skill is activated, reset the timeout until wakeword is needed again (only used when in hybrid listening mode)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ovos.languages.stt</code></td>
+<td></td>
+<td>Handle a request for supported STT languages</td>
+<td><code>ovos.languages.stt.response</code></td>
+</tr>
+<tr>
+<td><code>opm.stt.query</code></td>
+<td></td>
+<td>Query supported STT languages and plugins</td>
+<td><code>opm.stt.query.response</code></td>
+</tr>
+<tr>
+<td><code>opm.ww.query</code></td>
+<td></td>
+<td>Query supported wake word languages and plugins</td>
+<td><code>opm.ww.query.response</code></td>
+</tr>
+<tr>
+<td><code>opm.vad.query</code></td>
+<td></td>
+<td>Query supported VAD plugins and options</td>
+<td><code>opm.vad.query.response</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recognizer_loop:record_begin</code></td>
+<td></td>
+<td>Reports that voice command recording has begun</td>
+<td><code>mycroft.mic.listen</code></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:wakeword</code></td>
+<td>"utterance": str<br> "lang": str</td>
+<td>Reports wake word used to wake up OVOS</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:hotword</code></td>
+<td>"utterance": str<br> "lang": str</td>
+<td>Reports hotword used to wake up OVOS</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:stopword</code></td>
+<td>"utterance": str<br> "lang": str</td>
+<td>Reports stop word used to end recording</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:wakeupword</code></td>
+<td>"utterance": str<br> "lang": str</td>
+<td>Reports wake-up word used to wake up OVOS</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:record_end</code></td>
+<td></td>
+<td>Reports that voice command recording has ended</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:utterance</code></td>
+<td>"utterances": List[str]<br> "lang": str</td>
+<td>Result from speech to text of voice command</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:speech.recognition.unknown</code></td>
+<td></td>
+<td>Sent when empty result from speech to text is returned</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.audio.play_sound</code></td>
+<td>"uri": str</td>
+<td>Play a sound</td>
+<td></td>
+</tr>
+<tr>
+<td><code>mycroft.awoken</code></td>
+<td></td>
+<td>Notify that OVOS is awake</td>
+<td><code>recognizer_loop:wake_up</code></td>
+</tr>
+<tr>
+<td><code>recognizer_loop:state</code></td>
+<td>"mode": str<br> "state": str</td>
+<td>Query listening state</td>
+<td><code>recognizer_loop:state.get</code></td>
+</tr>
+<tr>
+<td><code>ovos.languages.stt.response</code></td>
+<td>"langs": List[str]</td>
+<td>Response for supported STT languages</td>
+<td><code>ovos.languages.stt</code></td>
+</tr>
+<tr>
+<td><code>opm.stt.query.response</code></td>
+<td>"langs": List <br>"plugins": List<br>"configs": List<br>"options": List</td>
+<td>Response for supported STT plugins and options</td>
+<td><code>opm.stt.query</code></td>
+</tr>
+<tr>
+<td><code>opm.ww.query.response</code></td>
+<td>"langs": List <br>"plugins": List<br>"configs": List<br>"options": List</td>
+<td>Response for supported wake word plugins and options</td>
+<td><code>opm.ww.query</code></td>
+</tr>
+<tr>
+<td><code>opm.vad.query.response</code></td>
+<td>"plugins": List<br>"configs": List<br>"options": List</td>
+<td>Response for supported VAD plugins and options</td>
+<td><code>opm.vad.query</code></td>
+</tr>
+<tr>
+<td><code>mycroft.mic.get_status.response</code></td>
+<td>"muted": bool</td>
+<td>Report mic mute status (OVOS software side)</td>
+<td><code>mycroft.mic.get_status</code></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ovos_audio/" class="btn btn-neutral float-left" title="Audio"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../skills/" class="btn btn-neutral float-right" title="Workshop">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ovos_audio/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../skills/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

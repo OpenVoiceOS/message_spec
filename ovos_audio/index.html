@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/ovos_audio/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Audio - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Audio";
+        var mkdocs_page_input_path = "ovos_audio.md";
+        var mkdocs_page_url = "/community-docs/ovos_audio/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_core/">Core</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Audio</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#playbackservice">PlaybackService</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to">Listens To</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#audioservice">AudioService</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_1">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_1">Emits</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dinkum/">Listener</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../skills/">Workshop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui/">GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ha/">PHAL Home Assistant</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_wifi_setup/">PHAL Wifi Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ggwave/">Audio GGWave</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../shell/">OVOS Shell</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Frameworks</li>
+      <li class="breadcrumb-item active">Audio</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ovos-audio">ovos-audio</h1>
+<ul>
+<li><a href="#playbackservice">PlaybackService</a></li>
+<li><a href="#audioservice">AudioService</a></li>
+</ul>
+<h2 id="playbackservice">PlaybackService</h2>
+<h3 id="listens-to">Listens To</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+<th>handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>opm.tts.query</code></td>
+<td></td>
+<td>Responds with TTS plugin data.</td>
+<td><code>opm.tts.query.response</code></td>
+<td>self.handle_opm_tts_query</td>
+</tr>
+<tr>
+<td><code>opm.g2p.query</code></td>
+<td></td>
+<td>Responds with G2P plugin data.</td>
+<td><code>opm.g2p.query.response</code></td>
+<td>self.handle_opm_g2p_query</td>
+</tr>
+<tr>
+<td><code>opm.audio.query</code></td>
+<td></td>
+<td>Responds with audio service plugin data.</td>
+<td><code>opm.audio.query.response</code></td>
+<td>self.handle_opm_audio_query</td>
+</tr>
+<tr>
+<td><code>speak</code></td>
+<td>'utterance': str<br>'expect_response': bool</td>
+<td>generates and queues TTS audio for playback</td>
+<td></td>
+<td>self.handle_speak</td>
+</tr>
+<tr>
+<td><code>mycroft.stop</code></td>
+<td></td>
+<td>Handles global stop and shuts down speech.</td>
+<td><code>mycroft.stop.handled</code></td>
+<td>self.handle_stop</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.speech.stop</code></td>
+<td></td>
+<td>stops speech.</td>
+<td></td>
+<td>self.handle_stop</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.speak.status</code></td>
+<td></td>
+<td>reports if OVOS is speaking.</td>
+<td><code>mycroft.audio.is_speaking</code></td>
+<td>self.handle_speak_status</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.queue</code></td>
+<td>'uri': str<br>'listen': bool<br> 'viseme': str<br>'audio_ext': str</td>
+<td>Queues a sound file to play in the speech thread.</td>
+<td></td>
+<td>self.handle_queue_audio</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.play_sound</code></td>
+<td>'uri': str</td>
+<td>Plays a sound file immediately (may play over TTS).</td>
+<td></td>
+<td>self.handle_instant_play</td>
+</tr>
+<tr>
+<td><code>ovos.languages.tts</code></td>
+<td></td>
+<td>Handles a request for supported TTS languages.</td>
+<td><code>ovos.languages.tts.response</code></td>
+<td>self.handle_get_languages_tts</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>opm.tts.query.response</code></td>
+<td>'langs': List<br> 'plugins': {lang: List}<br> configs: {plugin_name: {lang: List}}<br> options: {lang: List}}</td>
+<td>Responds to opm.tts.query with TTS plugin data.</td>
+<td><code>opm.tts.query</code></td>
+</tr>
+<tr>
+<td><code>opm.g2p.query.response</code></td>
+<td>'langs': List<br>'plugins': {lang: List}<br> configs: {plugin_name: {lang: List}}<br> options: {lang: List}}</td>
+<td>Responds to opm.g2p.query with G2P plugin data.</td>
+<td><code>opm.g2p.query</code></td>
+</tr>
+<tr>
+<td><code>opm.audio.query.response</code></td>
+<td>'plugins': List<br>configs: {backend_name: Dict}<br>options: {lang: List}}</td>
+<td>Responds to opm.audio.query with audio service plugin data.</td>
+<td><code>opm.audio.query</code></td>
+</tr>
+<tr>
+<td><code>mycroft.audio.is_speaking</code></td>
+<td>'speaking': bool</td>
+<td>Reports whether OVOS is currently speaking.</td>
+<td><code>mycroft.audio.speak.status</code></td>
+</tr>
+<tr>
+<td><code>ovos.languages.tts.response</code></td>
+<td>'langs': List</td>
+<td>Handles a request for supported TTS languages.</td>
+<td><code>ovos.languages.tts</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="audioservice">AudioService</h2>
+<h3 id="listens-to_1">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Response Type(s)</th>
+<th>handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.audio.service.play</code></td>
+<td>'tracks': List<br> 'repeat': bool</td>
+<td>Starts playback of a tracklist.</td>
+<td></td>
+<td>self._play</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.queue</code></td>
+<td>'tracks': List</td>
+<td>Queues up tracks for playback.</td>
+<td></td>
+<td>self._queue</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.pause</code></td>
+<td></td>
+<td>Pauses the current audio service.</td>
+<td></td>
+<td>self._pause</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.resume</code></td>
+<td></td>
+<td>Resumes playback of the paused audio.</td>
+<td></td>
+<td>self._resume</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.stop</code></td>
+<td></td>
+<td>Stops any playing audio service.</td>
+<td></td>
+<td>self._stop</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.next</code></td>
+<td></td>
+<td>Skips the current track and plays the next.</td>
+<td></td>
+<td>self._next</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.prev</code></td>
+<td></td>
+<td>Starts playing the previous track.</td>
+<td></td>
+<td>self._prev</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.track_info</code></td>
+<td></td>
+<td>Requests track information.</td>
+<td><code>mycroft.audio.service.track_info_reply</code></td>
+<td>self._track_info</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.list_backends</code></td>
+<td></td>
+<td>Requests a list of available audio backends.</td>
+<td></td>
+<td>self._list_backends</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.set_track_position</code></td>
+<td>'position': int</td>
+<td>Sets the track position in milliseconds.</td>
+<td></td>
+<td>self._set_track_position</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.get_track_position</code></td>
+<td></td>
+<td>Requests the current track position.</td>
+<td></td>
+<td>self._get_track_position</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.get_track_length</code></td>
+<td></td>
+<td>Requests the duration of the audio in milliseconds.</td>
+<td></td>
+<td>self._get_track_length</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.seek_forward</code></td>
+<td>'seconds': int</td>
+<td>Seeks forward by the specified number of seconds.</td>
+<td></td>
+<td>self._seek_forward</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.seek_backward</code></td>
+<td>'seconds': int</td>
+<td>Seeks backward by the specified number of seconds.</td>
+<td></td>
+<td>self._seek_backward</td>
+</tr>
+<tr>
+<td><code>recognizer_loop:audio_output_start</code></td>
+<td></td>
+<td>Triggered when audio output starts and lowers the volume.</td>
+<td></td>
+<td>self._lower_volume</td>
+</tr>
+<tr>
+<td><code>recognizer_loop:record_begin</code></td>
+<td></td>
+<td>Triggered when recording begins and lowers the volume.</td>
+<td></td>
+<td>self._lower_volume</td>
+</tr>
+<tr>
+<td><code>recognizer_loop:audio_output_end</code></td>
+<td></td>
+<td>Triggered when audio output ends and restores the volume.</td>
+<td></td>
+<td>self._restore_volume</td>
+</tr>
+<tr>
+<td><code>recognizer_loop:record_end</code></td>
+<td></td>
+<td>Restores the volume after recording is done.</td>
+<td></td>
+<td>self._restore_volume_after_record</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_1">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>In Response to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.audio.playing_track</code></td>
+<td>'track': str</td>
+<td>Informs about the track about to start playing.</td>
+<td>self.track_start</td>
+</tr>
+<tr>
+<td><code>mycroft.audio.queue_end</code></td>
+<td></td>
+<td>Indicates the end of the playlist.</td>
+<td>self.track_start</td>
+</tr>
+<tr>
+<td><code>mycroft.stop.handled</code></td>
+<td>'by': "audio:{service_name}"</td>
+<td>Indicates that audio playback was stopped.</td>
+<td><code>mycroft.audio.service.stop</code></td>
+</tr>
+<tr>
+<td><code>mycroft.audio.service.track_info_reply</code></td>
+<td>'data': Dict</td>
+<td>Sends track information in response to a request.</td>
+<td><code>mycroft.audio.service.track_info</code></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ovos_core/" class="btn btn-neutral float-left" title="Core"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dinkum/" class="btn btn-neutral float-right" title="Listener">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ovos_core/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dinkum/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
