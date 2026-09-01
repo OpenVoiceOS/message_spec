@@ -1,7 +1,9 @@
 # OVOS Utils
 
-These interface classes originated in `ovos-utils` and now live in `ovos-bus-client`
-(`ovos_bus_client.apis`); the message types below are unchanged.
+These interface classes originated in `ovos-utils`. OCPInterface, ClassicAudioServiceInterface, 
+GUIInterface, and EventSchedulerInterface now live in `ovos-bus-client` (`ovos_bus_client.apis`). 
+IntentServiceInterface is in `ovos_workshop.intents`. IntentQueryApi is deprecated and not 
+importable. The message types below are unchanged.
 
 ## OCPInterface
 
