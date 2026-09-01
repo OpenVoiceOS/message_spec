@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://openvoiceos.github.io/community-docs/utils/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Utils - OVOS Messages Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Utils";
+        var mkdocs_page_input_path = "utils.md";
+        var mkdocs_page_url = "/community-docs/utils/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> OVOS Messages Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Frameworks</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_core/">Core</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_audio/">Audio</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dinkum/">Listener</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../skills/">Workshop</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui/">GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../persona/">Persona</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Utils</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ocpinterface">OCPInterface</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#emits">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#classicaaudioserviceinterface">ClassicAAudioServiceInterface</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_1">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#audioserviceinterface">AudioServiceInterface</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_2">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#intentqueryapi">IntentQueryApi</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to">Listens To</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_3">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#intentserviceinterface">IntentServiceInterface</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_4">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#eventschedulerinterface">EventSchedulerInterface</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_1">Listens to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_5">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#guiwidgets">GUIWidgets</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_6">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#guiinterface">GUIInterface</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#listens-to_2">Listens To</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_7">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#intentlayers">IntentLayers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_8">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enclosureapi">EnclosureAPI</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#emits_9">Emits</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#processstatus">ProcessStatus</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Plugins</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../opm/">OPM</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_system/">PHAL System</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_alsa/">PHAL ALSA</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_connectivity/">PHAL Connectivity</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_nm/">PHAL Network Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ipgeo/">PHAL IP Geolocation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PHAL_oauth/">PHAL OAuth</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wallpaper/">PHAL Wallpaper Manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_mk1/">PHAL Mark1 Faceplate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_ha/">PHAL Home Assistant</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_PHAL_plugin_wifi_setup/">PHAL Wifi Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_wifi_gui/">WIFI GUI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../phal_balena/">WIFI Balena</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ggwave/">Audio GGWave</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">GUI Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../shell/">OVOS Shell</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_bigscreen/">Plasma Bigscreen</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gui_mobile/">Mobile</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Skills</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../ovos_homescreen/">Homescreen</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">OVOS Messages Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Frameworks</li>
+      <li class="breadcrumb-item active">Utils</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ovos-utils">OVOS Utils</h1>
+<p>These interface classes originated in <code>ovos-utils</code>. OCPInterface, ClassicAudioServiceInterface, 
+GUIInterface, and EventSchedulerInterface now live in <code>ovos-bus-client</code> (<code>ovos_bus_client.apis</code>). 
+IntentServiceInterface is in <code>ovos_workshop.intents</code>. IntentQueryApi is deprecated and not 
+importable. The message types below are unchanged.</p>
+<h2 id="ocpinterface">OCPInterface</h2>
+<p>For skills and applications that want to interact with OCP</p>
+<h3 id="emits">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ovos.common_play.playlist.queue</code></td>
+<td>{'tracks': [dict, ...]}</td>
+<td>Queue up a track to OCP playing playlist.</td>
+<td>queue</td>
+</tr>
+<tr>
+<td><code>ovos.common_play.play</code></td>
+<td>{"media": dict, "playlist": [dict, ...], "utterance": str}</td>
+<td>Start playback.</td>
+<td>play</td>
+</tr>
+</tbody>
+</table>
+<h2 id="classicaaudioserviceinterface">ClassicAAudioServiceInterface</h2>
+<p>Used internally by OCP / ovos-audio, usage not recommended for third party integrations</p>
+<h3 id="emits_1">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mycroft.audio.service.queue</td>
+<td>{'tracks': [str or (str, str)]}</td>
+<td>Queue up a track to the playing playlist.</td>
+<td><code>queue</code></td>
+</tr>
+<tr>
+<td>mycroft.audio.service.play</td>
+<td>{'tracks': [str or (str, str)], 'utterance': str, 'repeat': bool}</td>
+<td>Start playback.</td>
+<td><code>play</code></td>
+</tr>
+<tr>
+<td>mycroft.audio.service.stop</td>
+<td></td>
+<td>Stop the track.</td>
+<td><code>stop</code></td>
+</tr>
+<tr>
+<td>mycroft.audio.service.next</td>
+<td></td>
+<td>Change to the next track.</td>
+<td><code>next</code></td>
+</tr>
+<tr>
+<td>mycroft.audio.service.prev</td>
+<td></td>
+<td>Change to the previous track.</td>
+<td><code>prev</code></td>
+</tr>
+<tr>
+<td>mycroft.audio.service.pause</td>
+<td></td>
+<td>Pause playback.</td>
+<td><code>pause</code></td>
+</tr>
+<tr>
+<td>mycroft.audio.service.resume</td>
+<td></td>
+<td>Resume paused playback.</td>
+<td><code>resume</code></td>
+</tr>
+<tr>
+<td>mycroft.audio.service.seek_forward</td>
+<td>{'seconds': int or float}</td>
+<td>Skip ahead X seconds.</td>
+<td><code>seek_forward</code></td>
+</tr>
+<tr>
+<td>mycroft.audio.service.seek_backward</td>
+<td>{'seconds': int or float}</td>
+<td>Rewind X seconds.</td>
+<td><code>seek_backward</code></td>
+</tr>
+<tr>
+<td>mycroft.audio.service.set_track_position</td>
+<td>{'position': int or float}</td>
+<td>Seek X seconds.</td>
+<td><code>set_track_position</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="audioserviceinterface">AudioServiceInterface</h2>
+<p>DEPRECATED: backwards compat layer for skills in the wild that interfaced with audio service instead of OCP</p>
+<h3 id="emits_2">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ovos.common_play.playlist.queue</td>
+<td>{'tracks': List[Dict]}</td>
+<td>Queue up a track to playing playlist.</td>
+<td><code>queue</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.play</td>
+<td>{'media': Dict, 'playlist': List, 'utterance': str, 'repeat': bool}</td>
+<td>Start playback.</td>
+<td><code>play</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.stop</td>
+<td></td>
+<td>Stop the track.</td>
+<td><code>stop</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.next</td>
+<td></td>
+<td>Change to the next track.</td>
+<td><code>next</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.previous</td>
+<td></td>
+<td>Change to the previous track.</td>
+<td><code>prev</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.pause</td>
+<td></td>
+<td>Pause playback.</td>
+<td><code>pause</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.resume</td>
+<td></td>
+<td>Resume paused playback.</td>
+<td><code>resume</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.seek</td>
+<td>{'seconds': int}</td>
+<td>Skip ahead or rewind X seconds.</td>
+<td><code>seek_forward</code><br> <code>seek_backward</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.get_track_length</td>
+<td></td>
+<td>Get the duration of the audio in milliseconds.</td>
+<td><code>get_track_length</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.get_track_position</td>
+<td></td>
+<td>Get the current position in milliseconds.</td>
+<td><code>get_track_position</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.set_track_position</td>
+<td>{'position': int}</td>
+<td>Go to X position in milliseconds.</td>
+<td><code>set_track_position</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.track_info</td>
+<td></td>
+<td>Request information of the current playing track.</td>
+<td><code>track_info</code></td>
+</tr>
+<tr>
+<td>ovos.common_play.list_backends</td>
+<td></td>
+<td>Return available audio backends.</td>
+<td><code>available_backends</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="intentqueryapi">IntentQueryApi</h2>
+<p>DEPRECATION NOTICE: this class / bus messages are marked for heavy refactoring/deprecation in ovos-core 0.0.9 with the
+introduction of intent pipelines</p>
+<h3 id="listens-to">Listens To</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted Response Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>intent.service.adapt.reply</code></td>
+<td>{"intent": str}</td>
+<td>Reply with the best adapt intent for an utterance</td>
+<td><code>intent.service.adapt.get</code></td>
+<td><code>get_adapt_intent</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.reply</code></td>
+<td>{"intent": str}</td>
+<td>Reply with the best padatious intent for an utterance</td>
+<td><code>intent.service.padatious.get</code></td>
+<td><code>get_padatious_intent</code></td>
+</tr>
+<tr>
+<td><code>intent.service.intent.reply</code></td>
+<td>{"intent": str}</td>
+<td>Reply with the best intent for an utterance</td>
+<td><code>intent.service.intent.get</code></td>
+<td><code>get_intent</code></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.reply</code></td>
+<td>{"skills": list}</td>
+<td>Reply with the skills manifest</td>
+<td><code>intent.service.skills.get</code></td>
+<td><code>get_skills_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.active_skills.reply</code></td>
+<td>{"skills": list}</td>
+<td>Reply with the active skills</td>
+<td><code>intent.service.active_skills.get</code></td>
+<td><code>get_active_skills</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.manifest</code></td>
+<td>{"intents": list}</td>
+<td>Reply with the adapt manifest</td>
+<td><code>intent.service.adapt.manifest.get</code></td>
+<td><code>get_adapt_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.manifest</code></td>
+<td>{"intents": list}</td>
+<td>Reply with the padatious manifest</td>
+<td><code>intent.service.padatious.manifest.get</code></td>
+<td><code>get_padatious_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.intent.manifest</code></td>
+<td>{"adapt": list, "padatious": list}</td>
+<td>Reply with the intent manifest</td>
+<td><code>intent.service.intent.manifest.get</code></td>
+<td><code>get_intent_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.vocab.manifest</code></td>
+<td>{"vocab": list}</td>
+<td>Reply with the vocabulary manifest</td>
+<td><code>intent.service.adapt.vocab.manifest.get</code></td>
+<td><code>get_vocab_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.vocab.manifest</code></td>
+<td>{"vocab": list}</td>
+<td>Reply with the regex manifest</td>
+<td><code>intent.service.adapt.vocab.manifest.get</code></td>
+<td><code>get_regex_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.entities.manifest</code></td>
+<td>{"entities": list}</td>
+<td>Reply with the entities manifest</td>
+<td><code>intent.service.padatious.entities.manifest.get</code></td>
+<td><code>get_entities_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.entities.manifest</code></td>
+<td>{"keywords": list}</td>
+<td>Reply with the keywords manifest</td>
+<td><code>intent.service.padatious.entities.manifest.get</code></td>
+<td><code>get_keywords_manifest</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_3">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>intent.service.adapt.get</code></td>
+<td>{"utterance": str, "lang": str}</td>
+<td>Get the best adapt intent for a given utterance</td>
+<td><code>intent.service.adapt.reply</code></td>
+<td><code>get_adapt_intent</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.get</code></td>
+<td>{"utterance": str, "lang": str}</td>
+<td>Get the best padatious intent for an utterance</td>
+<td><code>intent.service.padatious.reply</code></td>
+<td><code>get_padatious_intent</code></td>
+</tr>
+<tr>
+<td><code>intent.service.intent.get</code></td>
+<td>{"utterance": str, "lang": str}</td>
+<td>Get the best intent for a given utterance</td>
+<td><code>intent.service.intent.reply</code></td>
+<td><code>get_intent</code></td>
+</tr>
+<tr>
+<td><code>intent.service.skills.get</code></td>
+<td></td>
+<td>Get the skills manifest</td>
+<td><code>intent.service.skills.reply</code></td>
+<td><code>get_skills_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.active_skills.get</code></td>
+<td></td>
+<td>Get the active skills</td>
+<td><code>intent.service.active_skills.reply</code></td>
+<td><code>get_active_skills</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.manifest.get</code></td>
+<td></td>
+<td>Get the adapt manifest</td>
+<td><code>intent.service.adapt.manifest</code></td>
+<td><code>get_adapt_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.manifest.get</code></td>
+<td></td>
+<td>Get the padatious manifest</td>
+<td><code>intent.service.padatious.manifest</code></td>
+<td><code>get_padatious_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.intent.manifest.get</code></td>
+<td></td>
+<td>Get the intent manifest</td>
+<td></td>
+<td><code>get_intent_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.vocab.manifest.get</code></td>
+<td></td>
+<td>Get the vocabulary manifest</td>
+<td><code>intent.service.adapt.vocab.manifest</code></td>
+<td><code>get_vocab_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.adapt.vocab.manifest.get</code></td>
+<td></td>
+<td>Get the regex manifest</td>
+<td><code>intent.service.adapt.vocab.manifest</code></td>
+<td><code>get_regex_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.entities.manifest.get</code></td>
+<td></td>
+<td>Get the entities manifest</td>
+<td><code>intent.service.padatious.entities.manifest</code></td>
+<td><code>get_entities_manifest</code></td>
+</tr>
+<tr>
+<td><code>intent.service.padatious.entities.manifest.get</code></td>
+<td></td>
+<td>Get the keywords manifest</td>
+<td></td>
+<td><code>get_keywords_manifest</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="intentserviceinterface">IntentServiceInterface</h2>
+<p>DEPRECATION NOTICE: this class / bus messages are marked for heavy refactoring/deprecation in ovos-core 0.0.9 with the
+introduction of intent pipelines</p>
+<h3 id="emits_4">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>register_vocab</code></td>
+<td><code>{entity_data: dict, compatibility_data: dict              | Register an Adapt keyword with the intent service.        |</code>register_adapt_keyword`</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>register_vocab</code></td>
+<td><code>{regex: str, lang: str                                    | Register a regex string with the intent service.          |</code>register_adapt_regex`</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>register_intent</code></td>
+<td><code>intent_parser.__dict__</code></td>
+<td>Register an Adapt intent parser object.</td>
+<td><code>register_adapt_intent</code></td>
+</tr>
+<tr>
+<td><code>padatious:register_intent</code></td>
+<td><code>{file_name: str, samples: List[str], name: str, lang: str | Register a Padatious intent file with the intent service. |</code>register_padatious_intent`</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>padatious:register_entity</code></td>
+<td><code>{file_name: str, samples: List[str], name: str, lang: str | Register a Padatious entity file with the intent service. |</code>register_padatious_entity`</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>detach_intent</code></td>
+<td>"intent_name": f"{self.skill_id}:{intent_name}"</td>
+<td>Remove an intent from the intent service.</td>
+<td><code>detach_intent</code></td>
+</tr>
+<tr>
+<td><code>add_context</code></td>
+<td><code>{'context': context, 'word': word, 'origin': origin       | Set an Adapt context.                                     |</code>set_adapt_context`</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>remove_context</code></td>
+<td><code>{'context': context                                       | Remove an Adapt context.                                  |</code>remove_adapt_context`</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="eventschedulerinterface">EventSchedulerInterface</h2>
+<p>API for scheduling bus messages to be emitted by ovos-core, typically used by skills</p>
+<h3 id="listens-to_1">Listens to</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted Response Type</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mycroft.scheduler.schedule_event</td>
+<td>{'time': timestamp, 'event': name, 'repeat': interval, 'data': data}</td>
+<td>Schedule a single-shot event.</td>
+<td>mycroft.scheduler.schedule_event.response</td>
+<td><code>_schedule_event</code></td>
+</tr>
+<tr>
+<td>mycroft.scheduler.schedule_repeating_event</td>
+<td>{'time': timestamp, 'event': name, 'repeat': interval, 'data': data}</td>
+<td>Schedule a repeating event.</td>
+<td>mycroft.scheduler.schedule_event.response</td>
+<td><code>_schedule_event</code></td>
+</tr>
+<tr>
+<td>mycroft.scheduler.update_event</td>
+<td>{'event': unique_name, 'data': data}</td>
+<td>Change data of a scheduled event.</td>
+<td></td>
+<td><code>update_scheduled_event</code></td>
+</tr>
+<tr>
+<td>mycroft.scheduler.remove_event</td>
+<td>{'event': unique_name}</td>
+<td>Cancel a pending event. The event will no longer be scheduled.</td>
+<td></td>
+<td><code>cancel_scheduled_event</code></td>
+</tr>
+<tr>
+<td>mycroft.scheduler.get_event</td>
+<td>{'name': event_name}</td>
+<td>Get scheduled event data and return the amount of time left.</td>
+<td>mycroft.event_status.callback.{event_name}</td>
+<td><code>get_scheduled_event_status</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_5">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mycroft.scheduler.schedule_event.response</td>
+<td>{'success': True/False, 'event': unique_name, 'data': data}</td>
+<td>Response to scheduling a single-shot event.</td>
+<td></td>
+<td><code>_schedule_event</code></td>
+</tr>
+<tr>
+<td>mycroft.scheduler.schedule_repeating_event.response</td>
+<td>{'success': True/False, 'event': unique_name, 'data': data}</td>
+<td>Response to scheduling a repeating event.</td>
+<td></td>
+<td><code>_schedule_event</code></td>
+</tr>
+<tr>
+<td>mycroft.schedule.update_event.response</td>
+<td>{'success': True/False, 'event': unique_name, 'data': data}</td>
+<td>Response to updating a scheduled event.</td>
+<td></td>
+<td><code>update_scheduled_event</code></td>
+</tr>
+<tr>
+<td>mycroft.scheduler.remove_event.response</td>
+<td>{'success': True/False, 'event': unique_name}</td>
+<td>Response to canceling a pending event.</td>
+<td></td>
+<td><code>cancel_scheduled_event</code></td>
+</tr>
+<tr>
+<td>mycroft.scheduler.get_event.response</td>
+<td>{'success': True/False, 'event': unique_name, 'data': data}</td>
+<td>Response to getting scheduled event data.</td>
+<td></td>
+<td><code>get_scheduled_event_status</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="guiwidgets">GUIWidgets</h2>
+<p>API for interacting with homescreen skill widgets</p>
+<h3 id="emits_6">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ovos.widgets.display</td>
+<td>{"type": str, "data": dict}</td>
+<td>Display a GUI widget.</td>
+<td></td>
+<td><code>show_widget</code></td>
+</tr>
+<tr>
+<td>ovos.widgets.remove</td>
+<td>{"type": str, "data": dict}</td>
+<td>Remove a GUI widget.</td>
+<td></td>
+<td><code>remove_widget</code></td>
+</tr>
+<tr>
+<td>ovos.widgets.update</td>
+<td>{"type": str, "data": dict}</td>
+<td>Update a GUI widget.</td>
+<td></td>
+<td><code>update_widget</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="guiinterface">GUIInterface</h2>
+<p>Used by skills and any other component that wants to display a GUI in their own namespace</p>
+<h3 id="listens-to_2">Listens To</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted Response Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gui.request_page_upload</td>
+<td></td>
+<td>Request to upload GUI pages.</td>
+<td>gui.page.upload</td>
+<td>upload_gui_pages</td>
+</tr>
+<tr>
+<td>{skill_id}.set</td>
+<td></td>
+<td>event sent from GUI client side</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>{skill_id}.{event}</td>
+<td></td>
+<td>Skill specific event sent from GUI client side</td>
+<td></td>
+<td>register_handler</td>
+</tr>
+</tbody>
+</table>
+<h3 id="emits_7">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gui.volunteer_page_upload</td>
+<td>"skill_id": str</td>
+<td>Volunteer to upload GUI pages.</td>
+<td></td>
+<td><code>setup_default_handlers</code></td>
+</tr>
+<tr>
+<td>gui.value.set</td>
+<td>"__from": str</td>
+<td>Set GUI values for the skill.</td>
+<td></td>
+<td><code>gui_set</code></td>
+</tr>
+<tr>
+<td>gui.page.upload</td>
+<td>"__from": str</td>
+<td>Upload GUI pages to the requested infrastructure.</td>
+<td>gui.request_page_upload</td>
+<td><code>upload_gui_pages</code></td>
+</tr>
+<tr>
+<td>ovos.notification.api.set</td>
+<td>"__from": str</td>
+<td>Set a notification in the GUI.</td>
+<td></td>
+<td><code>show_notification</code></td>
+</tr>
+<tr>
+<td>ovos.notification.api.set.controlled</td>
+<td>"__from": str</td>
+<td>Set a controlled notification in the GUI.</td>
+<td></td>
+<td><code>show_controlled_notification</code></td>
+</tr>
+<tr>
+<td>ovos.notification.api.remove.controlled</td>
+<td>"__from": str</td>
+<td>Remove a controlled notification in the GUI.</td>
+<td></td>
+<td><code>remove_controlled_notification</code></td>
+</tr>
+<tr>
+<td>gui.clear.namespace</td>
+<td>"__from": str</td>
+<td>Reset the value dictionary and remove namespace from GUI.</td>
+<td></td>
+<td><code>clear</code></td>
+</tr>
+<tr>
+<td>gui.page.show</td>
+<td>"__from": str</td>
+<td>Show a GUI page.</td>
+<td></td>
+<td><code>show_page</code></td>
+</tr>
+<tr>
+<td>gui.page.delete</td>
+<td>"__from": str</td>
+<td>Remove a GUI page.</td>
+<td></td>
+<td><code>remove_page</code></td>
+</tr>
+<tr>
+<td>mycroft.gui.screen.close</td>
+<td>"skill_id": str</td>
+<td>Signal that the skill is no longer using the GUI.</td>
+<td></td>
+<td><code>release</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="intentlayers">IntentLayers</h2>
+<p>Typically used in skills, TODO move to ovos-workshop</p>
+<h3 id="emits_8">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mycroft.skill.disable_intent</code></td>
+<td>"intent_name": str</td>
+<td>Disable a registered intent</td>
+<td></td>
+<td><code>disable_intent</code></td>
+</tr>
+<tr>
+<td><code>mycroft.skill.enable_intent</code></td>
+<td>"intent_name": str</td>
+<td>Reenable a registered intent</td>
+<td></td>
+<td><code>enable_intent</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="enclosureapi">EnclosureAPI</h2>
+<p>Typically used in skills, utility to interact with enclosure (usually a mark1 faceplate)</p>
+<h3 id="emits_9">Emits</h3>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enclosure.active_skill</code></td>
+<td>"skill_id": str</td>
+<td>Registers a skill as active.</td>
+<td></td>
+<td><code>register</code></td>
+</tr>
+<tr>
+<td><code>enclosure.reset</code></td>
+<td></td>
+<td>Restores the enclosure to a started state.</td>
+<td></td>
+<td><code>reset</code></td>
+</tr>
+<tr>
+<td><code>enclosure.system.reset</code></td>
+<td></td>
+<td>Resets the enclosure hardware (CPUs, etc.).</td>
+<td></td>
+<td><code>system_reset</code></td>
+</tr>
+<tr>
+<td><code>enclosure.system.mute</code></td>
+<td></td>
+<td>Mutes (turns off) the system speaker.</td>
+<td></td>
+<td><code>system_mute</code></td>
+</tr>
+<tr>
+<td><code>enclosure.system.unmute</code></td>
+<td></td>
+<td>Unmutes (turns on) the system speaker.</td>
+<td></td>
+<td><code>system_unmute</code></td>
+</tr>
+<tr>
+<td><code>enclosure.system.blink</code></td>
+<td>"times": int</td>
+<td>Makes the 'eyes' blink the given number of times.</td>
+<td></td>
+<td><code>system_blink</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.on</code></td>
+<td></td>
+<td>Illuminates or shows the eyes.</td>
+<td></td>
+<td><code>eyes_on</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.off</code></td>
+<td></td>
+<td>Turns off or hides the eyes.</td>
+<td></td>
+<td><code>eyes_off</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.blink</code></td>
+<td>"side": str</td>
+<td>Makes the eyes blink on the specified side(s).</td>
+<td></td>
+<td><code>eyes_blink</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.narrow</code></td>
+<td></td>
+<td>Makes the eyes look narrow, like a squint.</td>
+<td></td>
+<td><code>eyes_narrow</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.look</code></td>
+<td>"side": str</td>
+<td>Makes the eyes look to the given side.</td>
+<td></td>
+<td><code>eyes_look</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.color</code></td>
+<td>"r": r<br>"g": g<br>"b": b</td>
+<td>Changes the eye color to the given RGB values.</td>
+<td></td>
+<td><code>eyes_color</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.setpixel</code></td>
+<td>"idx": idx <br> "r": r<br>"g": g<br>"b": b</td>
+<td>Sets individual pixels of the Mark 1 neopixel eyes.</td>
+<td></td>
+<td><code>eyes_setpixel</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.fill</code></td>
+<td>"percentage": percentage</td>
+<td>Uses the eyes as a progress meter.</td>
+<td></td>
+<td><code>eyes_fill</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.level</code></td>
+<td>"level": level</td>
+<td>Sets the brightness of the eyes in the display.</td>
+<td></td>
+<td><code>eyes_brightness</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.reset</code></td>
+<td></td>
+<td>Restores the eyes to their default (ready) state.</td>
+<td></td>
+<td><code>eyes_reset</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.spin</code></td>
+<td></td>
+<td>Makes the eyes 'roll'.</td>
+<td></td>
+<td><code>eyes_spin</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.timedspin</code></td>
+<td>"length": length</td>
+<td>Makes the eyes 'roll' for the given time.</td>
+<td></td>
+<td><code>eyes_timed_spin</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.volume</code></td>
+<td>"volume": volume</td>
+<td>Indicates the volume using the eyes.</td>
+<td></td>
+<td><code>eyes_volume</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.reset</code></td>
+<td></td>
+<td>Restores the mouth display to normal (blank).</td>
+<td></td>
+<td><code>mouth_reset</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.talk</code></td>
+<td></td>
+<td>Shows a generic 'talking' animation.</td>
+<td></td>
+<td><code>mouth_talk</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.think</code></td>
+<td></td>
+<td>Shows a 'thinking' image or animation.</td>
+<td></td>
+<td><code>mouth_think</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.listen</code></td>
+<td></td>
+<td>Shows a 'thinking' image or animation.</td>
+<td></td>
+<td><code>mouth_listen</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.smile</code></td>
+<td></td>
+<td>Shows a 'smile' image or animation.</td>
+<td></td>
+<td><code>mouth_smile</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.viseme_list</code></td>
+<td>"start": start<br>"visemes": List</td>
+<td>Sends mouth visemes as a list in a single message.</td>
+<td></td>
+<td><code>mouth_viseme</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.text</code></td>
+<td>"text": str</td>
+<td>Displays text (scrolling as needed).</td>
+<td></td>
+<td><code>mouth_text</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.display</code></td>
+<td>"img_code": "img_code"<br>"xOffset": x<br>"yOffset": y<br>"clearPrev": refresh</td>
+<td>Displays images on the faceplate.</td>
+<td></td>
+<td><code>mouth_display</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.display_image</code></td>
+<td>"img_path": "image_absolute_path"<br>"xOffset": x<br>"yOffset": y,<br>"invert": invert<br>"clearPrev": refresh</td>
+<td>Sends an image to the enclosure.</td>
+<td></td>
+<td><code>mouth_display_png</code></td>
+</tr>
+<tr>
+<td><code>enclosure.weather.display</code></td>
+<td>"img_code": str<br>"temp": temp</td>
+<td>Shows the temperature and a weather icon.</td>
+<td></td>
+<td><code>weather_display</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.events.activate</code></td>
+<td></td>
+<td>Enables movement of the mouth with speech.</td>
+<td></td>
+<td><code>activate_mouth_events</code></td>
+</tr>
+<tr>
+<td><code>enclosure.mouth.events.deactivate</code></td>
+<td></td>
+<td>Disables movement of the mouth with speech.</td>
+<td></td>
+<td><code>deactivate_mouth_events</code></td>
+</tr>
+<tr>
+<td><code>enclosure.eyes.rgb.get</code></td>
+<td></td>
+<td>Gets the eye RGB color for all pixels.</td>
+<td><code>enclosure.eyes.rgb</code></td>
+<td><code>get_eyes_color</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="processstatus">ProcessStatus</h2>
+<p>Utility used across OVOS standalone components to report their status, integrates with sdnotify</p>
+<h1 id="listens-to_3">Listens to</h1>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Emitted Response Type</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{self._namespace}.{self.name}.service.is_alive</code></td>
+<td></td>
+<td>Check if the service is alive</td>
+<td><code>{self._namespace}.{self.name}.service.is_alive.response</code></td>
+<td>check_alive</td>
+</tr>
+<tr>
+<td><code>{self._namespace}.{self.name}.service.is_ready</code></td>
+<td></td>
+<td>Check if the service is ready</td>
+<td><code>{self._namespace}.{self.name}.service.is_ready.response</code></td>
+<td>check_ready</td>
+</tr>
+<tr>
+<td><code>{self._namespace}.{self.name}.service.all_loaded</code></td>
+<td></td>
+<td>DEPRECATED: Check if all services are loaded</td>
+<td><code>{self._namespace}.{self.name}.service.is_ready.response</code></td>
+<td>check_ready</td>
+</tr>
+</tbody>
+</table>
+<h1 id="emits_10">Emits</h1>
+<table>
+<thead>
+<tr>
+<th>Message Type</th>
+<th>Message Data</th>
+<th>Description</th>
+<th>Trigger Message Type</th>
+<th>Handled by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{self._namespace}.{self.name}.service.is_alive.response</code></td>
+<td>{'status': is_alive}</td>
+<td>Respond to is_alive status request</td>
+<td><code>{self._namespace}.{self.name}.service.is_alive</code></td>
+<td>check_alive</td>
+</tr>
+<tr>
+<td><code>{self._namespace}.{self.name}.service.is_ready.response</code></td>
+<td>{'status': is_ready}</td>
+<td>Respond to is_ready status request</td>
+<td><code>{self._namespace}.{self.name}.service.is_ready</code><br><code>{self._namespace}.{self.name}.service.all_loaded</code></td>
+<td>check_ready</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../persona/" class="btn btn-neutral float-left" title="Persona"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../opm/" class="btn btn-neutral float-right" title="OPM">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../persona/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../opm/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
