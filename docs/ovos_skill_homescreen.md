@@ -1,4 +1,4 @@
-# ovos-homescreen 
+# ovos-skill-homescreen 
 
 ## HomeScreen
 
